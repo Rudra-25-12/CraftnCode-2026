@@ -10,33 +10,91 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as FoodRouteImport } from './routes/food'
+import { Route as ProblemStatementsRouteImport } from './routes/problem-statements'
+import { Route as SponsorsRouteImport } from './routes/sponsors'
+import { Route as SubmitRouteImport } from './routes/submit'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FoodRoute = FoodRouteImport.update({
+  id: '/food',
+  path: '/food',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProblemStatementsRoute = ProblemStatementsRouteImport.update({
+  id: '/problem-statements',
+  path: '/problem-statements',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SponsorsRoute = SponsorsRouteImport.update({
+  id: '/sponsors',
+  path: '/sponsors',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SubmitRoute = SubmitRouteImport.update({
+  id: '/submit',
+  path: '/submit',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/food': typeof FoodRoute
+  '/problem-statements': typeof ProblemStatementsRoute
+  '/sponsors': typeof SponsorsRoute
+  '/submit': typeof SubmitRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/food': typeof FoodRoute
+  '/problem-statements': typeof ProblemStatementsRoute
+  '/sponsors': typeof SponsorsRoute
+  '/submit': typeof SubmitRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/food': typeof FoodRoute
+  '/problem-statements': typeof ProblemStatementsRoute
+  '/sponsors': typeof SponsorsRoute
+  '/submit': typeof SubmitRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    '/' | '/about' | '/food' | '/problem-statements' | '/sponsors' | '/submit'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/about' | '/food' | '/problem-statements' | '/sponsors' | '/submit'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/food'
+    | '/problem-statements'
+    | '/sponsors'
+    | '/submit'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  FoodRoute: typeof FoodRoute
+  ProblemStatementsRoute: typeof ProblemStatementsRoute
+  SponsorsRoute: typeof SponsorsRoute
+  SubmitRoute: typeof SubmitRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +106,51 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/food': {
+      id: '/food'
+      path: '/food'
+      fullPath: '/food'
+      preLoaderRoute: typeof FoodRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/problem-statements': {
+      id: '/problem-statements'
+      path: '/problem-statements'
+      fullPath: '/problem-statements'
+      preLoaderRoute: typeof ProblemStatementsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sponsors': {
+      id: '/sponsors'
+      path: '/sponsors'
+      fullPath: '/sponsors'
+      preLoaderRoute: typeof SponsorsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/submit': {
+      id: '/submit'
+      path: '/submit'
+      fullPath: '/submit'
+      preLoaderRoute: typeof SubmitRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  FoodRoute: FoodRoute,
+  ProblemStatementsRoute: ProblemStatementsRoute,
+  SponsorsRoute: SponsorsRoute,
+  SubmitRoute: SubmitRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
