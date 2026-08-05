@@ -142,7 +142,7 @@ export function SiteFrame({ children }: { children: ReactNode }) {
 
           <span className="my-6 h-px w-full bg-border" />
 
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-col gap-1">
             {socials.map(({ href, label, Icon }) => (
               <a
                 key={label}
@@ -150,9 +150,10 @@ export function SiteFrame({ children }: { children: ReactNode }) {
                 target="_blank"
                 rel="noreferrer"
                 aria-label={label}
-                className="rounded-sm border border-border p-3 text-foreground/80 transition-colors hover:border-neon-magenta hover:text-neon-magenta"
+                className="flex items-center gap-3 rounded-sm px-3 py-3 font-display text-[11px] tracking-[0.28em] text-foreground/85 transition-colors hover:text-neon-magenta"
               >
-                <Icon className="h-4 w-4" strokeWidth={1.5} />
+                <Icon className="h-4 w-4 shrink-0" strokeWidth={1.5} />
+                <span className="truncate">{label.toUpperCase()}</span>
               </a>
             ))}
           </div>
