@@ -4,10 +4,10 @@ import { PageShell } from "@/components/PageShell";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About Us — Rewind & Recode" },
-      { name: "description", content: "Who runs Rewind & Recode and why we hack all night." },
-      { property: "og:title", content: "About Us — Rewind & Recode" },
-      { property: "og:description", content: "Who runs Rewind & Recode and why we hack all night." },
+      { title: "About Us — CraftnCode'26" },
+      { name: "description", content: "Who runs CraftnCode'26 and why we hack all night." },
+      { property: "og:title", content: "About Us — CraftnCode'26" },
+      { property: "og:description", content: "Who runs CraftnCode'26 and why we hack all night." },
     ],
   }),
   component: About,
@@ -26,7 +26,7 @@ function About() {
     <PageShell eyebrow="WHO WE ARE" title="About Us">
       <p className="text-lg">
         We are a student-run coding club that believes the best builds happen after midnight.
-        Rewind &amp; Recode is our flagship overnight hackathon: no lecture-hall energy, no filler
+        CraftnCode&#39;26 is our flagship overnight hackathon: no lecture-hall energy, no filler
         sessions — just teams, terminals and a deadline at sunrise.
       </p>
       <p>

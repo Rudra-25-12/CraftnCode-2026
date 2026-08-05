@@ -4,13 +4,13 @@ import { NeonCity } from "@/components/NeonCity";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Rewind & Recode — Overnight Hackathon" },
+      { title: "CraftnCode'26 — Overnight Hackathon" },
       {
         name: "description",
         content:
-          "Rewind & Recode is a 24-hour overnight club hackathon. Build through the night, ship at dawn.",
+          "CraftnCode'26 is a 24-hour overnight club hackathon. Build through the night, ship at dawn.",
       },
-      { property: "og:title", content: "Rewind & Recode — Overnight Hackathon" },
+      { property: "og:title", content: "CraftnCode'26 — Overnight Hackathon" },
       {
         property: "og:description",
         content: "A 24-hour overnight hackathon. Build through the night, ship at dawn.",
