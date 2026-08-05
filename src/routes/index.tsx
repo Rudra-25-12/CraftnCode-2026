@@ -38,11 +38,11 @@ function Index() {
         </p>
 
         <h1 className="animate-flicker mt-5 font-display text-[13vw] leading-[0.85] md:text-[8.5vw]">
-          <span className="neon-text">REWIND</span>
+          <span className="neon-text">CRAFT</span>
           <span className="block text-2xl tracking-[0.6em] text-muted-foreground md:text-3xl">
-            &amp;
+            n
           </span>
-          <span className="neon-text">RECODE</span>
+          <span className="neon-text">CODE&#39;26</span>
         </h1>
 
         <p className="mx-auto mt-6 max-w-xl font-display text-[11px] tracking-[0.28em] text-foreground/80 md:text-sm">
