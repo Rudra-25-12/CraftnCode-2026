@@ -34,7 +34,7 @@ function Index() {
 
       <div className="relative z-10 px-6 text-center">
         <p className="font-display text-[10px] tracking-[0.5em] text-neon-cyan/90 md:text-xs">
-          THE CODING CLUB PRESENTS
+          CYBER SPACE CLUB PRESENTS
         </p>
 
         <h1 className="animate-flicker mt-5 font-display text-[13vw] leading-[0.85] md:text-[8.5vw]">
