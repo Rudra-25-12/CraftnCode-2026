@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ShieldCheck } from "lucide-react";
 import { PageShell } from "@/components/PageShell";
 import cscLogo from "@/assets/csc-logo.webp";
@@ -28,6 +28,11 @@ const timeline = [
 function About() {
   const [logoFailed, setLogoFailed] = useState(false);
   const [logoLoaded, setLogoLoaded] = useState(false);
+  const imgRef = useRef<HTMLImageElement>(null);
+  useEffect(() => {
+    // Cached images can finish before hydration attaches onLoad.
+    if (imgRef.current?.complete && imgRef.current.naturalWidth > 0) setLogoLoaded(true);
+  }, []);
   return (
     <PageShell eyebrow="WHO WE ARE" title="About Us">
       <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-center">
@@ -45,6 +50,7 @@ function About() {
           )}
           {!logoFailed && (
             <img
+              ref={imgRef}
               src={cscLogo}
               alt="Cyber Space Club logo"
               className={`absolute inset-0 h-28 w-28 rounded-sm transition-opacity duration-300 ${
