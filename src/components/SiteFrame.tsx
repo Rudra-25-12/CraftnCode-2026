@@ -8,9 +8,6 @@ import {
   UtensilsCrossed,
   Instagram,
   Linkedin,
-  Youtube,
-  Github,
-  MessagesSquare,
   Menu,
   X,
 } from "lucide-react";
@@ -24,11 +21,8 @@ const leftNav = [
 ] as const;
 
 const socials = [
-  { href: "https://instagram.com", label: "Instagram", Icon: Instagram },
-  { href: "https://linkedin.com", label: "LinkedIn", Icon: Linkedin },
-  { href: "https://youtube.com", label: "YouTube", Icon: Youtube },
-  { href: "https://github.com", label: "GitHub", Icon: Github },
-  { href: "https://discord.com", label: "Discord", Icon: MessagesSquare },
+  { href: "https://www.instagram.com/csc_muj/", label: "Instagram", Icon: Instagram },
+  { href: "https://www.linkedin.com/company/cyber-space-club", label: "LinkedIn", Icon: Linkedin },
 ];
 
 const rightNav = [
@@ -73,15 +67,21 @@ export function SiteFrame({ children }: { children: ReactNode }) {
       </nav>
 
       {/* Right rail */}
-      <div className="glass-panel fixed right-0 top-24 z-40 hidden w-[68px] flex-col rounded-l-lg py-2 md:flex">
-        <Link to="/submit" className="rail-item" activeProps={{ className: "rail-item text-neon-cyan" }}>
-          <Upload className="h-5 w-5" strokeWidth={1.5} />
-          Submit
-        </Link>
-        <Link to="/food" className="rail-item" activeProps={{ className: "rail-item text-neon-cyan" }}>
-          <UtensilsCrossed className="h-5 w-5" strokeWidth={1.5} />
-          Food
-        </Link>
+      <div
+        aria-label="Secondary"
+        className="glass-panel fixed right-0 top-24 z-40 hidden w-[68px] flex-col rounded-l-lg py-2 md:flex"
+      >
+        {rightNav.map(({ to, label, Icon }) => (
+          <Link
+            key={to}
+            to={to}
+            className="rail-item"
+            activeProps={{ className: "rail-item text-neon-cyan" }}
+          >
+            <Icon className="h-5 w-5" strokeWidth={1.5} />
+            {label}
+          </Link>
+        ))}
         <span className="mx-auto my-2 h-px w-8 bg-border" />
         {socials.map(({ href, label, Icon }) => (
           <a
@@ -92,7 +92,8 @@ export function SiteFrame({ children }: { children: ReactNode }) {
             aria-label={label}
             className="rail-item"
           >
-            <Icon className="h-[18px] w-[18px]" strokeWidth={1.5} />
+            <Icon className="h-5 w-5" strokeWidth={1.5} />
+            {label}
           </a>
         ))}
       </div>
