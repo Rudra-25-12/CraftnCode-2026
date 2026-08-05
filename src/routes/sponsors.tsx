@@ -4,9 +4,9 @@ import { PageShell } from "@/components/PageShell";
 export const Route = createFileRoute("/sponsors")({
   head: () => ({
     meta: [
-      { title: "Sponsors — Rewind & Recode" },
-      { name: "description", content: "Partners powering the Rewind & Recode overnight hackathon." },
-      { property: "og:title", content: "Sponsors — Rewind & Recode" },
+      { title: "Sponsors — CraftnCode'26" },
+      { name: "description", content: "Partners powering the CraftnCode'26 overnight hackathon." },
+      { property: "og:title", content: "Sponsors — CraftnCode'26" },
       { property: "og:description", content: "Partners powering our overnight hackathon." },
     ],
   }),
@@ -24,8 +24,8 @@ function Sponsors() {
     <PageShell eyebrow="POWERED BY" title="Sponsors">
       <p>
         Want your logo glowing over a hall of 200 builders at 3 AM? Write to{" "}
-        <a className="text-neon-cyan underline-offset-4 hover:underline" href="mailto:sponsors@rewindrecode.dev">
-          sponsors@rewindrecode.dev
+        <a className="text-neon-cyan underline-offset-4 hover:underline" href="mailto:sponsors@craftncode.dev">
+          sponsors@craftncode.dev
         </a>
         .
       </p>

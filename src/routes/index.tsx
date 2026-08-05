@@ -4,13 +4,13 @@ import { NeonCity } from "@/components/NeonCity";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Rewind & Recode — Overnight Hackathon" },
+      { title: "CraftnCode'26 — Overnight Hackathon" },
       {
         name: "description",
         content:
-          "Rewind & Recode is a 24-hour overnight club hackathon. Build through the night, ship at dawn.",
+          "CraftnCode'26 is a 24-hour overnight club hackathon. Build through the night, ship at dawn.",
       },
-      { property: "og:title", content: "Rewind & Recode — Overnight Hackathon" },
+      { property: "og:title", content: "CraftnCode'26 — Overnight Hackathon" },
       {
         property: "og:description",
         content: "A 24-hour overnight hackathon. Build through the night, ship at dawn.",
@@ -38,11 +38,11 @@ function Index() {
         </p>
 
         <h1 className="animate-flicker mt-5 font-display text-[13vw] leading-[0.85] md:text-[8.5vw]">
-          <span className="neon-text">REWIND</span>
+          <span className="neon-text">CRAFT</span>
           <span className="block text-2xl tracking-[0.6em] text-muted-foreground md:text-3xl">
-            &amp;
+            n
           </span>
-          <span className="neon-text">RECODE</span>
+          <span className="neon-text">CODE&#39;26</span>
         </h1>
 
         <p className="mx-auto mt-6 max-w-xl font-display text-[11px] tracking-[0.28em] text-foreground/80 md:text-sm">

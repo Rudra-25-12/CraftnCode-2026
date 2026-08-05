@@ -165,7 +165,7 @@ export function SiteFrame({ children }: { children: ReactNode }) {
           to="/"
           className="truncate font-display text-sm tracking-[0.35em] text-foreground"
         >
-          R<span className="text-neon-magenta">&amp;</span>R
+          C<span className="text-neon-magenta">n</span>C&#39;26
         </Link>
         <div className="flex shrink-0 items-center gap-3">
           <span className="hidden font-display text-[10px] tracking-[0.3em] text-muted-foreground lg:block">

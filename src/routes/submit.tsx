@@ -6,9 +6,9 @@ import { PageShell } from "@/components/PageShell";
 export const Route = createFileRoute("/submit")({
   head: () => ({
     meta: [
-      { title: "Submission — Rewind & Recode" },
-      { name: "description", content: "Submit your Rewind & Recode hackathon project before the dawn deadline." },
-      { property: "og:title", content: "Submission — Rewind & Recode" },
+      { title: "Submission — CraftnCode'26" },
+      { name: "description", content: "Submit your CraftnCode'26 hackathon project before the dawn deadline." },
+      { property: "og:title", content: "Submission — CraftnCode'26" },
       { property: "og:description", content: "Submit your hackathon project before the dawn deadline." },
     ],
   }),
@@ -57,7 +57,7 @@ function Submit() {
         </div>
         <div className="space-y-2">
           <label className={label} htmlFor="pitch">60-SECOND PITCH</label>
-          <textarea id="pitch" required rows={4} className={field} placeholder="What did you rewind, and what did you recode?" />
+          <textarea id="pitch" required rows={4} className={field} placeholder="What did you craft, and how did you code it?" />
         </div>
         <button
           type="submit"
