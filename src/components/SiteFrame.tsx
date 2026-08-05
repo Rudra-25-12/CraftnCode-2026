@@ -177,12 +177,12 @@ export function SiteFrame({ children }: { children: ReactNode }) {
           </Link>
           <button
             type="button"
-            aria-label="Open menu"
+            aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
-            onClick={() => setOpen(true)}
+            onClick={() => setOpen((v) => !v)}
             className="rounded-sm border border-border p-2 text-foreground/85 transition-colors hover:border-neon-cyan hover:text-neon-cyan md:hidden"
           >
-            <Menu className="h-4 w-4" strokeWidth={1.5} />
+            {open ? <X className="h-4 w-4" strokeWidth={1.5} /> : <Menu className="h-4 w-4" strokeWidth={1.5} />}
           </button>
         </div>
       </header>
