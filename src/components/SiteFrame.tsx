@@ -171,12 +171,6 @@ export function SiteFrame({ children }: { children: ReactNode }) {
           <span className="hidden font-display text-[10px] tracking-[0.3em] text-muted-foreground lg:block">
             OVERNIGHT HACKATHON · 24 HOURS
           </span>
-          <Link
-            to="/submit"
-            className="rounded-sm border border-neon-magenta/60 px-3 py-2 font-display text-[10px] tracking-[0.25em] text-neon-magenta transition-shadow hover:shadow-[var(--shadow-neon-pink)] sm:px-4"
-          >
-            REGISTER
-          </Link>
           <button
             type="button"
             aria-label={open ? "Close menu" : "Open menu"}
