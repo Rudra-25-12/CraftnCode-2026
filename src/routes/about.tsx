@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/PageShell";
-import cscLogo from "@/assets/csc-logo.webp.asset.json";
+import cscLogo from "@/assets/csc-logo.webp";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -27,7 +27,7 @@ function About() {
     <PageShell eyebrow="WHO WE ARE" title="About Us">
       <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-center">
         <img
-          src={cscLogo.url}
+          src={cscLogo}
           alt="Cyber Space Club logo"
           className="h-28 w-28 shrink-0 rounded-sm"
           width={256}
