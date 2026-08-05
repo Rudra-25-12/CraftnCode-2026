@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/PageShell";
+import cscLogo from "@/assets/csc-logo.png.asset.json";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -24,14 +25,28 @@ const timeline = [
 function About() {
   return (
     <PageShell eyebrow="WHO WE ARE" title="About Us">
-      <p className="text-lg">
-        We are a student-run coding club that believes the best builds happen after midnight.
-        CraftnCode&#39;26 is our flagship overnight hackathon: no lecture-hall energy, no filler
-        sessions — just teams, terminals and a deadline at sunrise.
-      </p>
+      <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-center">
+        <img
+          src={cscLogo.url}
+          alt="Cyber Space Club logo"
+          className="h-28 w-28 shrink-0 rounded-sm"
+          loading="lazy"
+        />
+        <p className="text-lg">
+          We aim to build an active society for students interested in the domain of cyber security
+          and uplift this culture in MUJ.
+        </p>
+      </div>
       <p>
-        Everything runs in one hall. Mentors float, food arrives on request, and the only rule is
-        that whatever you ship must be built that night.
+        For more info visit our website:{" "}
+        <a
+          href="https://www.cscmuj.com"
+          target="_blank"
+          rel="noreferrer"
+          className="text-neon-cyan underline underline-offset-4"
+        >
+          cscmuj.com
+        </a>
       </p>
       <div className="glass-panel rounded-sm p-6">
         <h2 className="font-display text-xs tracking-[0.3em] text-neon-cyan">RUN OF THE NIGHT</h2>
