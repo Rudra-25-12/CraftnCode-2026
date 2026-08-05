@@ -1,4 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
+import { ShieldCheck } from "lucide-react";
 import { PageShell } from "@/components/PageShell";
 import cscLogo from "@/assets/csc-logo.webp";
 
@@ -23,19 +25,32 @@ const timeline = [
 ];
 
 function About() {
+  const [logoFailed, setLogoFailed] = useState(false);
   return (
     <PageShell eyebrow="WHO WE ARE" title="About Us">
       <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-center">
-        <img
-          src={cscLogo}
-          alt="Cyber Space Club logo"
-          className="h-28 w-28 shrink-0 rounded-sm"
-          width={256}
-          height={254}
-          loading="eager"
-          fetchPriority="high"
-          decoding="async"
-        />
+        {logoFailed ? (
+          <div
+            role="img"
+            aria-label="Cyber Space Club logo"
+            className="flex h-28 w-28 shrink-0 flex-col items-center justify-center gap-1 rounded-sm border border-neon-cyan/40 bg-[color-mix(in_oklab,var(--neon-cyan)_8%,transparent)] shadow-[var(--shadow-neon)]"
+          >
+            <ShieldCheck className="h-8 w-8 text-neon-cyan" strokeWidth={1.25} />
+            <span className="font-display text-[10px] tracking-[0.3em] text-neon-cyan">CSC</span>
+          </div>
+        ) : (
+          <img
+            src={cscLogo}
+            alt="Cyber Space Club logo"
+            className="h-28 w-28 shrink-0 rounded-sm"
+            width={256}
+            height={254}
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
+            onError={() => setLogoFailed(true)}
+          />
+        )}
         <p className="text-lg">
           We aim to build an active society for students interested in the domain of cyber security
           and uplift this culture in MUJ.
