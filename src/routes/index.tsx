@@ -49,8 +49,7 @@ function Index() {
           AN OVERNIGHT HACKATHON · DUSK TO DAWN
         </p>
         <p className="mx-auto mt-3 max-w-lg text-base text-muted-foreground">
-          Legacy code, broken systems, forgotten ideas. Rewind them. Recode them. One night, one
-          city of screens still glowing at 4 AM.
+          {"\n"}
         </p>
 
         <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
