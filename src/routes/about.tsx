@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/PageShell";
-import cscLogo from "@/assets/csc-logo.png.asset.json";
+import cscLogo from "@/assets/csc-logo.webp.asset.json";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -30,7 +30,11 @@ function About() {
           src={cscLogo.url}
           alt="Cyber Space Club logo"
           className="h-28 w-28 shrink-0 rounded-sm"
-          loading="lazy"
+          width={256}
+          height={254}
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
         />
         <p className="text-lg">
           We aim to build an active society for students interested in the domain of cyber security
