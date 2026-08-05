@@ -116,21 +116,11 @@ export function SiteFrame({ children }: { children: ReactNode }) {
             open ? "translate-x-0" : "translate-x-full"
           }`}
         >
-          <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4">
-            <span className="truncate font-display text-[10px] tracking-[0.35em] text-muted-foreground">
-              NAVIGATE
-            </span>
-            <button
-              type="button"
-              aria-label="Close menu"
-              onClick={() => setOpen(false)}
-              className="shrink-0 rounded-sm border border-border p-2 text-foreground/80"
-            >
-              <X className="h-4 w-4" strokeWidth={1.5} />
-            </button>
-          </div>
+          <span className="truncate font-display text-[10px] tracking-[0.35em] text-muted-foreground">
+            NAVIGATE
+          </span>
 
-          <div className="mt-6 flex flex-col gap-1">
+          <div className="mt-5 flex flex-col gap-1">
             {[...leftNav, ...rightNav].map(({ to, label, Icon }) => (
               <Link
                 key={to}
