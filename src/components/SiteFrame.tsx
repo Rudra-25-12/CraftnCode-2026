@@ -112,7 +112,7 @@ export function SiteFrame({ children }: { children: ReactNode }) {
         />
         <nav
           aria-label="Mobile"
-          className={`glass-panel absolute right-0 top-0 flex h-full w-[78%] max-w-xs flex-col overflow-y-auto rounded-l-lg px-5 py-6 transition-transform duration-300 ease-out ${
+          className={`glass-panel absolute right-0 top-0 flex h-full w-[78%] max-w-xs flex-col overflow-y-auto rounded-l-lg px-5 pb-8 pt-20 transition-transform duration-300 ease-out ${
             open ? "translate-x-0" : "translate-x-full"
           }`}
         >
