@@ -50,7 +50,7 @@ export function SiteFrame({ children }: { children: ReactNode }) {
       {/* Left rail */}
       <nav
         aria-label="Primary"
-        className="glass-panel fixed left-0 top-24 z-40 hidden w-[68px] flex-col rounded-r-lg py-2 md:flex"
+        className="glass-panel fixed left-0 top-24 z-40 hidden w-[84px] flex-col rounded-r-lg py-2 md:flex"
       >
         {leftNav.map(({ to, label, Icon }) => (
           <Link
@@ -69,7 +69,7 @@ export function SiteFrame({ children }: { children: ReactNode }) {
       {/* Right rail */}
       <div
         aria-label="Secondary"
-        className="glass-panel fixed right-0 top-24 z-40 hidden w-[68px] flex-col rounded-l-lg py-2 md:flex"
+        className="glass-panel fixed right-0 top-24 z-40 hidden w-[84px] flex-col rounded-l-lg py-2 md:flex"
       >
         {rightNav.map(({ to, label, Icon }) => (
           <Link
