@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useRouterState } from "@tanstack/react-router";
 import {
   Home,
   Users,
@@ -11,8 +11,10 @@ import {
   Youtube,
   Github,
   MessagesSquare,
+  Menu,
+  X,
 } from "lucide-react";
-import type { ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 
 const leftNav = [
   { to: "/", label: "Home", Icon: Home },
@@ -29,7 +31,26 @@ const socials = [
   { href: "https://discord.com", label: "Discord", Icon: MessagesSquare },
 ];
 
+const rightNav = [
+  { to: "/submit", label: "Submit", Icon: Upload },
+  { to: "/food", label: "Food", Icon: UtensilsCrossed },
+] as const;
+
 export function SiteFrame({ children }: { children: ReactNode }) {
+  const [open, setOpen] = useState(false);
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
   return (
     <div className="relative min-h-screen">
       {/* Left rail */}
