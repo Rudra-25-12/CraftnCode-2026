@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ShieldCheck } from "lucide-react";
 import { PageShell } from "@/components/PageShell";
 import cscLogo from "@/assets/csc-logo.webp";
@@ -12,6 +12,7 @@ export const Route = createFileRoute("/about")({
       { property: "og:title", content: "About Us — CraftnCode'26" },
       { property: "og:description", content: "Who runs CraftnCode'26 and why we hack all night." },
     ],
+    links: [{ rel: "preload", as: "image", href: cscLogo, fetchpriority: "high" }],
   }),
   component: About,
 });
@@ -26,31 +27,46 @@ const timeline = [
 
 function About() {
   const [logoFailed, setLogoFailed] = useState(false);
+  const [logoLoaded, setLogoLoaded] = useState(false);
+  const imgRef = useRef<HTMLImageElement>(null);
+  useEffect(() => {
+    // Cached images can finish before hydration attaches onLoad.
+    if (imgRef.current?.complete && imgRef.current.naturalWidth > 0) setLogoLoaded(true);
+  }, []);
   return (
     <PageShell eyebrow="WHO WE ARE" title="About Us">
       <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-center">
-        {logoFailed ? (
-          <div
-            role="img"
-            aria-label="Cyber Space Club logo"
-            className="flex h-28 w-28 shrink-0 flex-col items-center justify-center gap-1 rounded-sm border border-neon-cyan/40 bg-[color-mix(in_oklab,var(--neon-cyan)_8%,transparent)] shadow-[var(--shadow-neon)]"
-          >
-            <ShieldCheck className="h-8 w-8 text-neon-cyan" strokeWidth={1.25} />
-            <span className="font-display text-[10px] tracking-[0.3em] text-neon-cyan">CSC</span>
-          </div>
-        ) : (
-          <img
-            src={cscLogo}
-            alt="Cyber Space Club logo"
-            className="h-28 w-28 shrink-0 rounded-sm"
-            width={256}
-            height={254}
-            loading="eager"
-            fetchPriority="high"
-            decoding="async"
-            onError={() => setLogoFailed(true)}
-          />
-        )}
+        <div className="relative h-28 w-28 shrink-0">
+          {(logoFailed || !logoLoaded) && (
+            <div
+              role={logoFailed ? "img" : undefined}
+              aria-label={logoFailed ? "Cyber Space Club logo" : undefined}
+              aria-hidden={logoFailed ? undefined : true}
+              className="absolute inset-0 flex flex-col items-center justify-center gap-1 rounded-sm border border-neon-cyan/40 bg-[color-mix(in_oklab,var(--neon-cyan)_8%,transparent)] shadow-[var(--shadow-neon)]"
+            >
+              <ShieldCheck className="h-8 w-8 text-neon-cyan" strokeWidth={1.25} />
+              <span className="font-display text-[10px] tracking-[0.3em] text-neon-cyan">CSC</span>
+            </div>
+          )}
+          {!logoFailed && (
+            <img
+              ref={imgRef}
+              src={cscLogo}
+              alt="Cyber Space Club logo"
+              className={`absolute inset-0 h-28 w-28 rounded-sm transition-opacity duration-300 ${
+                logoLoaded ? "opacity-100" : "opacity-0"
+              }`}
+              width={256}
+              height={254}
+              sizes="112px"
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
+              onLoad={() => setLogoLoaded(true)}
+              onError={() => setLogoFailed(true)}
+            />
+          )}
+        </div>
         <p className="text-lg">
           We aim to build an active society for students interested in the domain of cyber security
           and uplift this culture in MUJ.
