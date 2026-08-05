@@ -33,7 +33,7 @@ function About() {
           <div
             role="img"
             aria-label="Cyber Space Club logo"
-            className="flex h-28 w-28 shrink-0 flex-col items-center justify-center gap-1 rounded-sm border border-neon-cyan/40 bg-[color-mix(in_oklab,var(--neon-cyan)_8%,transparent)] shadow-[var(--shadow-neon-cyan)]"
+            className="flex h-28 w-28 shrink-0 flex-col items-center justify-center gap-1 rounded-sm border border-neon-cyan/40 bg-[color-mix(in_oklab,var(--neon-cyan)_8%,transparent)] shadow-[var(--shadow-neon)]"
           >
             <ShieldCheck className="h-8 w-8 text-neon-cyan" strokeWidth={1.25} />
             <span className="font-display text-[10px] tracking-[0.3em] text-neon-cyan">CSC</span>
