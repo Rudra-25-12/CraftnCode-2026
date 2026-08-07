@@ -12,6 +12,7 @@ import {
   X,
 } from "lucide-react";
 import { useEffect, useState, type ReactNode } from "react";
+import { SiteFooter } from "./SiteFooter";
 
 const leftNav = [
   { to: "/", label: "Home", Icon: Home },
@@ -184,6 +185,7 @@ export function SiteFrame({ children }: { children: ReactNode }) {
       </header>
 
       <main>{children}</main>
+      <SiteFooter />
     </div>
   );
 }
