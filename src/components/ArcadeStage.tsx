@@ -33,7 +33,7 @@ export function ArcadeStage() {
     const invaders: Invader[] = Array.from({ length: 9 }, (_, i) => ({
       x: 0.06 + ((i * 0.11) % 0.9),
       y: 0.08 + ((i * 37) % 5) * 0.055,
-      c: [MAGENTA, "#a855f7", "#ff8a3d", CYAN][i % 4],
+      c: [MAGENTA, "#a855f7", "#ff8a3d", CYAN][i % 4] as string,
       phase: i * 0.7,
       drift: (i % 2 === 0 ? 1 : -1) * 0.00035,
     }));
@@ -68,7 +68,7 @@ export function ArcadeStage() {
     const drawInvader = (x: number, y: number, px: number, color: string, alt: boolean) => {
       ctx.fillStyle = color;
       for (let r = 0; r < INVADER.length; r++) {
-        const row = INVADER[r];
+        const row = INVADER[r] as string;
         for (let c = 0; c < row.length; c++) {
           if (row[c] !== "1") continue;
           if (alt && (r === 7 || r === 6) && (c === 0 || c === 10)) continue;
