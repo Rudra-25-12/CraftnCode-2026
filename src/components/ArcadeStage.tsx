@@ -52,6 +52,8 @@ export function ArcadeStage() {
     };
     resize();
     window.addEventListener("resize", resize);
+    const ro = new ResizeObserver(resize);
+    ro.observe(canvas);
 
     // 11x8 invader sprite grid
     const INVADER = [
@@ -107,7 +109,7 @@ export function ArcadeStage() {
 
     const draw = () => {
       t += 1;
-      const lane = h * 0.95;
+      const lane = h * 0.84;
 
       ctx.clearRect(0, 0, w, h);
 
@@ -222,6 +224,7 @@ export function ArcadeStage() {
 
     return () => {
       cancelAnimationFrame(raf);
+      ro.disconnect();
       window.removeEventListener("resize", resize);
     };
   }, []);
