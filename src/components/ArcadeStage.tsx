@@ -107,7 +107,7 @@ export function ArcadeStage() {
 
     const draw = () => {
       t += 1;
-      const lane = h * 0.62;
+      const lane = h * 0.82;
 
       ctx.clearRect(0, 0, w, h);
 
@@ -131,7 +131,7 @@ export function ArcadeStage() {
       ctx.globalAlpha = 1;
 
       // perspective neon floor
-      const horizon = h * 0.72;
+      const horizon = h * 0.9;
       ctx.strokeStyle = "rgba(255,55,199,0.35)";
       ctx.lineWidth = 1;
       for (let i = -14; i <= 14; i++) {
