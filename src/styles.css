@@ -219,6 +219,8 @@
   -webkit-text-stroke: 3px oklch(0.08 0.01 300);
   paint-order: stroke fill;
   text-shadow:
+    -0.018em -0.018em 0 oklch(0.99 0.09 110 / 20%),
+    0.018em 0.018em 0 oklch(0.35 0.12 95 / 20%),
     0.055em 0.055em 0 oklch(0.08 0.01 300),
     0.09em 0.09em 0 oklch(0.08 0.01 300),
     0.125em 0.125em 0 oklch(0.3 0.09 110 / 85%),
