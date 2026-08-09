@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArcadeStage } from "@/components/ArcadeStage";
+import arcadeCabinet from "@/assets/arcade-cabinet.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -46,12 +47,9 @@ function Index() {
           CYBER SPACE CLUB PRESENTS
         </p>
 
-        <h1 className="animate-flicker mt-5 font-display text-[13vw] leading-[0.85] md:text-[8.5vw]">
-          <span className="neon-text">CRAFT</span>
-          <span className="block text-2xl tracking-[0.6em] text-muted-foreground md:text-3xl">
-            n
-          </span>
-          <span className="neon-text">CODE&#39;26</span>
+        <h1 className="poster-title animate-flicker mt-5 text-[16vw] md:text-[10vw]">
+          <span className="block">CRAFT N</span>
+          <span className="block">CODE&#39;26</span>
         </h1>
 
         <p className="mx-auto mt-6 max-w-xl font-display text-[11px] tracking-[0.28em] text-foreground/80 md:text-sm">
@@ -85,6 +83,33 @@ function Index() {
               </div>
             </div>
           ))}
+        </div>
+      </div>
+    </section>
+
+    <section className="relative overflow-hidden border-t border-border/60 px-6 py-16 md:px-24">
+      <div className="mx-auto grid max-w-4xl items-center gap-10 md:grid-cols-2">
+        <img
+          src={arcadeCabinet}
+          alt="Retro neon arcade cabinet for CraftnCode'26"
+          width={1024}
+          height={1280}
+          loading="lazy"
+          decoding="async"
+          className="mx-auto w-56 drop-shadow-[0_0_40px_oklch(0.7_0.26_340/0.45)] md:w-72"
+        />
+        <div>
+          <p className="font-display text-[10px] tracking-[0.4em] text-neon-magenta">INSERT COIN</p>
+          <h2 className="poster-title mt-3 text-4xl md:text-5xl">PRESS START</h2>
+          <p className="mt-4 text-foreground/80">
+            One cabinet, one night, endless continues. Grab your crew, pick a track and play the
+            longest level of the year.
+          </p>
+          <div className="mt-6 flex flex-wrap gap-3 font-display text-[10px] tracking-[0.25em]">
+            <span className="glass-panel rounded-sm px-4 py-2 text-neon-cyan">TEAM 2-4</span>
+            <span className="glass-panel rounded-sm px-4 py-2 text-neon-cyan">PRIZE ₹50K</span>
+            <span className="glass-panel rounded-sm px-4 py-2 text-neon-cyan">15 / 08 / 26</span>
+          </div>
         </div>
       </div>
     </section>
