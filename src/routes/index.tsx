@@ -23,7 +23,6 @@ export const Route = createFileRoute("/")({
 const stats = [
   { k: "24", v: "Hours Non-Stop" },
   { k: "05", v: "Problem Tracks" },
-  { k: "∞", v: "Coffee Refills" },
 ];
 
 const schedule = [
@@ -60,22 +59,16 @@ function Index() {
 
         <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
           <Link
-            to="/submit"
-            className="rounded-sm bg-[image:var(--gradient-neon)] px-8 py-3 font-display text-[11px] tracking-[0.3em] text-primary-foreground shadow-[var(--shadow-neon)] transition-transform hover:scale-[1.03]"
-          >
-            ENTER THE NIGHT
-          </Link>
-          <Link
             to="/problem-statements"
-            className="rounded-sm border border-border px-8 py-3 font-display text-[11px] tracking-[0.3em] text-foreground/85 transition-colors hover:border-neon-cyan hover:text-neon-cyan"
+            className="rounded-sm border border-border px-10 py-3 text-center font-display text-[11px] tracking-[0.3em] text-foreground/85 transition-colors hover:border-neon-cyan hover:text-neon-cyan"
           >
             PROBLEM STATEMENTS
           </Link>
         </div>
 
-        <div className="mx-auto mt-14 grid max-w-lg grid-cols-3 gap-3">
+        <div className="mx-auto mt-14 grid max-w-sm grid-cols-2 gap-3">
           {stats.map((s) => (
-            <div key={s.v} className="glass-panel animate-float-slow rounded-sm px-3 py-4">
+            <div key={s.v} className="glass-panel animate-float-slow rounded-sm px-3 py-4 text-center">
               <div className="font-display text-2xl text-neon-cyan">{s.k}</div>
               <div className="mt-1 text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
                 {s.v}
@@ -87,14 +80,14 @@ function Index() {
     </section>
 
     <section className="relative border-t border-border/60 px-6 py-20 md:px-24">
-      <div className="mx-auto max-w-3xl">
+      <div className="mx-auto max-w-3xl text-center">
         <p className="font-display text-[10px] tracking-[0.4em] text-neon-cyan">STAGE SELECT</p>
         <h2 className="mt-3 text-3xl neon-text md:text-4xl">Run of the Night</h2>
         <ol className="mt-10 space-y-3">
           {schedule.map((i, idx) => (
             <li
               key={i.t}
-              className="glass-panel flex items-center gap-5 rounded-sm px-5 py-4 transition-colors hover:border-neon-cyan/60"
+              className="glass-panel flex items-center gap-5 rounded-sm px-5 py-4 text-left transition-colors hover:border-neon-cyan/60"
             >
               <span className="font-display text-[10px] text-neon-magenta/70">
                 {String(idx + 1).padStart(2, "0")}
