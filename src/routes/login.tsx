@@ -1,7 +1,6 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { ArcadeStage } from "@/components/ArcadeStage";
-import { PacGlyph } from "@/components/PacGlyph";
 import cscLogo from "@/assets/csc-logo.webp";
 import iiitLogo from "@/assets/iiit-logo.webp";
 
@@ -76,14 +75,8 @@ function LoginPage() {
             started ? "pointer-events-none -translate-y-4 opacity-0" : "opacity-100"
           }`}
         >
-          <span className="block">
-            <PacGlyph className="mr-[0.02em]" />
-            RAFT N
-          </span>
-          <span className="block">
-            <PacGlyph className="mr-[0.02em]" />
-            ODE
-          </span>
+          <span className="block">CRAFT N</span>
+          <span className="block">CODE</span>
         </h1>
 
         {/* Full-size arcade cabinet */}
