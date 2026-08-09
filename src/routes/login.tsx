@@ -81,25 +81,28 @@ function LoginPage() {
 
         {/* Full-size arcade cabinet */}
         <div
-          className={`mt-8 w-full max-w-sm origin-[50%_34%] transition-transform duration-[900ms] ease-out ${
+          className={`mt-8 w-full max-w-[22rem] origin-[50%_34%] transition-transform duration-[900ms] ease-out ${
             started ? "scale-[1.55] md:scale-[1.75]" : "scale-100"
           }`}
         >
-          {/* Marquee */}
-          <div className="mx-auto w-[92%] rounded-t-[2.5rem] border-4 border-b-0 border-neon-magenta/70 bg-[image:var(--gradient-neon)] px-4 py-3 shadow-[var(--shadow-neon)]">
-            <p className="text-center font-display text-[11px] tracking-[0.4em] text-primary-foreground">
-              PLAYER LOGIN
-            </p>
-          </div>
+          {/* Cabinet shell */}
+          <div className="relative rounded-t-[1.75rem] bg-[linear-gradient(180deg,oklch(0.30_0.15_318),oklch(0.20_0.11_310)_45%,oklch(0.14_0.08_300))] px-3 pb-3 pt-3 shadow-[0_0_60px_-12px_oklch(0.7_0.26_340/0.7),inset_0_1px_0_oklch(1_0_0/0.18)] ring-1 ring-neon-magenta/60">
+            {/* glossy cabinet highlight */}
+            <span className="pointer-events-none absolute inset-y-3 left-3 w-6 rounded-full bg-[linear-gradient(90deg,oklch(1_0_0/0.14),transparent)]" />
+            <span className="pointer-events-none absolute inset-y-3 right-3 w-6 rounded-full bg-[linear-gradient(270deg,oklch(1_0_0/0.10),transparent)]" />
 
-          {/* Cabinet body */}
-          <div className="relative border-4 border-neon-magenta/70 bg-[oklch(0.32_0.16_320)] px-4 pb-5 pt-5 shadow-[var(--shadow-neon)]">
-            {/* Side art strips */}
-            <span className="pointer-events-none absolute inset-y-4 left-1 w-1.5 rounded bg-neon-cyan/60" />
-            <span className="pointer-events-none absolute inset-y-4 right-1 w-1.5 rounded bg-neon-cyan/60" />
+            {/* Marquee */}
+            <div className="relative mx-auto w-[86%] rounded-t-2xl rounded-b-sm border border-neon-magenta/70 bg-[image:var(--gradient-neon)] px-4 py-2.5 shadow-[0_0_28px_-4px_oklch(0.7_0.26_340/0.9)]">
+              <span className="pointer-events-none absolute inset-x-0 top-0 h-1/2 rounded-t-2xl bg-[linear-gradient(180deg,oklch(1_0_0/0.35),transparent)]" />
+              <p className="relative text-center font-display text-[11px] tracking-[0.4em] text-primary-foreground">
+                PLAYER LOGIN
+              </p>
+            </div>
 
             {/* Screen bezel */}
-            <div className="mx-auto w-[90%] overflow-hidden rounded-xl border-[6px] border-[oklch(0.22_0.08_300)] bg-[oklch(0.09_0.05_290)] p-5">
+            <div className="relative mx-auto mt-3 w-[92%] rounded-[1.1rem] bg-[linear-gradient(180deg,oklch(0.20_0.06_300),oklch(0.11_0.04_295))] p-2.5 shadow-[inset_0_2px_10px_oklch(0_0_0/0.7)]">
+            <div className="scanlines relative overflow-hidden rounded-lg bg-[radial-gradient(120%_90%_at_50%_20%,oklch(0.14_0.06_290),oklch(0.06_0.03_285))] p-5 shadow-[inset_0_0_40px_oklch(0_0_0/0.9)]">
+              <span className="pointer-events-none absolute inset-x-2 top-1 h-8 rounded-full bg-[linear-gradient(180deg,oklch(1_0_0/0.10),transparent)] blur-[2px]" />
               {!started ? (
                 <div className="flex min-h-[210px] flex-col items-center justify-center gap-6 text-center">
                   <p className="animate-pulse font-display text-[10px] tracking-[0.35em] text-neon-cyan">
@@ -162,30 +165,45 @@ function LoginPage() {
                 </form>
               )}
             </div>
-
-            {/* Control deck */}
-            <div className="mt-4 flex items-center justify-center gap-5 rounded-md border-2 border-neon-magenta/50 bg-[oklch(0.42_0.14_290)] px-5 py-4">
-              <span className="h-6 w-6 rounded-full bg-[oklch(0.85_0.03_260)] shadow-inner" />
-              <span className="h-4 w-10 rounded-full bg-neon-magenta/80" />
-              <span className="h-4 w-10 rounded-full bg-neon-cyan/80" />
-              <span className="h-6 w-6 rounded-full bg-[oklch(0.85_0.03_260)] shadow-inner" />
             </div>
 
-            {/* Coin slot */}
-            <div className="mt-4 flex items-center justify-center gap-3 rounded-md border-2 border-[oklch(0.22_0.08_300)] bg-[oklch(0.18_0.07_300)] py-3">
-              <span className="h-4 w-1.5 rounded-sm bg-[oklch(0.85_0.03_260)]" />
-              <span className="font-display text-[8px] tracking-[0.35em] text-neon-cyan">
+            {/* Angled control deck */}
+            <div className="relative mx-auto mt-3 flex w-[104%] -translate-x-[2%] items-center justify-center gap-6 rounded-b-lg rounded-t-sm bg-[linear-gradient(180deg,oklch(0.46_0.15_305),oklch(0.30_0.12_300))] px-5 py-4 shadow-[0_10px_20px_-10px_oklch(0_0_0/0.9),inset_0_1px_0_oklch(1_0_0/0.25)]">
+              {/* joystick */}
+              <span className="relative flex h-8 w-8 items-end justify-center">
+                <span className="absolute bottom-0 h-3 w-6 rounded-full bg-[oklch(0.16_0.05_295)]" />
+                <span className="absolute bottom-2 h-4 w-1.5 rounded-sm bg-[oklch(0.75_0.02_260)]" />
+                <span className="absolute bottom-4 h-5 w-5 rounded-full bg-[radial-gradient(circle_at_32%_28%,oklch(0.95_0.06_20),oklch(0.55_0.22_25))] shadow-[0_2px_6px_oklch(0_0_0/0.6)]" />
+              </span>
+              {/* buttons */}
+              <span className="flex items-center gap-2.5">
+                <span className="h-5 w-5 rounded-full bg-[radial-gradient(circle_at_32%_28%,oklch(0.95_0.12_340),oklch(0.6_0.25_340))] shadow-[0_0_10px_oklch(0.7_0.26_340/0.7),inset_0_-2px_3px_oklch(0_0_0/0.4)]" />
+                <span className="h-5 w-5 rounded-full bg-[radial-gradient(circle_at_32%_28%,oklch(0.95_0.1_200),oklch(0.65_0.16_200))] shadow-[0_0_10px_oklch(0.8_0.15_200/0.6),inset_0_-2px_3px_oklch(0_0_0/0.4)]" />
+                <span className="h-5 w-5 rounded-full bg-[radial-gradient(circle_at_32%_28%,oklch(0.95_0.16_110),oklch(0.72_0.2_120))] shadow-[0_0_10px_oklch(0.85_0.2_120/0.5),inset_0_-2px_3px_oklch(0_0_0/0.4)]" />
+              </span>
+              {/* joystick 2 */}
+              <span className="relative flex h-8 w-8 items-end justify-center">
+                <span className="absolute bottom-0 h-3 w-6 rounded-full bg-[oklch(0.16_0.05_295)]" />
+                <span className="absolute bottom-2 h-4 w-1.5 rounded-sm bg-[oklch(0.75_0.02_260)]" />
+                <span className="absolute bottom-4 h-5 w-5 rounded-full bg-[radial-gradient(circle_at_32%_28%,oklch(0.95_0.08_200),oklch(0.55_0.2_240))] shadow-[0_2px_6px_oklch(0_0_0/0.6)]" />
+              </span>
+            </div>
+
+            {/* Coin door */}
+            <div className="relative mx-auto mt-3 flex items-center justify-center gap-3 rounded-md bg-[linear-gradient(180deg,oklch(0.20_0.07_300),oklch(0.12_0.05_295))] py-3.5 ring-1 ring-neon-cyan/25">
+              <span className="h-5 w-1.5 rounded-sm bg-[linear-gradient(180deg,oklch(0.9_0.02_260),oklch(0.6_0.02_260))] shadow-[inset_0_0_2px_oklch(0_0_0/0.6)]" />
+              <span className="animate-pulse font-display text-[8px] tracking-[0.35em] text-neon-cyan">
                 INSERT COIN
               </span>
-              <span className="h-4 w-1.5 rounded-sm bg-[oklch(0.85_0.03_260)]" />
+              <span className="h-5 w-1.5 rounded-sm bg-[linear-gradient(180deg,oklch(0.9_0.02_260),oklch(0.6_0.02_260))] shadow-[inset_0_0_2px_oklch(0_0_0/0.6)]" />
             </div>
           </div>
 
           {/* Base / legs */}
-          <div className="mx-auto h-8 w-[96%] border-4 border-t-0 border-neon-magenta/70 bg-[oklch(0.26_0.12_310)]" />
-          <div className="mx-auto flex w-[96%] justify-between">
-            <span className="h-3 w-6 rounded-b bg-[oklch(0.2_0.08_300)]" />
-            <span className="h-3 w-6 rounded-b bg-[oklch(0.2_0.08_300)]" />
+          <div className="mx-auto h-6 w-[94%] rounded-b-md bg-[linear-gradient(180deg,oklch(0.18_0.09_308),oklch(0.10_0.05_300))] shadow-[0_18px_40px_-14px_oklch(0.7_0.26_340/0.65)]" />
+          <div className="mx-auto flex w-[86%] justify-between">
+            <span className="h-3 w-7 rounded-b bg-[oklch(0.14_0.06_300)]" />
+            <span className="h-3 w-7 rounded-b bg-[oklch(0.14_0.06_300)]" />
           </div>
         </div>
       </div>
