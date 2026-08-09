@@ -81,11 +81,11 @@ function LoginPage() {
               C
               <span
                 aria-hidden
-                className="pointer-events-none absolute left-[0.26em] top-[0.14em] h-[0.13em] w-[0.06em] rounded-full bg-[oklch(0.08_0.01_300)]"
+                className="pointer-events-none absolute left-[0.30em] top-[0.11em] h-[0.17em] w-[0.075em] rounded-full bg-[oklch(0.08_0.01_300)]"
               />
               <span
                 aria-hidden
-                className="pointer-events-none absolute left-[0.37em] top-[0.14em] h-[0.13em] w-[0.06em] rounded-full bg-[oklch(0.08_0.01_300)]"
+                className="pointer-events-none absolute left-[0.43em] top-[0.11em] h-[0.17em] w-[0.075em] rounded-full bg-[oklch(0.08_0.01_300)]"
               />
             </span>
             ODE
