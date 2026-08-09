@@ -12,10 +12,18 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Pacfont";
+  src: url("/__l5e/assets-v1/edf77418-a25b-4cb5-a212-08c59ce8ef19/pacfont.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
   --font-display: "Orbitron", ui-sans-serif, system-ui;
   --font-body: "Rajdhani", ui-sans-serif, system-ui;
-  --font-poster: "Pacfont Good", "Titan One", ui-sans-serif, system-ui;
+  --font-poster: "Pacfont Good", "Pacfont", "Titan One", ui-sans-serif, system-ui;
   --color-neon-cyan: var(--neon-cyan);
   --color-neon-magenta: var(--neon-magenta);
   --color-neon-violet: var(--neon-violet);
@@ -213,17 +221,19 @@
 @utility poster-title-flex {
   font-family: var(--font-poster);
   color: oklch(0.89 0.19 110);
-  letter-spacing: 0.02em;
+  letter-spacing: 0.03em;
   line-height: 0.86;
   text-transform: uppercase;
-  -webkit-text-stroke: 3px oklch(0.08 0.01 300);
+  /* the Pacfont glyphs are outlines — a thick same-color stroke fills them solid */
+  -webkit-text-stroke: 0.095em oklch(0.89 0.19 110);
   paint-order: stroke fill;
-  text-shadow:
-    0.055em 0.055em 0 oklch(0.08 0.01 300),
-    0.09em 0.09em 0 oklch(0.08 0.01 300),
-    0.125em 0.125em 0 oklch(0.3 0.09 110 / 85%),
-    0 0 0.35em oklch(0.89 0.19 110 / 45%),
-    0 0 1.1em oklch(0.89 0.19 110 / 30%);
+  filter:
+    drop-shadow(0.018em 0.018em 0 oklch(0.08 0.01 300))
+    drop-shadow(-0.018em -0.018em 0 oklch(0.08 0.01 300))
+    drop-shadow(0.018em -0.018em 0 oklch(0.08 0.01 300))
+    drop-shadow(-0.018em 0.018em 0 oklch(0.08 0.01 300))
+    drop-shadow(0.07em 0.07em 0 oklch(0.28 0.08 110 / 90%))
+    drop-shadow(0 0 0.35em oklch(0.89 0.19 110 / 40%));
 }
 
 @utility rail-item {
