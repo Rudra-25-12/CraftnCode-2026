@@ -215,7 +215,7 @@
   color: oklch(0.89 0.19 110);
   letter-spacing: 0.02em;
   line-height: 0.86;
-  text-transform: uppercase;
+  text-transform: none;
   -webkit-text-stroke: 3px oklch(0.08 0.01 300);
   paint-order: stroke fill;
   text-shadow:
