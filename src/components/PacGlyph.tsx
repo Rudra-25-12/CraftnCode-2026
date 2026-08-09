@@ -8,7 +8,7 @@ export function PacGlyph({ className = "" }: { className?: string }) {
       viewBox="0 0 100 100"
       role="img"
       aria-label="C"
-      className={`inline-block h-[0.78em] w-[0.78em] align-[-0.06em] ${className}`}
+      className={`inline-block h-[0.78em] w-[0.78em] scale-x-[-1] align-[-0.06em] ${className}`}
       style={{ filter: "drop-shadow(0 0 10px oklch(0.9 0.2 118 / 0.75))" }}
     >
       <path fill="#c8f31d" stroke="#0b0512" strokeWidth="5" strokeLinejoin="round">
