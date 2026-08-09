@@ -201,6 +201,23 @@
     0 6px 0 oklch(0.32 0.1 118 / 60%);
 }
 
+/* Flex/backdrop wordmark: chunky yellow slab type with a hard black block shadow */
+@utility poster-title-flex {
+  font-family: var(--font-poster);
+  color: oklch(0.89 0.19 110);
+  letter-spacing: 0.02em;
+  line-height: 0.86;
+  text-transform: uppercase;
+  -webkit-text-stroke: 3px oklch(0.08 0.01 300);
+  paint-order: stroke fill;
+  text-shadow:
+    0.055em 0.055em 0 oklch(0.08 0.01 300),
+    0.09em 0.09em 0 oklch(0.08 0.01 300),
+    0.125em 0.125em 0 oklch(0.3 0.09 110 / 85%),
+    0 0 0.35em oklch(0.89 0.19 110 / 45%),
+    0 0 1.1em oklch(0.89 0.19 110 / 30%);
+}
+
 @utility rail-item {
   display: flex;
   flex-direction: column;
