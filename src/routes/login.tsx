@@ -81,11 +81,13 @@ function LoginPage() {
               C
               <span
                 aria-hidden
-                className="pointer-events-none absolute left-[0.30em] top-[0.11em] h-[0.17em] w-[0.075em] rounded-full bg-[oklch(0.08_0.01_300)]"
+                className="pointer-events-none absolute left-[0.30em] top-[0.11em] h-[0.17em] w-[0.075em] rounded-full"
+                style={{ background: "oklch(0.08 0.01 300)" }}
               />
               <span
                 aria-hidden
-                className="pointer-events-none absolute left-[0.43em] top-[0.11em] h-[0.17em] w-[0.075em] rounded-full bg-[oklch(0.08_0.01_300)]"
+                className="pointer-events-none absolute left-[0.43em] top-[0.11em] h-[0.17em] w-[0.075em] rounded-full"
+                style={{ background: "oklch(0.08 0.01 300)" }}
               />
             </span>
             ODE
