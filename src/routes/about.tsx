@@ -7,10 +7,10 @@ import cscLogo from "@/assets/csc-logo.webp";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About Us — CraftnCode'26" },
-      { name: "description", content: "Who runs CraftnCode'26 and why we hack all night." },
-      { property: "og:title", content: "About Us — CraftnCode'26" },
-      { property: "og:description", content: "Who runs CraftnCode'26 and why we hack all night." },
+      { title: "About Us — Craft N Code" },
+      { name: "description", content: "Who runs Craft N Code and why we hack all night." },
+      { property: "og:title", content: "About Us — Craft N Code" },
+      { property: "og:description", content: "Who runs Craft N Code and why we hack all night." },
     ],
     links: [{ rel: "preload", as: "image", href: cscLogo, fetchpriority: "high" }],
   }),

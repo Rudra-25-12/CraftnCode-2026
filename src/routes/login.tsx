@@ -7,13 +7,13 @@ import iiitLogo from "@/assets/iiit-logo.webp";
 export const Route = createFileRoute("/login")({
   head: () => ({
     meta: [
-      { title: "Player Login — CraftnCode'26" },
+      { title: "Player Login — Craft N Code" },
       {
         name: "description",
         content:
-          "Insert a coin and log in to CraftnCode'26, the overnight arcade hackathon by Cyber Space Club and IIIT Bhubaneswar.",
+          "Insert a coin and log in to Craft N Code, the overnight arcade hackathon by Cyber Space Club and IIIT Bhubaneswar.",
       },
-      { property: "og:title", content: "Player Login — CraftnCode'26" },
+      { property: "og:title", content: "Player Login — Craft N Code" },
       {
         property: "og:description",
         content: "Press start, enter your team name and password, and insert a coin to play.",
@@ -76,7 +76,7 @@ function LoginPage() {
           }`}
         >
           <span className="block">CRAFT N</span>
-          <span className="block">CODE&#39;26</span>
+          <span className="block">CODE</span>
         </h1>
 
         {/* Full-size arcade cabinet */}

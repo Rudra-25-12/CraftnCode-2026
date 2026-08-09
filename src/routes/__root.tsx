@@ -79,12 +79,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "CraftnCode'26 — Overnight Hackathon" },
+      { title: "Craft N Code — Overnight Hackathon" },
       {
         name: "description",
         content: "A 24-hour overnight club hackathon. Build through the night, ship at dawn.",
       },
-      { property: "og:title", content: "CraftnCode'26 — Overnight Hackathon" },
+      { property: "og:title", content: "Craft N Code — Overnight Hackathon" },
       {
         property: "og:description",
         content: "A 24-hour overnight club hackathon. Build through the night, ship at dawn.",

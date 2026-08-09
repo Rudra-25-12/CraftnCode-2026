@@ -4,9 +4,9 @@ import { PageShell } from "@/components/PageShell";
 export const Route = createFileRoute("/problem-statements")({
   head: () => ({
     meta: [
-      { title: "Problem Statements — CraftnCode'26" },
-      { name: "description", content: "The five tracks teams can build against at CraftnCode'26." },
-      { property: "og:title", content: "Problem Statements — CraftnCode'26" },
+      { title: "Problem Statements — Craft N Code" },
+      { name: "description", content: "The five tracks teams can build against at Craft N Code." },
+      { property: "og:title", content: "Problem Statements — Craft N Code" },
       { property: "og:description", content: "The five tracks teams can build against overnight." },
     ],
   }),

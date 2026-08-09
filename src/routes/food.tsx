@@ -7,9 +7,9 @@ import { PageShell } from "@/components/PageShell";
 export const Route = createFileRoute("/food")({
   head: () => ({
     meta: [
-      { title: "Night Canteen — CraftnCode'26" },
-      { name: "description", content: "Order food to your table during the CraftnCode'26 overnight hackathon." },
-      { property: "og:title", content: "Night Canteen — CraftnCode'26" },
+      { title: "Night Canteen — Craft N Code" },
+      { name: "description", content: "Order food to your table during the Craft N Code overnight hackathon." },
+      { property: "og:title", content: "Night Canteen — Craft N Code" },
       { property: "og:description", content: "Order food to your table during the overnight hackathon." },
     ],
   }),
