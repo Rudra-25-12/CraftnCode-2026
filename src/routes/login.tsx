@@ -71,12 +71,18 @@ function LoginPage() {
         </div>
 
         <h1
-          className={`poster-title mt-6 text-center text-4xl leading-[0.95] transition-all duration-500 md:text-6xl ${
+          className={`poster-title-flex mt-6 text-center text-5xl transition-all duration-500 sm:text-6xl md:text-7xl lg:text-8xl ${
             started ? "pointer-events-none -translate-y-4 opacity-0" : "opacity-100"
           }`}
         >
-          <span className="block">CRAFT N</span>
-          <span className="block">CODE</span>
+          <span className="block">
+            <PacGlyph className="mr-[0.02em]" />
+            RAFT N
+          </span>
+          <span className="block">
+            <PacGlyph className="mr-[0.02em]" />
+            ODE
+          </span>
         </h1>
 
         {/* Full-size arcade cabinet */}
