@@ -75,8 +75,8 @@ function LoginPage() {
             started ? "pointer-events-none -translate-y-4 opacity-0" : "opacity-100"
           }`}
         >
-          <span className="block">CRAFT N</span>
-          <span className="block">CODE</span>
+          <span className="block">craft n</span>
+          <span className="block">1ode</span>
         </h1>
 
         {/* Full-size arcade cabinet */}
