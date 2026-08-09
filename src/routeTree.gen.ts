@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as FoodRouteImport } from './routes/food'
+import { Route as LoginRouteImport } from './routes/login'
 import { Route as ProblemStatementsRouteImport } from './routes/problem-statements'
 import { Route as SponsorsRouteImport } from './routes/sponsors'
 import { Route as SubmitRouteImport } from './routes/submit'
@@ -29,6 +30,11 @@ const AboutRoute = AboutRouteImport.update({
 const FoodRoute = FoodRouteImport.update({
   id: '/food',
   path: '/food',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProblemStatementsRoute = ProblemStatementsRouteImport.update({
@@ -51,6 +57,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/food': typeof FoodRoute
+  '/login': typeof LoginRoute
   '/problem-statements': typeof ProblemStatementsRoute
   '/sponsors': typeof SponsorsRoute
   '/submit': typeof SubmitRoute
@@ -59,6 +66,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/food': typeof FoodRoute
+  '/login': typeof LoginRoute
   '/problem-statements': typeof ProblemStatementsRoute
   '/sponsors': typeof SponsorsRoute
   '/submit': typeof SubmitRoute
@@ -68,6 +76,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/food': typeof FoodRoute
+  '/login': typeof LoginRoute
   '/problem-statements': typeof ProblemStatementsRoute
   '/sponsors': typeof SponsorsRoute
   '/submit': typeof SubmitRoute
@@ -75,14 +84,28 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/about' | '/food' | '/problem-statements' | '/sponsors' | '/submit'
+    | '/'
+    | '/about'
+    | '/food'
+    | '/login'
+    | '/problem-statements'
+    | '/sponsors'
+    | '/submit'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/food' | '/problem-statements' | '/sponsors' | '/submit'
+  to:
+    | '/'
+    | '/about'
+    | '/food'
+    | '/login'
+    | '/problem-statements'
+    | '/sponsors'
+    | '/submit'
   id:
     | '__root__'
     | '/'
     | '/about'
     | '/food'
+    | '/login'
     | '/problem-statements'
     | '/sponsors'
     | '/submit'
@@ -92,6 +115,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   FoodRoute: typeof FoodRoute
+  LoginRoute: typeof LoginRoute
   ProblemStatementsRoute: typeof ProblemStatementsRoute
   SponsorsRoute: typeof SponsorsRoute
   SubmitRoute: typeof SubmitRoute
@@ -118,6 +142,13 @@ declare module '@tanstack/react-router' {
       path: '/food'
       fullPath: '/food'
       preLoaderRoute: typeof FoodRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/problem-statements': {
@@ -148,6 +179,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   FoodRoute: FoodRoute,
+  LoginRoute: LoginRoute,
   ProblemStatementsRoute: ProblemStatementsRoute,
   SponsorsRoute: SponsorsRoute,
   SubmitRoute: SubmitRoute,
@@ -155,3 +187,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
