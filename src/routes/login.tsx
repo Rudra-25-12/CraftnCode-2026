@@ -76,7 +76,7 @@ function LoginPage() {
           }`}
         >
           <span className="mx-auto block w-fit">craft n</span>
-          <span className="mx-auto block w-fit text-[1.53em] leading-[1]">1ode</span>
+          <span className="mx-auto mt-[0.12em] block w-fit text-[1.53em] leading-[1]">1ode</span>
         </h1>
 
         {/* Full-size arcade cabinet */}
