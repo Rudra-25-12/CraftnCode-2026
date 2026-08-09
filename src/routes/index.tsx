@@ -1,6 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArcadeStage } from "@/components/ArcadeStage";
-import arcadeCabinet from "@/assets/arcade-cabinet.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
