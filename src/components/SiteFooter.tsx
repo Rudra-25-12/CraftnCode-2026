@@ -22,7 +22,7 @@ export function SiteFooter() {
             className="h-24 w-24 object-contain"
           />
           <p className="font-display text-sm tracking-[0.28em] text-foreground">CYBER SPACE CLUB</p>
-          <p className="font-display text-[10px] tracking-[0.3em] text-neon-cyan">CRAFTNCODE&#39;26</p>
+          <p className="font-display text-[10px] tracking-[0.3em] text-neon-cyan">CRAFT N CODE</p>
         </div>
 
         {/* Contact */}

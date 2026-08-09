@@ -50,7 +50,7 @@ function Index() {
           <span className="block">CRAFT N</span>
           <span className="block">
             <PacGlyph />
-            ODE&#39;26
+            ODE
           </span>
         </h1>
 

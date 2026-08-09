@@ -76,7 +76,7 @@ function LoginPage() {
           }`}
         >
           <span className="block">CRAFT N</span>
-          <span className="block">CODE&#39;26</span>
+          <span className="block">CODE</span>
         </h1>
 
         {/* Full-size arcade cabinet */}
