@@ -1,7 +1,6 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { ArcadeStage } from "@/components/ArcadeStage";
-import { PacGlyph } from "@/components/PacGlyph";
 import cscLogo from "@/assets/csc-logo.webp";
 import iiitLogo from "@/assets/iiit-logo.webp";
 
