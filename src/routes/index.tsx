@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArcadeStage } from "@/components/ArcadeStage";
+import { PacGlyph } from "@/components/PacGlyph";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -47,7 +48,10 @@ function Index() {
 
         <h1 className="poster-title animate-flicker mt-5 text-[16vw] md:text-[10vw]">
           <span className="block">CRAFT N</span>
-          <span className="block">CODE&#39;26</span>
+          <span className="block">
+            <PacGlyph />
+            ODE&#39;26
+          </span>
         </h1>
 
         <p className="mx-auto mt-6 max-w-xl font-display text-[11px] tracking-[0.28em] text-foreground/80 md:text-sm">

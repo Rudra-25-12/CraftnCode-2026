@@ -1,7 +1,17 @@
 import { useEffect, useRef } from "react";
 
 type Ghost = { x: number; y: number; dir: number; color: string; speed: number };
-type Invader = { x: number; y: number; c: string; phase: number; drift: number };
+type Invader = {
+  x: number;
+  y: number;
+  c: string;
+  phase: number;
+  drift: number;
+  baseY: number;
+  diving: boolean;
+  eatenAt: number;
+};
+type Pop = { x: number; y: number; t: number };
 
 /**
  * 8-bit arcade hero backdrop: a scrolling pellet maze, a chomping Pac-Man
@@ -30,13 +40,20 @@ export function ArcadeStage() {
       { x: -0.46, y: 0, dir: 1, color: "#ffa64d", speed: 0.0016 },
     ];
 
-    const invaders: Invader[] = Array.from({ length: 9 }, (_, i) => ({
-      x: 0.06 + ((i * 0.11) % 0.9),
-      y: 0.08 + ((i * 37) % 5) * 0.055,
-      c: [MAGENTA, "#a855f7", "#ff8a3d", CYAN][i % 4] as string,
-      phase: i * 0.7,
-      drift: (i % 2 === 0 ? 1 : -1) * 0.00035,
-    }));
+    const invaders: Invader[] = Array.from({ length: 9 }, (_, i) => {
+      const baseY = 0.08 + ((i * 37) % 5) * 0.055;
+      return {
+        x: 0.06 + ((i * 0.11) % 0.9),
+        y: baseY,
+        baseY,
+        c: [MAGENTA, "#a855f7", "#ff8a3d", CYAN][i % 4] as string,
+        phase: i * 0.7,
+        drift: (i % 2 === 0 ? 1 : -1) * 0.00035,
+        diving: false,
+        eatenAt: -9999,
+      };
+    });
+    const pops: Pop[] = [];
 
     let pac = { x: 0.05, y: 0 };
     let w = 0;
@@ -207,16 +224,56 @@ export function ArcadeStage() {
 
       // space invaders drifting above
       const alt = Math.floor(t / 26) % 2 === 0;
-      invaders.forEach((inv) => {
+      const px0 = Math.max(2, Math.round(Math.min(w, 1200) / 380));
+      const spriteW = 11 * px0;
+      invaders.forEach((inv, idx) => {
+        const respawning = t - inv.eatenAt < 150;
         inv.x += inv.drift;
         if (inv.x > 1.02) inv.x = -0.05;
         if (inv.x < -0.06) inv.x = 1.0;
-        const px = Math.max(2, Math.round(Math.min(w, 1200) / 380));
-        const y = inv.y * h + Math.sin(t * 0.03 + inv.phase) * 6;
+
+        // every so often an invader dives into pac-man's lane
+        if (!respawning && !inv.diving && Math.floor(t + idx * 47) % 520 === 0) {
+          inv.diving = true;
+        }
+        const laneY = (lane - spriteW / 2) / h;
+        const target = inv.diving ? laneY : inv.baseY;
+        inv.y += (target - inv.y) * 0.02;
+
+        const y = inv.y * h + (inv.diving ? 0 : Math.sin(t * 0.03 + inv.phase) * 6);
+        const ix = inv.x * w;
+
+        // pac-man chomps anything he catches in the lane
+        if (!respawning && Math.abs(ix + spriteW / 2 - cx) < size * 0.55 && Math.abs(y + spriteW / 2 - lane) < size * 0.6) {
+          inv.eatenAt = t;
+          inv.diving = false;
+          inv.y = inv.baseY;
+          inv.x = Math.random() * 0.9 + 0.05;
+          pops.push({ x: cx, y: lane, t });
+          return;
+        }
+
+        if (respawning) return;
         ctx.globalAlpha = 0.85;
-        drawInvader(Math.round(inv.x * w), Math.round(y), px, inv.c, alt);
+        drawInvader(Math.round(ix), Math.round(y), px0, inv.c, alt);
         ctx.globalAlpha = 1;
       });
+
+      // score pops from eaten invaders
+      for (let i = pops.length - 1; i >= 0; i--) {
+        const p = pops[i] as Pop;
+        const age = t - p.t;
+        if (age > 45) {
+          pops.splice(i, 1);
+          continue;
+        }
+        ctx.globalAlpha = 1 - age / 45;
+        ctx.fillStyle = "#ffffff";
+        ctx.font = `${Math.round(size * 0.42)}px "Press Start 2P", monospace`;
+        ctx.textAlign = "center";
+        ctx.fillText("200", p.x, p.y - size * 0.6 - age * 0.6);
+        ctx.globalAlpha = 1;
+      }
 
       if (!reduce) raf = requestAnimationFrame(draw);
     };
