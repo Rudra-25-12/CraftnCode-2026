@@ -75,8 +75,8 @@ function LoginPage() {
             started ? "pointer-events-none -translate-y-4 opacity-0" : "opacity-100"
           }`}
         >
-          <span className="block">craft n</span>
-          <span className="block text-[1.7em] leading-[0.9]">1ode</span>
+          <span className="mx-auto block w-fit">craft n</span>
+          <span className="mx-auto block w-fit text-[1.7em] leading-[1]">1ode</span>
         </h1>
 
         {/* Full-size arcade cabinet */}
