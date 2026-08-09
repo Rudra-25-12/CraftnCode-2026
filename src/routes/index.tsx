@@ -86,33 +86,6 @@ function Index() {
       </div>
     </section>
 
-    <section className="relative overflow-hidden border-t border-border/60 px-6 py-16 md:px-24">
-      <div className="mx-auto grid max-w-4xl items-center gap-10 md:grid-cols-2">
-        <img
-          src={arcadeCabinet}
-          alt="Retro neon arcade cabinet for CraftnCode'26"
-          width={1024}
-          height={1280}
-          loading="lazy"
-          decoding="async"
-          className="mx-auto w-56 drop-shadow-[0_0_40px_oklch(0.7_0.26_340/0.45)] md:w-72"
-        />
-        <div>
-          <p className="font-display text-[10px] tracking-[0.4em] text-neon-magenta">INSERT COIN</p>
-          <h2 className="poster-title mt-3 text-4xl md:text-5xl">PRESS START</h2>
-          <p className="mt-4 text-foreground/80">
-            One cabinet, one night, endless continues. Grab your crew, pick a track and play the
-            longest level of the year.
-          </p>
-          <div className="mt-6 flex flex-wrap gap-3 font-display text-[10px] tracking-[0.25em]">
-            <span className="glass-panel rounded-sm px-4 py-2 text-neon-cyan">TEAM 2-4</span>
-            <span className="glass-panel rounded-sm px-4 py-2 text-neon-cyan">PRIZE ₹50K</span>
-            <span className="glass-panel rounded-sm px-4 py-2 text-neon-cyan">15 / 08 / 26</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <section className="relative border-t border-border/60 px-6 py-20 md:px-24">
       <div className="mx-auto max-w-3xl">
         <p className="font-display text-[10px] tracking-[0.4em] text-neon-cyan">STAGE SELECT</p>
