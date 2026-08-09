@@ -5,8 +5,8 @@
 @custom-variant dark (&:is(.dark *));
 
 @font-face {
-  font-family: "Pacfont Good";
-  src: url("/__l5e/assets-v1/a7660247-f036-47b3-86a6-5de0baeecde2/pacfont-good.ttf") format("truetype");
+  font-family: "Pac Font";
+  src: url("/__l5e/assets-v1/f74dd260-cf4c-4195-9f6f-3acbe00009e9/pac-font.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -15,7 +15,7 @@
 @theme {
   --font-display: "Orbitron", ui-sans-serif, system-ui;
   --font-body: "Rajdhani", ui-sans-serif, system-ui;
-  --font-poster: "Pacfont Good", "Titan One", ui-sans-serif, system-ui;
+  --font-poster: "Pac Font", "Titan One", ui-sans-serif, system-ui;
   --color-neon-cyan: var(--neon-cyan);
   --color-neon-magenta: var(--neon-magenta);
   --color-neon-violet: var(--neon-violet);
