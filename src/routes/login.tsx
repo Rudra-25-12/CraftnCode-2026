@@ -76,7 +76,20 @@ function LoginPage() {
           }`}
         >
           <span className="block">CRAFT N</span>
-          <span className="block">CODE</span>
+          <span className="block">
+            <span className="relative inline-block">
+              C
+              <span
+                aria-hidden
+                className="pointer-events-none absolute left-[0.26em] top-[0.14em] h-[0.13em] w-[0.06em] rounded-full bg-[oklch(0.08_0.01_300)]"
+              />
+              <span
+                aria-hidden
+                className="pointer-events-none absolute left-[0.37em] top-[0.14em] h-[0.13em] w-[0.06em] rounded-full bg-[oklch(0.08_0.01_300)]"
+              />
+            </span>
+            ODE
+          </span>
         </h1>
 
         {/* Full-size arcade cabinet */}
