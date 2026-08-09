@@ -7,6 +7,7 @@
 @theme {
   --font-display: "Orbitron", ui-sans-serif, system-ui;
   --font-body: "Rajdhani", ui-sans-serif, system-ui;
+  --font-poster: "Titan One", ui-sans-serif, system-ui;
   --color-neon-cyan: var(--neon-cyan);
   --color-neon-magenta: var(--neon-magenta);
   --color-neon-violet: var(--neon-violet);
@@ -185,6 +186,19 @@
   -webkit-background-clip: text;
   color: transparent;
   filter: drop-shadow(0 0 18px color-mix(in oklab, var(--neon-magenta) 45%, transparent));
+}
+
+@utility poster-title {
+  font-family: var(--font-poster);
+  color: oklch(0.9 0.21 118);
+  letter-spacing: 0.04em;
+  line-height: 0.9;
+  -webkit-text-stroke: 2px oklch(0.16 0.03 118);
+  paint-order: stroke fill;
+  text-shadow:
+    0 0 10px oklch(0.9 0.21 118 / 70%),
+    0 0 34px oklch(0.9 0.21 118 / 45%),
+    0 6px 0 oklch(0.32 0.1 118 / 60%);
 }
 
 @utility rail-item {
