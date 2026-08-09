@@ -1,4 +1,4 @@
-import { Link, useRouterState } from "@tanstack/react-router";
+import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
 import {
   Home,
   Users,
@@ -34,6 +34,16 @@ const rightNav = [
 export function SiteFrame({ children }: { children: ReactNode }) {
   const [open, setOpen] = useState(false);
   const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const navigate = useNavigate();
+  const isLogin = pathname === "/login";
+
+  // Gate the whole site behind the arcade login screen.
+  useEffect(() => {
+    if (isLogin) return;
+    if (!window.localStorage.getItem("cnc-player")) {
+      navigate({ to: "/login", replace: true });
+    }
+  }, [isLogin, pathname, navigate]);
 
   useEffect(() => {
     setOpen(false);
@@ -45,6 +55,9 @@ export function SiteFrame({ children }: { children: ReactNode }) {
       document.body.style.overflow = "";
     };
   }, [open]);
+
+  // The login screen is a standalone full-bleed arcade: no rails, header or footer.
+  if (isLogin) return <main>{children}</main>;
 
   return (
     <div className="relative min-h-screen">
