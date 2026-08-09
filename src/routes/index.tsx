@@ -5,13 +5,13 @@ import { PacGlyph } from "@/components/PacGlyph";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "CraftnCode'26 — Overnight Hackathon" },
+      { title: "Craft N Code — Overnight Hackathon" },
       {
         name: "description",
         content:
-          "CraftnCode'26 is a 24-hour overnight club hackathon. Build through the night, ship at dawn.",
+          "Craft N Code is a 24-hour overnight club hackathon. Build through the night, ship at dawn.",
       },
-      { property: "og:title", content: "CraftnCode'26 — Overnight Hackathon" },
+      { property: "og:title", content: "Craft N Code — Overnight Hackathon" },
       {
         property: "og:description",
         content: "A 24-hour overnight hackathon. Build through the night, ship at dawn.",

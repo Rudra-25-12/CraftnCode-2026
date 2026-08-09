@@ -8,9 +8,9 @@ import { z } from "zod";
 export const Route = createFileRoute("/submit")({
   head: () => ({
     meta: [
-      { title: "Submission — CraftnCode'26" },
-      { name: "description", content: "Submit your CraftnCode'26 hackathon project before the dawn deadline." },
-      { property: "og:title", content: "Submission — CraftnCode'26" },
+      { title: "Submission — Craft N Code" },
+      { name: "description", content: "Submit your Craft N Code hackathon project before the dawn deadline." },
+      { property: "og:title", content: "Submission — Craft N Code" },
       { property: "og:description", content: "Submit your hackathon project before the dawn deadline." },
     ],
   }),

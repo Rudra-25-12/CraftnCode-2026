@@ -4,9 +4,9 @@ import { PageShell } from "@/components/PageShell";
 export const Route = createFileRoute("/sponsors")({
   head: () => ({
     meta: [
-      { title: "Sponsors — CraftnCode'26" },
-      { name: "description", content: "Partners powering the CraftnCode'26 overnight hackathon." },
-      { property: "og:title", content: "Sponsors — CraftnCode'26" },
+      { title: "Sponsors — Craft N Code" },
+      { name: "description", content: "Partners powering the Craft N Code overnight hackathon." },
+      { property: "og:title", content: "Sponsors — Craft N Code" },
       { property: "og:description", content: "Partners powering our overnight hackathon." },
     ],
   }),
