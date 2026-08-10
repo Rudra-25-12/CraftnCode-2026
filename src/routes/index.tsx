@@ -76,7 +76,7 @@ function Index() {
       </div>
     </section>
 
-    <section className="relative border-t border-border/60 px-6 py-20 md:px-24">
+    <section id="event-flow" className="relative scroll-mt-24 border-t border-border/60 px-6 py-20 md:px-24">
       <div className="mx-auto max-w-3xl text-center">
         <p className="font-display text-[10px] tracking-[0.4em] text-neon-cyan">STAGE SELECT</p>
         <h2 className="mt-3 text-3xl neon-text md:text-4xl">Run of the Night</h2>
