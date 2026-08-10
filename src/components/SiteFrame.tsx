@@ -227,7 +227,7 @@ export function SiteFrame({ children }: { children: ReactNode }) {
             <img
               src={iiitLogo.url}
               alt="IIIT Bhubaneswar logo"
-              className="h-11 w-auto object-contain sm:h-14"
+              className="h-10 w-auto object-contain sm:h-12"
               loading="lazy"
             />
             <span className="font-display text-sm tracking-[0.2em] text-foreground/70 sm:text-base">
@@ -236,7 +236,7 @@ export function SiteFrame({ children }: { children: ReactNode }) {
             <img
               src={cscLogo.url}
               alt="Cyber Space Club logo"
-              className="h-11 w-auto object-contain sm:h-14"
+              className="h-10 w-auto object-contain sm:h-12"
               loading="lazy"
             />
           </div>
