@@ -130,22 +130,15 @@ export function ArcadeStage() {
 
       ctx.clearRect(0, 0, w, h);
 
-      // deep space backdrop
-      const bg = ctx.createLinearGradient(0, 0, 0, h);
-      bg.addColorStop(0, "#05030d");
-      bg.addColorStop(0.6, "#0a0518");
-      bg.addColorStop(1, "#1a0426");
-      ctx.fillStyle = bg;
-      ctx.fillRect(0, 0, w, h);
-
-      // starfield (pixel squares, no antialiasing)
-      for (let i = 0; i < 90; i++) {
-        const sx = ((i * 97) % 100) / 100;
-        const sy = ((i * 53) % 60) / 100;
-        const tw = 0.25 + 0.5 * Math.abs(Math.sin(t * 0.02 + i));
+      // dense starfield (pixel squares, no antialiasing) over the photo backdrop
+      for (let i = 0; i < 420; i++) {
+        const sx = (((i * 97) % 1000) / 1000 + ((i * 31) % 7) / 700) % 1;
+        const sy = (((i * 53) % 680) / 1000 + ((i * 17) % 11) / 1100) % 0.68;
+        const tw = 0.2 + 0.6 * Math.abs(Math.sin(t * 0.02 + i));
         ctx.globalAlpha = tw;
-        ctx.fillStyle = i % 9 === 0 ? MAGENTA : "#e8f0ff";
-        ctx.fillRect(Math.round(sx * w), Math.round(sy * h), 2, 2);
+        ctx.fillStyle = i % 14 === 0 ? MAGENTA : "#e8f0ff";
+        const sz = i % 11 === 0 ? 2 : 1;
+        ctx.fillRect(Math.round(sx * w), Math.round(sy * h), sz, sz);
       }
       ctx.globalAlpha = 1;
 
