@@ -200,7 +200,8 @@ export function TitleRunner({ onDone }: { onDone?: () => void }) {
       {/* dot trail */}
       {!done
         ? dots.map((d) =>
-            d.d > eaten ? (
+            d.d > eaten &&
+            (!pac || Math.hypot(d.x - pac.x, d.y - pac.y) > pac.size * 0.55) ? (
               <span
                 key={d.d}
                 className="pointer-events-none absolute block rounded-full bg-[oklch(0.9_0.19_110)]"
@@ -220,7 +221,7 @@ export function TitleRunner({ onDone }: { onDone?: () => void }) {
       {pac ? (
         <span
           aria-hidden
-          className={`poster-title-flex pac-runner pointer-events-none absolute leading-none ${done ? "" : "pac-chomp"}`}
+          className="poster-title-flex pac-runner pointer-events-none absolute z-10 leading-none"
           style={{
             left: pac.x,
             top: pac.y,
@@ -229,7 +230,12 @@ export function TitleRunner({ onDone }: { onDone?: () => void }) {
             transition: done ? "transform 200ms ease-out" : undefined,
           }}
         >
-          1
+          <span className="relative inline-block">
+            <span className={done ? "" : "pac-mouth-open"}>1</span>
+            {!done ? (
+              <span className="pac-mouth-closed absolute left-1/2 top-0 -translate-x-1/2">o</span>
+            ) : null}
+          </span>
         </span>
       ) : null}
     </div>
