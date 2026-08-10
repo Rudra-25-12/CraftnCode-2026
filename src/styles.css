@@ -324,63 +324,6 @@
   }
 }
 
-/* Arcade HUD top bar */
-@utility hud-bar {
-  background: linear-gradient(
-    180deg,
-    oklch(0.08 0.02 300 / 92%),
-    oklch(0.08 0.02 300 / 62%)
-  );
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid color-mix(in oklab, var(--neon-magenta) 45%, transparent);
-  box-shadow:
-    0 1px 0 color-mix(in oklab, var(--neon-cyan) 25%, transparent),
-    0 16px 40px -28px oklch(0 0 0 / 90%);
-}
-
-@utility hud-link {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.45rem 0.6rem;
-  font-family: var(--font-display);
-  font-size: 0.6rem;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  color: color-mix(in oklab, var(--foreground) 80%, transparent);
-  transition: color 0.2s ease, text-shadow 0.2s ease;
-  &:hover {
-    color: var(--neon-cyan);
-    text-shadow: 0 0 12px color-mix(in oklab, var(--neon-cyan) 70%, transparent);
-  }
-  &::after {
-    content: "";
-    position: absolute;
-    left: 0.6rem;
-    right: 0.6rem;
-    bottom: 0.1rem;
-    height: 2px;
-    background: var(--neon-cyan);
-    box-shadow: 0 0 10px color-mix(in oklab, var(--neon-cyan) 80%, transparent);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.22s ease;
-  }
-  &:hover::after {
-    transform: scaleX(1);
-  }
-}
-
-@utility hud-link-active {
-  color: var(--neon-cyan);
-  text-shadow: 0 0 12px color-mix(in oklab, var(--neon-cyan) 70%, transparent);
-  &::after {
-    transform: scaleX(1);
-  }
-}
-
-
 @keyframes flicker {
   0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
   20%, 22%, 24%, 55% { opacity: 0.55; }

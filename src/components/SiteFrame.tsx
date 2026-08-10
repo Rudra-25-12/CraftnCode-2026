@@ -69,6 +69,49 @@ export function SiteFrame({ children }: { children: ReactNode }) {
   return (
     <LoginOverlayContext.Provider value={() => setLoginOpen(true)}>
     <div className="relative min-h-screen">
+      {/* Single rail */}
+      <nav
+        aria-label="Primary"
+        className="glass-panel fixed right-0 top-24 z-40 hidden w-[84px] flex-col rounded-l-lg py-2 md:flex"
+      >
+        {[...leftNav, ...rightNav].map(({ to, label, Icon }) => (
+          <Link
+            key={to}
+            to={to}
+            className="rail-item"
+            activeProps={{ className: "rail-item text-neon-cyan" }}
+            activeOptions={{ exact: to === "/" }}
+          >
+            <Icon className="h-5 w-5" strokeWidth={1.5} />
+            {label}
+          </Link>
+        ))}
+        {isAdmin ? (
+          <Link
+            to="/admin"
+            className="rail-item"
+            activeProps={{ className: "rail-item text-neon-cyan" }}
+          >
+            <ShieldCheck className="h-5 w-5" strokeWidth={1.5} />
+            Admin
+          </Link>
+        ) : null}
+        <span className="mx-auto my-2 h-px w-8 bg-border" />
+        {socials.map(({ href, label, Icon }) => (
+          <a
+            key={label}
+            href={href}
+            target="_blank"
+            rel="noreferrer"
+            aria-label={label}
+            className="rail-item"
+          >
+            <Icon className="h-5 w-5" strokeWidth={1.5} />
+            {label}
+          </a>
+        ))}
+      </nav>
+
       {/* Mobile drawer */}
       <div
         className={`fixed inset-0 z-50 md:hidden ${open ? "" : "pointer-events-none"}`}
@@ -170,58 +213,14 @@ export function SiteFrame({ children }: { children: ReactNode }) {
         </nav>
       </div>
 
-      <header className="hud-bar fixed left-0 right-0 top-0 z-50 flex items-center gap-3 px-4 py-2.5 sm:px-6">
+      <header className="fixed left-0 right-0 top-0 z-50 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-4 py-4 backdrop-blur-md sm:px-5">
         <Link
           to="/"
-          className="flex shrink-0 items-center gap-2 font-display text-sm tracking-[0.35em] text-foreground"
+          className="truncate font-display text-sm tracking-[0.35em] text-foreground"
         >
-          <span className="flex h-8 items-center whitespace-nowrap rounded-sm border border-neon-magenta/60 px-2 text-[11px] shadow-[0_0_16px_-4px_var(--neon-magenta)]">
-            C<span className="text-neon-magenta">s</span>C
-          </span>
-          <span className="hidden text-[10px] tracking-[0.3em] text-muted-foreground lg:inline">
-            CRAFT N CODE
-          </span>
+          C<span className="text-neon-magenta">s</span>C
         </Link>
-
-        <nav aria-label="Primary" className="mx-auto hidden items-center md:flex">
-          {[...leftNav, ...rightNav].map(({ to, label, Icon }) => (
-            <Link
-              key={to}
-              to={to}
-              className="hud-link"
-              activeProps={{ className: "hud-link hud-link-active" }}
-              activeOptions={{ exact: to === "/" }}
-            >
-              <Icon className="h-3.5 w-3.5" strokeWidth={1.75} />
-              {label}
-            </Link>
-          ))}
-          {isAdmin ? (
-            <Link
-              to="/admin"
-              className="hud-link"
-              activeProps={{ className: "hud-link hud-link-active" }}
-            >
-              <ShieldCheck className="h-3.5 w-3.5" strokeWidth={1.75} />
-              Admin
-            </Link>
-          ) : null}
-        </nav>
-
-        <div className="ml-auto flex shrink-0 items-center gap-2 md:ml-0">
-          <span className="mx-1 hidden h-6 w-px bg-border md:block" />
-          {socials.map(({ href, label, Icon }) => (
-            <a
-              key={label}
-              href={href}
-              target="_blank"
-              rel="noreferrer"
-              aria-label={label}
-              className="hidden rounded-sm border border-border p-2 text-foreground/70 transition-colors hover:border-neon-magenta hover:text-neon-magenta md:block"
-            >
-              <Icon className="h-4 w-4" strokeWidth={1.5} />
-            </a>
-          ))}
+        <div className="flex shrink-0 items-center gap-3">
           {session ? (
             <div className="hidden items-center gap-2 md:flex">
               <span className="max-w-[12rem] truncate font-display text-[10px] tracking-[0.28em] text-neon-cyan">
@@ -241,7 +240,7 @@ export function SiteFrame({ children }: { children: ReactNode }) {
               onClick={() => setLoginOpen(true)}
               className="hidden rounded-sm border border-neon-cyan/70 px-4 py-2 font-display text-[10px] tracking-[0.28em] text-neon-cyan transition-colors hover:bg-neon-cyan hover:text-primary-foreground md:block"
             >
-              INSERT COIN
+              LOGIN
             </button>
           )}
           <button
