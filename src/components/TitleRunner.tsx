@@ -230,14 +230,13 @@ export function TitleRunner({ onDone }: { onDone?: () => void }) {
             transition: done ? "transform 200ms ease-out" : undefined,
           }}
         >
-          <span className="relative inline-block">
+          {done ? (
             <span>1</span>
-            {!done ? (
-              <span className="pac-chomp absolute inset-0 block" aria-hidden>
-                o
-              </span>
-            ) : null}
-          </span>
+          ) : (
+            <span className="pac-chomp inline-block" aria-hidden>
+              o
+            </span>
+          )}
         </span>
       ) : null}
     </div>
