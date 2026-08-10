@@ -56,7 +56,7 @@ export function SiteFrame({ children }: { children: ReactNode }) {
   }, [open]);
 
   const playerLabel = teamName ?? session?.user.email ?? "";
-  const navItems = [...leftNav, ...rightNav];
+  const navItems = session ? [...leftNav, ...rightNav] : [];
 
   async function signOut() {
     await supabase.auth.signOut();
@@ -89,7 +89,7 @@ export function SiteFrame({ children }: { children: ReactNode }) {
           </span>
 
           <div className="mt-5 flex flex-col gap-1">
-            {[...leftNav, ...rightNav].map(({ to, label, Icon }) => (
+            {navItems.map(({ to, label, Icon }) => (
               <Link
                 key={to}
                 to={to}
