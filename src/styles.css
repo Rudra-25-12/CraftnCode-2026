@@ -264,6 +264,11 @@
   animation: pac-jaw-bottom 0.36s ease-in-out infinite;
 }
 
+/* Static back half: hides the seam/cut the rotating jaws leave behind the head. */
+.pac-jaw-back {
+  clip-path: inset(0 52% 0 0);
+}
+
 @keyframes pac-jaw-top {
   0%,
   100% {

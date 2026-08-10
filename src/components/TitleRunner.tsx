@@ -236,6 +236,7 @@ export function TitleRunner({ onDone }: { onDone?: () => void }) {
             <span className="pac-jaws" aria-hidden>
               <span className="pac-jaw-top">1</span>
               <span className="pac-jaw-bottom">1</span>
+              <span className="pac-jaw-back">1</span>
             </span>
           )}
         </span>
