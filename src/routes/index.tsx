@@ -48,15 +48,7 @@ function Index() {
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,transparent,oklch(0.08_0.05_295/0.85))]" />
 
       <div className="relative z-10 px-6 text-center">
-        <p
-          className={`font-display text-[10px] tracking-[0.5em] text-neon-cyan/90 transition-opacity duration-700 md:text-xs ${
-            revealed ? "opacity-100" : "opacity-0"
-          }`}
-        >
-          CYBER SPACE CLUB PRESENTS
-        </p>
-
-        <div className="mt-5">
+        <div>
           <TitleRunner onDone={() => setRevealed(true)} />
         </div>
 
