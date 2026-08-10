@@ -252,6 +252,11 @@
   animation: pac-chomp 0.36s ease-in-out infinite;
 }
 
+/* The font's "o" glyph paints a dark box behind its circle; clip the box away. */
+.pac-round {
+  clip-path: circle(46% at 50% 50%);
+}
+
 @utility rail-item {
   display: flex;
   flex-direction: column;
