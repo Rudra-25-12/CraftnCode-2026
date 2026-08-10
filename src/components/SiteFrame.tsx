@@ -6,8 +6,6 @@ import {
   Gem,
   Upload,
   UtensilsCrossed,
-  Instagram,
-  Linkedin,
   Menu,
   X,
   ShieldCheck,
@@ -28,11 +26,6 @@ const leftNav = [
   { to: "/about", label: "About Us", Icon: Users },
   { to: "/sponsors", label: "Sponsors", Icon: Gem },
 ] as const;
-
-const socials = [
-  { href: "https://www.instagram.com/csc_muj/", label: "Instagram", Icon: Instagram },
-  { href: "https://www.linkedin.com/company/cyber-space-club", label: "LinkedIn", Icon: Linkedin },
-];
 
 const rightNav = [
   { to: "/submit", label: "Submit", Icon: Upload },
@@ -153,23 +146,6 @@ export function SiteFrame({ children }: { children: ReactNode }) {
             )}
           </div>
 
-          <span className="my-6 h-px w-full bg-border" />
-
-          <div className="flex flex-col gap-1">
-            {socials.map(({ href, label, Icon }) => (
-              <a
-                key={label}
-                href={href}
-                target="_blank"
-                rel="noreferrer"
-                aria-label={label}
-                className="flex items-center gap-3 rounded-sm px-3 py-3 font-display text-[11px] tracking-[0.28em] text-foreground/85 transition-colors hover:text-neon-magenta"
-              >
-                <Icon className="h-4 w-4 shrink-0" strokeWidth={1.5} />
-                <span className="truncate">{label.toUpperCase()}</span>
-              </a>
-            ))}
-          </div>
         </nav>
       </div>
 
@@ -211,19 +187,6 @@ export function SiteFrame({ children }: { children: ReactNode }) {
               Admin
             </Link>
           ) : null}
-          <span className="mx-1 h-6 w-0.5 bg-neon-cyan/25" />
-          {socials.map(({ href, label, Icon }) => (
-            <a
-              key={label}
-              href={href}
-              target="_blank"
-              rel="noreferrer"
-              aria-label={label}
-              className="arcade-nav-item"
-            >
-              <Icon className="h-3.5 w-3.5 shrink-0" strokeWidth={2} />
-            </a>
-          ))}
         </nav>
 
         <div className="ml-auto flex shrink-0 items-center gap-3">
