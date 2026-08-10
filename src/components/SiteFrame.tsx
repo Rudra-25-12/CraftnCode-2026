@@ -170,10 +170,11 @@ export function SiteFrame({ children }: { children: ReactNode }) {
           aria-label="Primary"
           className="hidden min-w-0 flex-1 items-center justify-center gap-1.5 lg:flex xl:gap-2"
         >
-          {navItems.map(({ to, label, Icon }) => (
+          {navItems.map(({ to, label, Icon, hash }) => (
             <Link
-              key={to}
+              key={label}
               to={to}
+              {...(hash ? { hash } : {})}
               className="arcade-nav-item"
               activeProps={{ className: "arcade-nav-item arcade-nav-item-active" }}
               activeOptions={{ exact: to === "/" }}
