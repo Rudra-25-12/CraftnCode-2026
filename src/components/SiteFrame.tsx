@@ -3,6 +3,7 @@ import {
   Home,
   Users,
   FileTerminal,
+  CalendarClock,
   Gem,
   Upload,
   UtensilsCrossed,
@@ -96,7 +97,7 @@ export function SiteFrame({ children }: { children: ReactNode }) {
               <Link
                 key={label}
                 to={to}
-                hash={hash}
+                {...(hash ? { hash } : {})}
                 onClick={() => setOpen(false)}
                 className="flex items-center gap-3 rounded-sm px-3 py-3 font-display text-[11px] tracking-[0.28em] text-foreground/85 transition-colors hover:text-neon-cyan"
                 activeProps={{
