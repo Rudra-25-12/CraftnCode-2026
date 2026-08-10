@@ -221,8 +221,8 @@ export function SiteFrame({ children }: { children: ReactNode }) {
           aria-label="Craft N Code — home"
           className="group flex items-center gap-2 truncate"
         >
-          <span className="poster-title-flex text-[15px] leading-none transition-transform duration-200 group-hover:scale-[1.05] sm:text-[19px]">
-            craft n 1ode
+          <span className="poster-title-flex text-[18px] leading-none transition-transform duration-200 group-hover:scale-[1.05] sm:text-[24px]">
+            cn1
           </span>
         </Link>
         <div className="flex shrink-0 items-center gap-3">
