@@ -173,17 +173,60 @@ export function SiteFrame({ children }: { children: ReactNode }) {
         </nav>
       </div>
 
-      <header className="fixed left-0 right-0 top-0 z-50 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-4 py-4 backdrop-blur-md sm:px-5">
+      <header className="fixed left-0 right-0 top-0 z-50 flex items-center gap-3 border-b-2 border-neon-cyan/25 bg-background/55 px-4 py-3 backdrop-blur-md sm:px-5">
         <Link
           to="/"
           aria-label="Craft N Code — home"
-          className="group flex min-w-0 items-center gap-2 overflow-visible"
+          className="group flex min-w-0 shrink-0 items-center gap-2 overflow-visible"
         >
           <span className="poster-title-mark origin-left pl-1 text-[15px] leading-none transition-transform duration-200 group-hover:scale-[1.05] sm:text-[20px]">
             cn1
           </span>
         </Link>
-        <div className="flex shrink-0 items-center gap-3">
+
+        {/* 8-bit top nav */}
+        <nav
+          aria-label="Primary"
+          className="hidden min-w-0 flex-1 items-center justify-center gap-1.5 lg:flex xl:gap-2"
+        >
+          {navItems.map(({ to, label, Icon }) => (
+            <Link
+              key={to}
+              to={to}
+              className="arcade-nav-item"
+              activeProps={{ className: "arcade-nav-item arcade-nav-item-active" }}
+              activeOptions={{ exact: to === "/" }}
+            >
+              <Icon className="h-3.5 w-3.5 shrink-0" strokeWidth={2} />
+              {label}
+            </Link>
+          ))}
+          {isAdmin ? (
+            <Link
+              to="/admin"
+              className="arcade-nav-item"
+              activeProps={{ className: "arcade-nav-item arcade-nav-item-active" }}
+            >
+              <ShieldCheck className="h-3.5 w-3.5 shrink-0" strokeWidth={2} />
+              Admin
+            </Link>
+          ) : null}
+          <span className="mx-1 h-6 w-0.5 bg-neon-cyan/25" />
+          {socials.map(({ href, label, Icon }) => (
+            <a
+              key={label}
+              href={href}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={label}
+              className="arcade-nav-item"
+            >
+              <Icon className="h-3.5 w-3.5 shrink-0" strokeWidth={2} />
+            </a>
+          ))}
+        </nav>
+
+        <div className="ml-auto flex shrink-0 items-center gap-3">
           <div className="flex items-center gap-2 sm:gap-3">
             <img
               src={iiitLogo.url}
@@ -220,7 +263,7 @@ export function SiteFrame({ children }: { children: ReactNode }) {
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
-            className="rounded-sm border border-border p-2 text-foreground/85 transition-colors hover:border-neon-cyan hover:text-neon-cyan md:hidden"
+            className="arcade-nav-item lg:hidden"
           >
             {open ? <X className="h-4 w-4" strokeWidth={1.5} /> : <Menu className="h-4 w-4" strokeWidth={1.5} />}
           </button>
