@@ -233,8 +233,9 @@ export function TitleRunner({ onDone }: { onDone?: () => void }) {
           {done ? (
             <span>1</span>
           ) : (
-            <span className="pac-round inline-block" aria-hidden>
-              <span className="pac-chomp inline-block">o</span>
+            <span className="pac-jaws" aria-hidden>
+              <span className="pac-jaw-top">1</span>
+              <span className="pac-jaw-bottom">1</span>
             </span>
           )}
         </span>
