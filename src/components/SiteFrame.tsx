@@ -63,6 +63,7 @@ export function SiteFrame({ children }: { children: ReactNode }) {
   }, [open]);
 
   const playerLabel = teamName ?? session?.user.email ?? "";
+  const navItems = [...leftNav, ...rightNav];
 
   async function signOut() {
     await supabase.auth.signOut();
@@ -71,52 +72,9 @@ export function SiteFrame({ children }: { children: ReactNode }) {
   return (
     <LoginOverlayContext.Provider value={() => setLoginOpen(true)}>
     <div className="relative min-h-screen">
-      {/* Single rail */}
-      <nav
-        aria-label="Primary"
-        className="glass-panel fixed right-0 top-24 z-40 hidden w-[84px] flex-col rounded-l-lg py-2 md:flex"
-      >
-        {[...leftNav, ...rightNav].map(({ to, label, Icon }) => (
-          <Link
-            key={to}
-            to={to}
-            className="rail-item"
-            activeProps={{ className: "rail-item text-neon-cyan" }}
-            activeOptions={{ exact: to === "/" }}
-          >
-            <Icon className="h-5 w-5" strokeWidth={1.5} />
-            {label}
-          </Link>
-        ))}
-        {isAdmin ? (
-          <Link
-            to="/admin"
-            className="rail-item"
-            activeProps={{ className: "rail-item text-neon-cyan" }}
-          >
-            <ShieldCheck className="h-5 w-5" strokeWidth={1.5} />
-            Admin
-          </Link>
-        ) : null}
-        <span className="mx-auto my-2 h-px w-8 bg-border" />
-        {socials.map(({ href, label, Icon }) => (
-          <a
-            key={label}
-            href={href}
-            target="_blank"
-            rel="noreferrer"
-            aria-label={label}
-            className="rail-item"
-          >
-            <Icon className="h-5 w-5" strokeWidth={1.5} />
-            {label}
-          </a>
-        ))}
-      </nav>
-
       {/* Mobile drawer */}
       <div
-        className={`fixed inset-0 z-50 md:hidden ${open ? "" : "pointer-events-none"}`}
+        className={`fixed inset-0 z-50 lg:hidden ${open ? "" : "pointer-events-none"}`}
         aria-hidden={!open}
       >
         <button
@@ -215,17 +173,60 @@ export function SiteFrame({ children }: { children: ReactNode }) {
         </nav>
       </div>
 
-      <header className="fixed left-0 right-0 top-0 z-50 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-4 py-4 backdrop-blur-md sm:px-5">
+      <header className="fixed left-0 right-0 top-0 z-50 flex items-center gap-3 border-b-2 border-neon-cyan/25 bg-background/55 px-4 py-3 backdrop-blur-md sm:px-5">
         <Link
           to="/"
           aria-label="Craft N Code — home"
-          className="group flex min-w-0 items-center gap-2 overflow-visible"
+          className="group flex min-w-0 shrink-0 items-center gap-2 overflow-visible"
         >
           <span className="poster-title-mark origin-left pl-1 text-[15px] leading-none transition-transform duration-200 group-hover:scale-[1.05] sm:text-[20px]">
             cn1
           </span>
         </Link>
-        <div className="flex shrink-0 items-center gap-3">
+
+        {/* 8-bit top nav */}
+        <nav
+          aria-label="Primary"
+          className="hidden min-w-0 flex-1 items-center justify-center gap-1.5 lg:flex xl:gap-2"
+        >
+          {navItems.map(({ to, label, Icon }) => (
+            <Link
+              key={to}
+              to={to}
+              className="arcade-nav-item"
+              activeProps={{ className: "arcade-nav-item arcade-nav-item-active" }}
+              activeOptions={{ exact: to === "/" }}
+            >
+              <Icon className="h-3.5 w-3.5 shrink-0" strokeWidth={2} />
+              {label}
+            </Link>
+          ))}
+          {isAdmin ? (
+            <Link
+              to="/admin"
+              className="arcade-nav-item"
+              activeProps={{ className: "arcade-nav-item arcade-nav-item-active" }}
+            >
+              <ShieldCheck className="h-3.5 w-3.5 shrink-0" strokeWidth={2} />
+              Admin
+            </Link>
+          ) : null}
+          <span className="mx-1 h-6 w-0.5 bg-neon-cyan/25" />
+          {socials.map(({ href, label, Icon }) => (
+            <a
+              key={label}
+              href={href}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={label}
+              className="arcade-nav-item"
+            >
+              <Icon className="h-3.5 w-3.5 shrink-0" strokeWidth={2} />
+            </a>
+          ))}
+        </nav>
+
+        <div className="ml-auto flex shrink-0 items-center gap-3">
           <div className="flex items-center gap-2 sm:gap-3">
             <img
               src={iiitLogo.url}
@@ -244,7 +245,7 @@ export function SiteFrame({ children }: { children: ReactNode }) {
             />
           </div>
           {session ? (
-            <div className="hidden items-center gap-2 md:flex">
+            <div className="hidden items-center gap-2 lg:flex">
               <span className="max-w-[12rem] truncate font-display text-[10px] tracking-[0.28em] text-neon-cyan">
                 {playerLabel.toUpperCase()}
               </span>
@@ -262,7 +263,7 @@ export function SiteFrame({ children }: { children: ReactNode }) {
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
-            className="rounded-sm border border-border p-2 text-foreground/85 transition-colors hover:border-neon-cyan hover:text-neon-cyan md:hidden"
+            className="arcade-nav-item lg:hidden"
           >
             {open ? <X className="h-4 w-4" strokeWidth={1.5} /> : <Menu className="h-4 w-4" strokeWidth={1.5} />}
           </button>
