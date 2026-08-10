@@ -4,6 +4,7 @@ import { TitleRunner } from "@/components/TitleRunner";
 import { useState } from "react";
 import { useLoginOverlay } from "@/components/SiteFrame";
 import { useSession } from "@/hooks/useSession";
+import bgAsset from "@/assets/background.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -39,6 +40,10 @@ function Index() {
   return (
     <>
     <section className="scanlines relative flex min-h-screen flex-col items-center justify-center overflow-hidden">
+      <div
+        className="pointer-events-none absolute inset-0 bg-cover bg-bottom bg-no-repeat"
+        style={{ backgroundImage: `url(${bgAsset.url})` }}
+      />
       <ArcadeStage />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,transparent,oklch(0.08_0.05_295/0.85))]" />
 
