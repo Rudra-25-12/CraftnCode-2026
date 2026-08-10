@@ -5,13 +5,13 @@ const BOTTOM = "ode";
 
 type Pt = { x: number; y: number };
 
-/** The font's "1" glyph faces left; orient it along the direction of travel. */
+/** The font's "1" glyph faces right; orient it along the direction of travel. */
 function facing(angle: number) {
   const a = ((angle % 360) + 360) % 360;
-  if (a > 315 || a <= 45) return "scaleX(-1)"; // moving right
-  if (a > 45 && a <= 135) return "rotate(-90deg)"; // moving down
-  if (a > 225) return "rotate(90deg)"; // moving up
-  return ""; // moving left
+  if (a > 315 || a <= 45) return ""; // moving right
+  if (a > 45 && a <= 135) return "rotate(90deg)"; // moving down
+  if (a > 225) return "rotate(-90deg)"; // moving up
+  return "scaleX(-1)"; // moving left
 }
 
 function pathLengths(pts: Pt[]) {
@@ -200,7 +200,8 @@ export function TitleRunner({ onDone }: { onDone?: () => void }) {
       {/* dot trail */}
       {!done
         ? dots.map((d) =>
-            d.d > eaten ? (
+            d.d > eaten &&
+            (!pac || Math.hypot(d.x - pac.x, d.y - pac.y) > pac.size * 0.55) ? (
               <span
                 key={d.d}
                 className="pointer-events-none absolute block rounded-full bg-[oklch(0.9_0.19_110)]"
@@ -220,7 +221,7 @@ export function TitleRunner({ onDone }: { onDone?: () => void }) {
       {pac ? (
         <span
           aria-hidden
-          className={`poster-title-flex pac-runner pointer-events-none absolute leading-none ${done ? "" : "pac-chomp"}`}
+          className="poster-title-flex pac-runner pointer-events-none absolute z-10 leading-none"
           style={{
             left: pac.x,
             top: pac.y,
@@ -229,7 +230,12 @@ export function TitleRunner({ onDone }: { onDone?: () => void }) {
             transition: done ? "transform 200ms ease-out" : undefined,
           }}
         >
-          1
+          <span className="relative inline-block text-center">
+            <span className={done ? "" : "pac-mouth-open"}>1</span>
+            {!done ? (
+              <span className="pac-mouth-closed absolute inset-0 block text-center">o</span>
+            ) : null}
+          </span>
         </span>
       ) : null}
     </div>
