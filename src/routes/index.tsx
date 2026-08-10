@@ -1,6 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArcadeStage } from "@/components/ArcadeStage";
-import { PacGlyph } from "@/components/PacGlyph";
 import { useLoginOverlay } from "@/components/SiteFrame";
 import { useSession } from "@/hooks/useSession";
 
