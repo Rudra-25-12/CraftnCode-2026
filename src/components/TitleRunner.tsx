@@ -2,6 +2,7 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 const TOP = "craft n";
 const BOTTOM = "ode";
+const PLAYED_KEY = "cnc:title-anim-played";
 
 type Pt = { x: number; y: number };
 
@@ -73,6 +74,12 @@ export function TitleRunner({ onDone }: { onDone?: () => void }) {
     const reduce =
       typeof window !== "undefined" &&
       window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let alreadyPlayed = false;
+    try {
+      alreadyPlayed = window.sessionStorage.getItem(PLAYED_KEY) === "1";
+    } catch {
+      alreadyPlayed = false;
+    }
 
     const wrap = wrapRef.current;
     const slot = slotRef.current;
@@ -88,10 +95,16 @@ export function TitleRunner({ onDone }: { onDone?: () => void }) {
     const slotBox = { cx: sr.left - wr.left + sr.width / 2, cy: sr.top - wr.top + sr.height / 2 };
     const size = parseFloat(window.getComputedStyle(slot).fontSize) || sr.height;
 
-    if (reduce) {
+    if (reduce || alreadyPlayed) {
       setPac({ x: slotBox.cx, y: slotBox.cy, angle: 0, size });
       finish();
       return;
+    }
+
+    try {
+      window.sessionStorage.setItem(PLAYED_KEY, "1");
+    } catch {
+      /* ignore */
     }
 
     const topBoxes = topRefs.current.map((el) => (el ? rel(el) : null));
