@@ -243,6 +243,16 @@
   display: inline-block;
 }
 
+/* Glow once on the whole shape, never per-layer — overlapping translucent
+   text-shadows were tinting the inside of the head yellow. */
+.pac-jaws {
+  filter: drop-shadow(0 0 0.18em oklch(0.89 0.19 110 / 45%));
+}
+
+.pac-jaws > span {
+  text-shadow: none;
+}
+
 .pac-jaws > span {
   display: block;
 }
