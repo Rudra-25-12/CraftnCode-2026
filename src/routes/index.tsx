@@ -1,6 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArcadeStage } from "@/components/ArcadeStage";
 import { PacGlyph } from "@/components/PacGlyph";
+import { useLoginOverlay } from "@/components/SiteFrame";
+import { useSession } from "@/hooks/useSession";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -35,6 +37,8 @@ const schedule = [
 ];
 
 function Index() {
+  const openLogin = useLoginOverlay();
+  const { session } = useSession();
   return (
     <>
     <section className="scanlines relative flex min-h-screen flex-col items-center justify-center overflow-hidden">
@@ -62,6 +66,15 @@ function Index() {
         </p>
 
         <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
+          {!session ? (
+            <button
+              type="button"
+              onClick={openLogin}
+              className="rounded-sm bg-[image:var(--gradient-neon)] px-10 py-3 text-center font-display text-[11px] tracking-[0.3em] text-primary-foreground shadow-[var(--shadow-neon)] transition-transform hover:scale-[1.04]"
+            >
+              LOGIN
+            </button>
+          ) : null}
           <Link
             to="/problem-statements"
             className="rounded-sm border border-border px-10 py-3 text-center font-display text-[11px] tracking-[0.3em] text-foreground/85 transition-colors hover:border-neon-cyan hover:text-neon-cyan"
