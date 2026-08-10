@@ -69,36 +69,18 @@ export function SiteFrame({ children }: { children: ReactNode }) {
   return (
     <LoginOverlayContext.Provider value={() => setLoginOpen(true)}>
     <div className="relative min-h-screen">
-      {/* Left rail */}
+      {/* Single rail */}
       <nav
         aria-label="Primary"
-        className="glass-panel fixed left-0 top-24 z-40 hidden w-[84px] flex-col rounded-r-lg py-2 md:flex"
+        className="glass-panel fixed right-0 top-24 z-40 hidden w-[84px] flex-col rounded-l-lg py-2 md:flex"
       >
-        {leftNav.map(({ to, label, Icon }) => (
+        {[...leftNav, ...rightNav].map(({ to, label, Icon }) => (
           <Link
             key={to}
             to={to}
             className="rail-item"
             activeProps={{ className: "rail-item text-neon-cyan" }}
             activeOptions={{ exact: to === "/" }}
-          >
-            <Icon className="h-5 w-5" strokeWidth={1.5} />
-            {label}
-          </Link>
-        ))}
-      </nav>
-
-      {/* Right rail */}
-      <div
-        aria-label="Secondary"
-        className="glass-panel fixed right-0 top-24 z-40 hidden w-[84px] flex-col rounded-l-lg py-2 md:flex"
-      >
-        {rightNav.map(({ to, label, Icon }) => (
-          <Link
-            key={to}
-            to={to}
-            className="rail-item"
-            activeProps={{ className: "rail-item text-neon-cyan" }}
           >
             <Icon className="h-5 w-5" strokeWidth={1.5} />
             {label}
@@ -128,7 +110,7 @@ export function SiteFrame({ children }: { children: ReactNode }) {
             {label}
           </a>
         ))}
-      </div>
+      </nav>
 
       {/* Mobile drawer */}
       <div
