@@ -67,6 +67,7 @@ export function SiteFrame({ children }: { children: ReactNode }) {
   }
 
   return (
+    <LoginOverlayContext.Provider value={() => setLoginOpen(true)}>
     <div className="relative min-h-screen">
       {/* Left rail */}
       <nav
@@ -279,5 +280,6 @@ export function SiteFrame({ children }: { children: ReactNode }) {
       <SiteFooter />
       {loginOpen ? <ArcadeLoginOverlay onClose={() => setLoginOpen(false)} /> : null}
     </div>
+    </LoginOverlayContext.Provider>
   );
 }
