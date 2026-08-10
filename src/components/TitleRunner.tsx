@@ -1,5 +1,4 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import { PacGlyph } from "./PacGlyph";
 
 const TOP = "craft n";
 const BOTTOM = "ode";
@@ -78,7 +77,7 @@ export function TitleRunner({ onDone }: { onDone?: () => void }) {
     };
 
     const slotBox = { cx: sr.left - wr.left + sr.width / 2, cy: sr.top - wr.top + sr.height / 2 };
-    const size = sr.height * 0.86;
+    const size = parseFloat(window.getComputedStyle(slot).fontSize) || sr.height;
 
     if (reduce) {
       setPac({ x: slotBox.cx, y: slotBox.cy, angle: 0, size });
@@ -91,16 +90,16 @@ export function TitleRunner({ onDone }: { onDone?: () => void }) {
     const bottomY = slotBox.cy;
     const topY = topBoxes.find(Boolean)?.cy ?? bottomY - sr.height;
     const lastBottom = [...bottomBoxes].reverse().find(Boolean);
-    const rightX = (lastBottom?.cx ?? slotBox.cx) + (lastBottom?.w ?? 40);
+    const rightX = (lastBottom?.cx ?? slotBox.cx) + (lastBottom?.w ?? 40) * 0.5;
     const firstTop = topBoxes.find(Boolean);
-    const leftX = (firstTop?.cx ?? slotBox.cx) - (firstTop?.w ?? 40);
+    const leftX = (firstTop?.cx ?? slotBox.cx) - (firstTop?.w ?? 40) * 0.5;
 
     const pts: Pt[] = [
       { x: -wr.width * 0.6 - 80, y: bottomY },
-      { x: rightX + 40, y: bottomY },
-      { x: rightX + 40, y: topY },
-      { x: leftX - 40, y: topY },
-      { x: leftX - 40, y: bottomY },
+      { x: rightX, y: bottomY },
+      { x: rightX, y: topY },
+      { x: leftX, y: topY },
+      { x: leftX, y: bottomY },
       { x: slotBox.cx, y: bottomY },
     ];
     const acc = pathLengths(pts);
@@ -113,7 +112,7 @@ export function TitleRunner({ onDone }: { onDone?: () => void }) {
     }
     setDots(trail);
 
-    const duration = 3400;
+    const duration = 5500;
     let raf = 0;
     let start = 0;
 
