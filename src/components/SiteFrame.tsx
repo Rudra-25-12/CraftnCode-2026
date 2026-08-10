@@ -218,9 +218,12 @@ export function SiteFrame({ children }: { children: ReactNode }) {
       <header className="fixed left-0 right-0 top-0 z-50 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-4 py-4 backdrop-blur-md sm:px-5">
         <Link
           to="/"
-          className="truncate font-display text-sm tracking-[0.35em] text-foreground"
+          aria-label="Craft N Code — home"
+          className="group flex items-center gap-2 truncate"
         >
-          C<span className="text-neon-magenta">s</span>C
+          <span className="poster-title-flex text-[15px] leading-none transition-transform duration-200 group-hover:scale-[1.05] sm:text-[19px]">
+            craft n 1ode
+          </span>
         </Link>
         <div className="flex shrink-0 items-center gap-3">
           <div className="flex items-center gap-2 sm:gap-3">
