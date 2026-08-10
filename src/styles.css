@@ -235,18 +235,25 @@
     0 0 1.1em oklch(0.89 0.19 110 / 35%);
 }
 
-@keyframes pac-chomp {
+/* Chomp: swap the open-mouth "1" glyph with the closed circle "o" glyph */
+@keyframes pac-blink {
   0%,
-  100% {
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  49.9% {
+    opacity: 1;
   }
-  50% {
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 0 66%, 52% 50%, 0 34%);
+  50%,
+  100% {
+    opacity: 0;
   }
 }
 
-.pac-chomp {
-  animation: pac-chomp 0.4s linear infinite;
+.pac-mouth-open {
+  animation: pac-blink 0.32s steps(1, end) infinite;
+}
+
+.pac-mouth-closed {
+  animation: pac-blink 0.32s steps(1, end) infinite;
+  animation-delay: -0.16s;
 }
 
 @utility rail-item {
