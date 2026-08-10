@@ -228,6 +228,21 @@
     0 0 1.1em oklch(0.89 0.19 110 / 30%);
 }
 
+/* Compact header lockup: same wordmark, no soft glow halo (reads as a hazy
+   background box at small sizes) and thinner stroke. */
+@utility poster-title-mark {
+  font-family: var(--font-poster);
+  color: oklch(0.89 0.19 110);
+  letter-spacing: 0.02em;
+  line-height: 0.86;
+  text-transform: none;
+  -webkit-text-stroke: 2px oklch(0.08 0.01 300);
+  paint-order: stroke fill;
+  text-shadow:
+    0.05em 0.05em 0 oklch(0.08 0.01 300),
+    0.085em 0.085em 0 oklch(0.08 0.01 300);
+}
+
 /* Animated runner Pac glyph: glow only (no hard block shadow) + chomping mouth */
 .pac-runner {
   text-shadow:
