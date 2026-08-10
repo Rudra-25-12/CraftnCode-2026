@@ -74,7 +74,7 @@ export function SiteFrame({ children }: { children: ReactNode }) {
     <div className="relative min-h-screen">
       {/* Mobile drawer */}
       <div
-        className={`fixed inset-0 z-50 md:hidden ${open ? "" : "pointer-events-none"}`}
+        className={`fixed inset-0 z-50 lg:hidden ${open ? "" : "pointer-events-none"}`}
         aria-hidden={!open}
       >
         <button
@@ -245,7 +245,7 @@ export function SiteFrame({ children }: { children: ReactNode }) {
             />
           </div>
           {session ? (
-            <div className="hidden items-center gap-2 md:flex">
+            <div className="hidden items-center gap-2 lg:flex">
               <span className="max-w-[12rem] truncate font-display text-[10px] tracking-[0.28em] text-neon-cyan">
                 {playerLabel.toUpperCase()}
               </span>
