@@ -3,6 +3,7 @@ import {
   Home,
   Users,
   FileTerminal,
+  CalendarClock,
   Gem,
   Upload,
   UtensilsCrossed,
@@ -56,7 +57,10 @@ export function SiteFrame({ children }: { children: ReactNode }) {
   }, [open]);
 
   const playerLabel = teamName ?? session?.user.email ?? "";
-  const navItems: typeof leftNav[number][] = [];
+  const navItems = [
+    { to: "/problem-statements", label: "Problems", Icon: FileTerminal, hash: undefined },
+    { to: "/", label: "Event Flow", Icon: CalendarClock, hash: "event-flow" },
+  ] as const;
 
   async function signOut() {
     await supabase.auth.signOut();
@@ -89,10 +93,11 @@ export function SiteFrame({ children }: { children: ReactNode }) {
           </span>
 
           <div className="mt-5 flex flex-col gap-1">
-            {navItems.map(({ to, label, Icon }) => (
+            {navItems.map(({ to, label, Icon, hash }) => (
               <Link
-                key={to}
+                key={label}
                 to={to}
+                {...(hash ? { hash } : {})}
                 onClick={() => setOpen(false)}
                 className="flex items-center gap-3 rounded-sm px-3 py-3 font-display text-[11px] tracking-[0.28em] text-foreground/85 transition-colors hover:text-neon-cyan"
                 activeProps={{
@@ -165,10 +170,11 @@ export function SiteFrame({ children }: { children: ReactNode }) {
           aria-label="Primary"
           className="hidden min-w-0 flex-1 items-center justify-center gap-1.5 lg:flex xl:gap-2"
         >
-          {navItems.map(({ to, label, Icon }) => (
+          {navItems.map(({ to, label, Icon, hash }) => (
             <Link
-              key={to}
+              key={label}
               to={to}
+              {...(hash ? { hash } : {})}
               className="arcade-nav-item"
               activeProps={{ className: "arcade-nav-item arcade-nav-item-active" }}
               activeOptions={{ exact: to === "/" }}
