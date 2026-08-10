@@ -1,4 +1,4 @@
-import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
+import { Link, useRouterState } from "@tanstack/react-router";
 import {
   Home,
   Users,
@@ -10,9 +10,15 @@ import {
   Linkedin,
   Menu,
   X,
+  ShieldCheck,
+  LogIn,
+  LogOut,
 } from "lucide-react";
 import { useEffect, useState, type ReactNode } from "react";
 import { SiteFooter } from "./SiteFooter";
+import { ArcadeLoginOverlay } from "./ArcadeLoginOverlay";
+import { useSession } from "@/hooks/useSession";
+import { supabase } from "@/integrations/supabase/client";
 
 const leftNav = [
   { to: "/", label: "Home", Icon: Home },
@@ -33,17 +39,9 @@ const rightNav = [
 
 export function SiteFrame({ children }: { children: ReactNode }) {
   const [open, setOpen] = useState(false);
+  const [loginOpen, setLoginOpen] = useState(false);
   const pathname = useRouterState({ select: (s) => s.location.pathname });
-  const navigate = useNavigate();
-  const isLogin = pathname === "/login";
-
-  // Gate the whole site behind the arcade login screen.
-  useEffect(() => {
-    if (isLogin) return;
-    if (!window.localStorage.getItem("cnc-player")) {
-      navigate({ to: "/login", replace: true });
-    }
-  }, [isLogin, pathname, navigate]);
+  const { session, teamName, isAdmin } = useSession();
 
   useEffect(() => {
     setOpen(false);
@@ -56,8 +54,11 @@ export function SiteFrame({ children }: { children: ReactNode }) {
     };
   }, [open]);
 
-  // The login screen is a standalone full-bleed arcade: no rails, header or footer.
-  if (isLogin) return <main>{children}</main>;
+  const playerLabel = teamName ?? session?.user.email ?? "";
+
+  async function signOut() {
+    await supabase.auth.signOut();
+  }
 
   return (
     <div className="relative min-h-screen">
@@ -96,6 +97,16 @@ export function SiteFrame({ children }: { children: ReactNode }) {
             {label}
           </Link>
         ))}
+        {isAdmin ? (
+          <Link
+            to="/admin"
+            className="rail-item"
+            activeProps={{ className: "rail-item text-neon-cyan" }}
+          >
+            <ShieldCheck className="h-5 w-5" strokeWidth={1.5} />
+            Admin
+          </Link>
+        ) : null}
         <span className="mx-auto my-2 h-px w-8 bg-border" />
         {socials.map(({ href, label, Icon }) => (
           <a
@@ -152,6 +163,45 @@ export function SiteFrame({ children }: { children: ReactNode }) {
                 <span className="truncate">{label.toUpperCase()}</span>
               </Link>
             ))}
+            {isAdmin ? (
+              <Link
+                to="/admin"
+                onClick={() => setOpen(false)}
+                className="flex items-center gap-3 rounded-sm px-3 py-3 font-display text-[11px] tracking-[0.28em] text-foreground/85 transition-colors hover:text-neon-cyan"
+                activeProps={{
+                  className:
+                    "flex items-center gap-3 rounded-sm border border-neon-cyan/40 px-3 py-3 font-display text-[11px] tracking-[0.28em] text-neon-cyan",
+                }}
+              >
+                <ShieldCheck className="h-4 w-4 shrink-0" strokeWidth={1.5} />
+                <span className="truncate">ADMIN</span>
+              </Link>
+            ) : null}
+            {session ? (
+              <button
+                type="button"
+                onClick={() => {
+                  setOpen(false);
+                  void signOut();
+                }}
+                className="flex items-center gap-3 rounded-sm px-3 py-3 text-left font-display text-[11px] tracking-[0.28em] text-foreground/85 transition-colors hover:text-neon-magenta"
+              >
+                <LogOut className="h-4 w-4 shrink-0" strokeWidth={1.5} />
+                <span className="truncate">SIGN OUT</span>
+              </button>
+            ) : (
+              <button
+                type="button"
+                onClick={() => {
+                  setOpen(false);
+                  setLoginOpen(true);
+                }}
+                className="flex items-center gap-3 rounded-sm px-3 py-3 text-left font-display text-[11px] tracking-[0.28em] text-neon-cyan transition-colors hover:text-neon-magenta"
+              >
+                <LogIn className="h-4 w-4 shrink-0" strokeWidth={1.5} />
+                <span className="truncate">LOGIN</span>
+              </button>
+            )}
           </div>
 
           <span className="my-6 h-px w-full bg-border" />
@@ -185,6 +235,28 @@ export function SiteFrame({ children }: { children: ReactNode }) {
           <span className="hidden font-display text-[10px] tracking-[0.3em] text-muted-foreground lg:block">
             OVERNIGHT HACKATHON · 24 HOURS
           </span>
+          {session ? (
+            <div className="hidden items-center gap-2 md:flex">
+              <span className="max-w-[12rem] truncate font-display text-[10px] tracking-[0.28em] text-neon-cyan">
+                {playerLabel.toUpperCase()}
+              </span>
+              <button
+                type="button"
+                onClick={() => void signOut()}
+                className="rounded-sm border border-border px-3 py-2 font-display text-[10px] tracking-[0.28em] text-foreground/85 transition-colors hover:border-neon-magenta hover:text-neon-magenta"
+              >
+                SIGN OUT
+              </button>
+            </div>
+          ) : (
+            <button
+              type="button"
+              onClick={() => setLoginOpen(true)}
+              className="hidden rounded-sm border border-neon-cyan/70 px-4 py-2 font-display text-[10px] tracking-[0.28em] text-neon-cyan transition-colors hover:bg-neon-cyan hover:text-primary-foreground md:block"
+            >
+              LOGIN
+            </button>
+          )}
           <button
             type="button"
             aria-label={open ? "Close menu" : "Open menu"}
@@ -199,6 +271,7 @@ export function SiteFrame({ children }: { children: ReactNode }) {
 
       <main>{children}</main>
       <SiteFooter />
+      {loginOpen ? <ArcadeLoginOverlay onClose={() => setLoginOpen(false)} /> : null}
     </div>
   );
 }
