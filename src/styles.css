@@ -235,26 +235,53 @@
     0 0 1.1em oklch(0.89 0.19 110 / 35%);
 }
 
-/* Real Pac-Man chomp: take the font's solid "o" circle and cut a hollow wedge
-   out of it, swinging the two jaw lines apart and back together. The mouth is
-   transparent — nothing is ever filled in. */
-@keyframes pac-chomp {
+/* Real chomp on the font's own "1" Pac glyph: the glyph is drawn twice, clipped
+   into an upper and a lower jaw, and each jaw rotates about the glyph centre so
+   the V-shaped mouth opens and closes. The mouth interior stays hollow. */
+.pac-jaws {
+  position: relative;
+  display: inline-block;
+}
+
+.pac-jaws > span {
+  display: block;
+}
+
+.pac-jaws > span + span {
+  position: absolute;
+  inset: 0;
+}
+
+.pac-jaw-top {
+  clip-path: inset(0 0 50% 0);
+  transform-origin: 50% 50%;
+  animation: pac-jaw-top 0.36s ease-in-out infinite;
+}
+
+.pac-jaw-bottom {
+  clip-path: inset(50% 0 0 0);
+  transform-origin: 50% 50%;
+  animation: pac-jaw-bottom 0.36s ease-in-out infinite;
+}
+
+@keyframes pac-jaw-top {
   0%,
   100% {
-    clip-path: polygon(46% 50%, 100% 49%, 100% 0, 0 0, 0 100%, 100% 100%, 100% 51%);
+    transform: rotate(0deg);
   }
   50% {
-    clip-path: polygon(46% 50%, 100% 6%, 100% 0, 0 0, 0 100%, 100% 100%, 100% 94%);
+    transform: rotate(16deg);
   }
 }
 
-.pac-chomp {
-  animation: pac-chomp 0.36s ease-in-out infinite;
-}
-
-/* The font's "o" glyph paints a dark box behind its circle; clip the box away. */
-.pac-round {
-  clip-path: circle(46% at 50% 50%);
+@keyframes pac-jaw-bottom {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-16deg);
+  }
 }
 
 @utility rail-item {
