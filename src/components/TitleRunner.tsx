@@ -9,21 +9,21 @@ type Pt = { x: number; y: number };
 function pathLengths(pts: Pt[]) {
   const acc = [0];
   for (let i = 1; i < pts.length; i++) {
-    const d = Math.hypot(pts[i].x - pts[i - 1].x, pts[i].y - pts[i - 1].y);
-    acc.push(acc[i - 1] + d);
+    const d = Math.hypot(pts[i]!.x - pts[i - 1]!.x, pts[i]!.y - pts[i - 1]!.y);
+    acc.push(acc[i - 1]! + d);
   }
   return acc;
 }
 
 function pointAt(pts: Pt[], acc: number[], t: number) {
-  const total = acc[acc.length - 1];
+  const total = acc[acc.length - 1]!;
   const d = Math.max(0, Math.min(total, t));
   let i = 1;
-  while (i < acc.length - 1 && acc[i] < d) i++;
-  const seg = acc[i] - acc[i - 1] || 1;
-  const k = (d - acc[i - 1]) / seg;
-  const a = pts[i - 1];
-  const b = pts[i];
+  while (i < acc.length - 1 && acc[i]! < d) i++;
+  const seg = acc[i]! - acc[i - 1]! || 1;
+  const k = (d - acc[i - 1]!) / seg;
+  const a = pts[i - 1]!;
+  const b = pts[i]!;
   return {
     x: a.x + (b.x - a.x) * k,
     y: a.y + (b.y - a.y) * k,
@@ -104,7 +104,7 @@ export function TitleRunner({ onDone }: { onDone?: () => void }) {
       { x: slotBox.cx, y: bottomY },
     ];
     const acc = pathLengths(pts);
-    const total = acc[acc.length - 1];
+    const total = acc[acc.length - 1]!;
 
     const trail: { x: number; y: number; d: number }[] = [];
     for (let d = 26; d < total - 20; d += 30) {
@@ -125,8 +125,8 @@ export function TitleRunner({ onDone }: { onDone?: () => void }) {
       setPac({ x: p.x, y: p.y, angle: p.angle, size });
       setEaten(travelled);
 
-      const onBottomRun = travelled <= acc[1];
-      const onTopRun = travelled >= acc[2] && travelled <= acc[3];
+      const onBottomRun = travelled <= acc[1]!;
+      const onTopRun = travelled >= acc[2]! && travelled <= acc[3]!;
       if (onBottomRun) {
         setShownBottom((prev) => {
           const next = bottomBoxes.map((b, i) => prev[i] || (b ? b.cx <= p.x : false));
@@ -164,7 +164,7 @@ export function TitleRunner({ onDone }: { onDone?: () => void }) {
               ref={(el) => {
                 topRefs.current[i] = el;
               }}
-              className={charClass(shownTop[i])}
+              className={charClass(!!shownTop[i])}
             >
               {c === " " ? "\u00a0" : c}
             </span>
@@ -180,7 +180,7 @@ export function TitleRunner({ onDone }: { onDone?: () => void }) {
               ref={(el) => {
                 bottomRefs.current[i] = el;
               }}
-              className={charClass(shownBottom[i])}
+              className={charClass(!!shownBottom[i])}
             >
               {c}
             </span>
