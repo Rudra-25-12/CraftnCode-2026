@@ -339,6 +339,45 @@
   }
 }
 
+/* 8-bit arcade top nav: chunky pixel buttons with hard offset shadow */
+@utility arcade-nav-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.65rem;
+  color: var(--foreground);
+  background: color-mix(in oklab, var(--background) 70%, transparent);
+  border: 2px solid color-mix(in oklab, var(--neon-cyan) 45%, transparent);
+  box-shadow: 3px 3px 0 oklch(0.08 0.01 300);
+  font-size: 0.5rem;
+  line-height: 1;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-family: var(--font-display);
+  image-rendering: pixelated;
+  transition:
+    transform 0.1s steps(2, end),
+    color 0.15s linear,
+    border-color 0.15s linear;
+  &:hover {
+    color: oklch(0.89 0.19 110);
+    border-color: oklch(0.89 0.19 110);
+    transform: translate(-1px, -2px);
+    box-shadow: 4px 5px 0 oklch(0.08 0.01 300);
+  }
+  &:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0 oklch(0.08 0.01 300);
+  }
+}
+
+@utility arcade-nav-item-active {
+  color: oklch(0.89 0.19 110);
+  border-color: oklch(0.89 0.19 110);
+  background: color-mix(in oklab, oklch(0.89 0.19 110) 14%, var(--background));
+}
+
 @keyframes flicker {
   0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
   20%, 22%, 24%, 55% { opacity: 0.55; }
