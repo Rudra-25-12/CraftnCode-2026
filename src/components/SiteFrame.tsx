@@ -19,6 +19,8 @@ import { SiteFooter } from "./SiteFooter";
 import { ArcadeLoginOverlay } from "./ArcadeLoginOverlay";
 import { useSession } from "@/hooks/useSession";
 import { supabase } from "@/integrations/supabase/client";
+import cscLogo from "@/assets/cyber-space-club.png.asset.json";
+import iiitLogo from "@/assets/iiit-bhubaneswar.png.asset.json";
 
 const leftNav = [
   { to: "/", label: "Home", Icon: Home },
@@ -221,6 +223,23 @@ export function SiteFrame({ children }: { children: ReactNode }) {
           C<span className="text-neon-magenta">s</span>C
         </Link>
         <div className="flex shrink-0 items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
+            <img
+              src={cscLogo.url}
+              alt="Cyber Space Club logo"
+              className="h-8 w-auto object-contain sm:h-10"
+              loading="lazy"
+            />
+            <span className="font-display text-[11px] tracking-[0.2em] text-foreground/70 sm:text-sm">
+              X
+            </span>
+            <img
+              src={iiitLogo.url}
+              alt="IIIT Bhubaneswar logo"
+              className="h-8 w-auto rounded-sm object-contain mix-blend-screen sm:h-10"
+              loading="lazy"
+            />
+          </div>
           {session ? (
             <div className="hidden items-center gap-2 md:flex">
               <span className="max-w-[12rem] truncate font-display text-[10px] tracking-[0.28em] text-neon-cyan">
@@ -234,15 +253,7 @@ export function SiteFrame({ children }: { children: ReactNode }) {
                 SIGN OUT
               </button>
             </div>
-          ) : (
-            <button
-              type="button"
-              onClick={() => setLoginOpen(true)}
-              className="hidden rounded-sm border border-neon-cyan/70 px-4 py-2 font-display text-[10px] tracking-[0.28em] text-neon-cyan transition-colors hover:bg-neon-cyan hover:text-primary-foreground md:block"
-            >
-              LOGIN
-            </button>
-          )}
+          ) : null}
           <button
             type="button"
             aria-label={open ? "Close menu" : "Open menu"}
