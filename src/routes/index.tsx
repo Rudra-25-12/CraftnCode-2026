@@ -54,13 +54,6 @@ function Index() {
           <span className="mx-auto mt-[0.12em] block w-fit text-[1.53em] leading-[1]">1ode</span>
         </h1>
 
-        <p className="mx-auto mt-6 max-w-xl font-display text-[11px] tracking-[0.28em] text-foreground/80 md:text-sm">
-          AN OVERNIGHT HACKATHON · DUSK TO DAWN
-        </p>
-        <p className="mx-auto mt-3 max-w-lg text-base text-muted-foreground">
-          {"\n"}
-        </p>
-
         <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
           {!session ? (
             <button
