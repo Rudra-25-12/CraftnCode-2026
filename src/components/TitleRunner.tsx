@@ -5,13 +5,13 @@ const BOTTOM = "ode";
 
 type Pt = { x: number; y: number };
 
-/** The font's "1" glyph faces left; orient it along the direction of travel. */
+/** The font's "1" glyph faces right; orient it along the direction of travel. */
 function facing(angle: number) {
   const a = ((angle % 360) + 360) % 360;
-  if (a > 315 || a <= 45) return "scaleX(-1)"; // moving right
-  if (a > 45 && a <= 135) return "rotate(-90deg)"; // moving down
-  if (a > 225) return "rotate(90deg)"; // moving up
-  return ""; // moving left
+  if (a > 315 || a <= 45) return ""; // moving right
+  if (a > 45 && a <= 135) return "rotate(90deg)"; // moving down
+  if (a > 225) return "rotate(-90deg)"; // moving up
+  return "scaleX(-1)"; // moving left
 }
 
 function pathLengths(pts: Pt[]) {
