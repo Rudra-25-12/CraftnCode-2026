@@ -236,14 +236,15 @@
 }
 
 /* Chomp: swap the open-mouth "1" glyph with the closed circle "o" glyph */
-/* Real Pac-Man chomp: a wedge cut out of the solid glyph that opens and closes */
+/* Real Pac-Man chomp on the font's "1" glyph: a solid "o" wedge fills its mouth
+   on the closed beat and shrinks to nothing on the open beat. */
 @keyframes pac-chomp {
   0%,
   100% {
-    clip-path: polygon(100% 100%, 0 100%, 0 0, 100% 0, 100% 18%, 46% 50%, 100% 82%);
+    clip-path: polygon(44% 50%, 100% 50%, 100% 50%);
   }
   50% {
-    clip-path: polygon(100% 100%, 0 100%, 0 0, 100% 0, 100% 50%, 46% 50%, 100% 50%);
+    clip-path: polygon(44% 50%, 100% 4%, 100% 96%);
   }
 }
 
