@@ -211,16 +211,16 @@ export function TitleRunner({ onDone }: { onDone?: () => void }) {
       {pac ? (
         <span
           aria-hidden
-          className="pointer-events-none absolute"
+          className="poster-title-flex pointer-events-none absolute leading-none"
           style={{
             left: pac.x,
             top: pac.y,
             fontSize: pac.size,
-            transform: `translate(-50%, -50%) rotate(${done ? 0 : pac.angle}deg)`,
+            transform: `translate(-50%, -50%) rotate(${done ? 0 : pac.angle + 180}deg)`,
             transition: done ? "transform 200ms ease-out" : undefined,
           }}
         >
-          <PacGlyph />
+          1
         </span>
       ) : null}
     </div>
