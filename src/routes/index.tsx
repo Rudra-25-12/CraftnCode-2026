@@ -22,11 +22,6 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const stats = [
-  { k: "24", v: "Hours Non-Stop" },
-  { k: "05", v: "Problem Tracks" },
-];
-
 const schedule = [
   { t: "20:00", d: "Check-in, team lock-in, opening brief" },
   { t: "21:30", d: "Problem statements go live. Clock starts." },
@@ -70,17 +65,6 @@ function Index() {
           >
             PROBLEM STATEMENTS
           </Link>
-        </div>
-
-        <div className="mx-auto mt-14 grid max-w-sm grid-cols-2 gap-3">
-          {stats.map((s) => (
-            <div key={s.v} className="glass-panel animate-float-slow rounded-sm px-3 py-4 text-center">
-              <div className="font-display text-2xl text-neon-cyan">{s.k}</div>
-              <div className="mt-1 text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
-                {s.v}
-              </div>
-            </div>
-          ))}
         </div>
       </div>
     </section>

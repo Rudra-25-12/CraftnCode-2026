@@ -239,9 +239,6 @@ export function SiteFrame({ children }: { children: ReactNode }) {
           C<span className="text-neon-magenta">s</span>C
         </Link>
         <div className="flex shrink-0 items-center gap-3">
-          <span className="hidden font-display text-[10px] tracking-[0.3em] text-muted-foreground lg:block">
-            OVERNIGHT HACKATHON · 24 HOURS
-          </span>
           {session ? (
             <div className="hidden items-center gap-2 md:flex">
               <span className="max-w-[12rem] truncate font-display text-[10px] tracking-[0.28em] text-neon-cyan">
