@@ -6,8 +6,6 @@ import {
   Gem,
   Upload,
   UtensilsCrossed,
-  Instagram,
-  Linkedin,
   Menu,
   X,
   ShieldCheck,
@@ -28,11 +26,6 @@ const leftNav = [
   { to: "/about", label: "About Us", Icon: Users },
   { to: "/sponsors", label: "Sponsors", Icon: Gem },
 ] as const;
-
-const socials = [
-  { href: "https://www.instagram.com/csc_muj/", label: "Instagram", Icon: Instagram },
-  { href: "https://www.linkedin.com/company/cyber-space-club", label: "LinkedIn", Icon: Linkedin },
-];
 
 const rightNav = [
   { to: "/submit", label: "Submit", Icon: Upload },
