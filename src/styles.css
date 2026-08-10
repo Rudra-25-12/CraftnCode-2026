@@ -380,30 +380,6 @@
   }
 }
 
-@utility hud-old-rail-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  gap: 0.25rem;
-  padding: 0.6rem 0.25rem;
-  min-height: 62px;
-  color: var(--muted-foreground);
-  font-size: 0.5rem;
-  line-height: 1.15;
-  letter-spacing: 0.08em;
-  word-break: normal;
-  hyphens: none;
-  text-transform: uppercase;
-  font-family: var(--font-display);
-  transition: all 0.22s ease;
-  &:hover {
-    color: var(--neon-cyan);
-    text-shadow: 0 0 12px color-mix(in oklab, var(--neon-cyan) 70%, transparent);
-    transform: translateY(-1px);
-  }
-}
 
 @keyframes flicker {
   0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
