@@ -69,49 +69,6 @@ export function SiteFrame({ children }: { children: ReactNode }) {
   return (
     <LoginOverlayContext.Provider value={() => setLoginOpen(true)}>
     <div className="relative min-h-screen">
-      {/* Single rail */}
-      <nav
-        aria-label="Primary"
-        className="glass-panel fixed right-0 top-24 z-40 hidden w-[84px] flex-col rounded-l-lg py-2 md:flex"
-      >
-        {[...leftNav, ...rightNav].map(({ to, label, Icon }) => (
-          <Link
-            key={to}
-            to={to}
-            className="rail-item"
-            activeProps={{ className: "rail-item text-neon-cyan" }}
-            activeOptions={{ exact: to === "/" }}
-          >
-            <Icon className="h-5 w-5" strokeWidth={1.5} />
-            {label}
-          </Link>
-        ))}
-        {isAdmin ? (
-          <Link
-            to="/admin"
-            className="rail-item"
-            activeProps={{ className: "rail-item text-neon-cyan" }}
-          >
-            <ShieldCheck className="h-5 w-5" strokeWidth={1.5} />
-            Admin
-          </Link>
-        ) : null}
-        <span className="mx-auto my-2 h-px w-8 bg-border" />
-        {socials.map(({ href, label, Icon }) => (
-          <a
-            key={label}
-            href={href}
-            target="_blank"
-            rel="noreferrer"
-            aria-label={label}
-            className="rail-item"
-          >
-            <Icon className="h-5 w-5" strokeWidth={1.5} />
-            {label}
-          </a>
-        ))}
-      </nav>
-
       {/* Mobile drawer */}
       <div
         className={`fixed inset-0 z-50 md:hidden ${open ? "" : "pointer-events-none"}`}
