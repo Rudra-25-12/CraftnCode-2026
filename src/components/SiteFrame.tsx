@@ -56,7 +56,7 @@ export function SiteFrame({ children }: { children: ReactNode }) {
   }, [open]);
 
   const playerLabel = teamName ?? session?.user.email ?? "";
-  const navItems = session ? [...leftNav, ...rightNav] : [];
+  const navItems: typeof leftNav[number][] = [];
 
   async function signOut() {
     await supabase.auth.signOut();
