@@ -247,13 +247,23 @@
   }
 }
 
+@keyframes pac-blink-off {
+  0%,
+  49.9% {
+    opacity: 0;
+  }
+  50%,
+  100% {
+    opacity: 1;
+  }
+}
+
 .pac-mouth-open {
   animation: pac-blink 0.32s steps(1, end) infinite;
 }
 
 .pac-mouth-closed {
-  animation: pac-blink 0.32s steps(1, end) infinite;
-  animation-delay: -0.16s;
+  animation: pac-blink-off 0.32s steps(1, end) infinite;
 }
 
 @utility rail-item {
