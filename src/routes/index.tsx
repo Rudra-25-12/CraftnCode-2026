@@ -1,5 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArcadeStage } from "@/components/ArcadeStage";
+import { TitleRunner } from "@/components/TitleRunner";
+import { useState } from "react";
 import { useLoginOverlay } from "@/components/SiteFrame";
 import { useSession } from "@/hooks/useSession";
 
@@ -33,6 +35,7 @@ const schedule = [
 function Index() {
   const openLogin = useLoginOverlay();
   const { session } = useSession();
+  const [revealed, setRevealed] = useState(false);
   return (
     <>
     <section className="scanlines relative flex min-h-screen flex-col items-center justify-center overflow-hidden">
@@ -40,16 +43,23 @@ function Index() {
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,transparent,oklch(0.08_0.05_295/0.85))]" />
 
       <div className="relative z-10 px-6 text-center">
-        <p className="font-display text-[10px] tracking-[0.5em] text-neon-cyan/90 md:text-xs">
+        <p
+          className={`font-display text-[10px] tracking-[0.5em] text-neon-cyan/90 transition-opacity duration-700 md:text-xs ${
+            revealed ? "opacity-100" : "opacity-0"
+          }`}
+        >
           CYBER SPACE CLUB PRESENTS
         </p>
 
-        <h1 className="poster-title-flex mt-5 text-center text-5xl sm:text-6xl md:text-7xl lg:text-8xl">
-          <span className="mx-auto block w-fit">craft n</span>
-          <span className="mx-auto mt-[0.12em] block w-fit text-[1.53em] leading-[1]">1ode</span>
-        </h1>
+        <div className="mt-5">
+          <TitleRunner onDone={() => setRevealed(true)} />
+        </div>
 
-        <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
+        <div
+          className={`mt-9 flex flex-wrap items-center justify-center gap-4 transition-opacity duration-700 ${
+            revealed ? "opacity-100" : "opacity-0"
+          }`}
+        >
           {!session ? (
             <button
               type="button"
