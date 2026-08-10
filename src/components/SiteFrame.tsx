@@ -225,18 +225,18 @@ export function SiteFrame({ children }: { children: ReactNode }) {
         <div className="flex shrink-0 items-center gap-3">
           <div className="flex items-center gap-2 sm:gap-3">
             <img
-              src={cscLogo.url}
-              alt="Cyber Space Club logo"
-              className="h-8 w-auto object-contain sm:h-10"
+              src={iiitLogo.url}
+              alt="IIIT Bhubaneswar logo"
+              className="h-11 w-auto object-contain sm:h-14"
               loading="lazy"
             />
-            <span className="font-display text-[11px] tracking-[0.2em] text-foreground/70 sm:text-sm">
+            <span className="font-display text-sm tracking-[0.2em] text-foreground/70 sm:text-base">
               X
             </span>
             <img
-              src={iiitLogo.url}
-              alt="IIIT Bhubaneswar logo"
-              className="h-8 w-auto rounded-sm object-contain mix-blend-screen sm:h-10"
+              src={cscLogo.url}
+              alt="Cyber Space Club logo"
+              className="h-11 w-auto object-contain sm:h-14"
               loading="lazy"
             />
           </div>
