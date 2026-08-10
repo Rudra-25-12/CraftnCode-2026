@@ -14,7 +14,7 @@ import {
   LogIn,
   LogOut,
 } from "lucide-react";
-import { useEffect, useState, type ReactNode } from "react";
+import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 import { SiteFooter } from "./SiteFooter";
 import { ArcadeLoginOverlay } from "./ArcadeLoginOverlay";
 import { useSession } from "@/hooks/useSession";
@@ -36,6 +36,12 @@ const rightNav = [
   { to: "/submit", label: "Submit", Icon: Upload },
   { to: "/food", label: "Food", Icon: UtensilsCrossed },
 ] as const;
+
+const LoginOverlayContext = createContext<() => void>(() => {});
+
+export function useLoginOverlay() {
+  return useContext(LoginOverlayContext);
+}
 
 export function SiteFrame({ children }: { children: ReactNode }) {
   const [open, setOpen] = useState(false);
