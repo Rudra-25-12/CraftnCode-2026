@@ -50,12 +50,9 @@ function Index() {
           CYBER SPACE CLUB PRESENTS
         </p>
 
-        <h1 className="poster-title animate-flicker mt-5 text-[16vw] md:text-[10vw]">
-          <span className="block">CRAFT N</span>
-          <span className="block">
-            <PacGlyph />
-            ODE
-          </span>
+        <h1 className="poster-title-flex mt-5 text-center text-5xl sm:text-6xl md:text-7xl lg:text-8xl">
+          <span className="mx-auto block w-fit">craft n</span>
+          <span className="mx-auto mt-[0.12em] block w-fit text-[1.53em] leading-[1]">1ode</span>
         </h1>
 
         <p className="mx-auto mt-6 max-w-xl font-display text-[11px] tracking-[0.28em] text-foreground/80 md:text-sm">
