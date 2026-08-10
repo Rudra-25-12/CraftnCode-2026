@@ -228,6 +228,27 @@
     0 0 1.1em oklch(0.89 0.19 110 / 30%);
 }
 
+/* Animated runner Pac glyph: glow only (no hard block shadow) + chomping mouth */
+.pac-runner {
+  text-shadow:
+    0 0 0.35em oklch(0.89 0.19 110 / 55%),
+    0 0 1.1em oklch(0.89 0.19 110 / 35%);
+}
+
+@keyframes pac-chomp {
+  0%,
+  100% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+  50% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 0 66%, 52% 50%, 0 34%);
+  }
+}
+
+.pac-chomp {
+  animation: pac-chomp 0.4s linear infinite;
+}
+
 @utility rail-item {
   display: flex;
   flex-direction: column;

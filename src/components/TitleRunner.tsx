@@ -5,6 +5,15 @@ const BOTTOM = "ode";
 
 type Pt = { x: number; y: number };
 
+/** The font's "1" glyph faces left; orient it along the direction of travel. */
+function facing(angle: number) {
+  const a = ((angle % 360) + 360) % 360;
+  if (a > 315 || a <= 45) return "scaleX(-1)"; // moving right
+  if (a > 45 && a <= 135) return "rotate(-90deg)"; // moving down
+  if (a > 225) return "rotate(90deg)"; // moving up
+  return ""; // moving left
+}
+
 function pathLengths(pts: Pt[]) {
   const acc = [0];
   for (let i = 1; i < pts.length; i++) {
@@ -211,12 +220,12 @@ export function TitleRunner({ onDone }: { onDone?: () => void }) {
       {pac ? (
         <span
           aria-hidden
-          className="poster-title-flex pointer-events-none absolute leading-none"
+          className={`poster-title-flex pac-runner pointer-events-none absolute leading-none ${done ? "" : "pac-chomp"}`}
           style={{
             left: pac.x,
             top: pac.y,
             fontSize: pac.size,
-            transform: `translate(-50%, -50%) rotate(${done ? 0 : pac.angle + 180}deg)`,
+            transform: `translate(-50%, -50%) ${done ? "" : facing(pac.angle)}`,
             transition: done ? "transform 200ms ease-out" : undefined,
           }}
         >
