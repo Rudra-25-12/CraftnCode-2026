@@ -1,35 +1,38 @@
-# Redesign the login page
+# Login on the landing page, arcade-style
 
-Rebuild `/login` so it reads like the event flex: black starfield, magenta perspective grid floor, chunky yellow Pac-styled wordmark, drifting invaders with dashed trail paths, and red arcade cabinets flanking the stage.
+Remove the standalone `/login` page and the gate that forces everyone through it. The site stays open to browse. Instead, the landing page gets a LOGIN control that opens a big arcade cabinet overlay with two sides: **Team** and **Admin**.
 
-## The scene (matched to the flex)
+## What changes for visitors
 
-- Top bar of partner marks, evenly spaced on a thin neon divider: Manipal University Jaipur, TechSociety IIIT-Bhubaneswar, and IIIT x Cyber Space. (I'll need those extra logo files from you — until then the two existing logos stay and I leave slots for the rest.)
-- Black space backdrop with fine white stars, plus the flex's dashed L-shaped circuit trails in red/green/cyan/orange running toward the invaders.
-- Magenta wireframe grid floor across the lower third, with the cabinet standing on it and casting a glow.
-- Poster wordmark "CRAFT N / CODE" in the flex's yellow slab type with hard drop shadow, the Pac-Man glyph as the C of CODE.
-- Under the wordmark, the flex's key line: `15/08/26` and `50K PRIZE POOL`, plus the "in collaboration with IIIT Bhubaneswar" ticker with a Pac-Man and ghost chasing along it.
+- The whole site is browsable without logging in.
+- Header (and hero) shows a LOGIN button. Clicking it opens a full-screen arcade cabinet overlay — the same cabinet art and PRESS START / INSERT A COIN flow from the current login page, now as a modal.
+- The overlay has two selectable modes: TEAM and ADMIN, chosen with arcade-style tabs.
+- Once signed in, the button turns into the team/admin name with a SIGN OUT option.
+- Admins get an extra ADMIN rail link to a dashboard listing all submissions.
 
-## The cabinet
+## Accounts
 
-One large red arcade cabinet as the centrepiece (matching the flex's red/blue cabinets rather than the current purple one): red shell with yellow trim, lit marquee reading PLAYER LOGIN, blue-glow CRT in a curved bezel, joystick + coloured buttons on the control deck, coin door and legs with a floor reflection.
+Real accounts in the backend (email + password):
 
-## The flow
+- Teams sign up with team name, email and password. On signup a team profile row is created.
+- Admins are existing accounts that have been given the admin role; there is no public admin signup. The first admin is granted by us on request.
+- Submissions stay open to submit; only signed-in admins can read them.
 
-1. Attract mode: CRT shows blinking "READY PLAYER ONE" over a cycling high-score table, a PRESS START button and `CREDITS 00`.
-2. Press Start: the cabinet zooms until the CRT fills the viewport, the room dims, a CRT power-on flash and scanline roll play, then the login screen boots in line by line.
-3. Login screen: TEAM NAME and PASSWORD as arcade name-entry rows with a blinking caret and pixel type; errors as a red warning line.
-4. INSERT A COIN: coin door flashes, credits tick `00 -> 01`, screen wipes to the homepage.
-5. A small BACK control returns to attract mode.
+## Admin dashboard
 
-## Behaviour kept as-is
-
-Login stays a themed gate: any team name + password is accepted and saved locally. No backend accounts. Rails, header and footer stay hidden on this route.
+New protected page `/admin` showing every submission (team, track, repo, demo, pitch, time), newest first, in the arcade table style. Only visible to admin accounts.
 
 ## Technical notes
 
-- Rewrite `src/routes/login.tsx`; move the cabinet into `src/components/ArcadeCabinet.tsx` and reuse/extend `ArcadeStage` for stars, grid and invaders so the route file stays readable.
-- Colours come from tokens in `src/styles.css` — add flex-accurate tokens (poster yellow, cabinet red, grid magenta) and new utilities (CRT flicker, scanline roll, boot-in) there; no hardcoded Tailwind colour utilities in components.
-- Zoom is a CSS transform with `transform-origin` at the CRT centre so the screen lands centred at any viewport; mobile gets a reduced scale and stacked layout.
-- Respect `prefers-reduced-motion`: skip zoom and flicker, cut straight to the login screen.
-- Route `head()` metadata updated to match the new copy.
+Database (one migration):
+- `profiles` (user_id, team_name, created_at) + trigger on new signup to populate from signup metadata. Grants + RLS: users read/update own row.
+- `app_role` enum (`admin`, `team`), `user_roles` table, `has_role(uuid, app_role)` security-definer function. Grants + RLS per standard pattern.
+- `submissions`: add a SELECT policy `TO authenticated USING (public.has_role(auth.uid(),'admin'))` and the matching GRANT. Insert policy stays as is.
+
+Frontend:
+- Delete `src/routes/login.tsx`; remove the localStorage `cnc-player` gate from `SiteFrame.tsx`.
+- New `src/components/ArcadeLoginOverlay.tsx` — the cabinet UI lifted out of the old login route, with TEAM/ADMIN tabs, sign in + team sign-up forms, zod validation, sonner toasts, `supabase.auth.signInWithPassword` / `signUp`.
+- New `src/hooks/useSession.ts` (or root-level context) wired to a single `onAuthStateChange` in `__root.tsx` with `router.invalidate()`.
+- `SiteFrame.tsx`: LOGIN / account button in the header, conditional ADMIN rail item.
+- New `src/routes/_authenticated/route.tsx` gate + `src/routes/_authenticated/admin.tsx` dashboard, reading submissions through a `createServerFn` with `requireSupabaseAuth` that verifies the admin role; `attachSupabaseAuth` appended in `src/start.ts`.
+- Email confirmation stays on by default unless you'd rather teams be signed in immediately after signup.
