@@ -175,7 +175,7 @@ export function SiteFrame({ children }: { children: ReactNode }) {
           to="/"
           className="flex shrink-0 items-center gap-2 font-display text-sm tracking-[0.35em] text-foreground"
         >
-          <span className="grid h-8 w-8 place-items-center rounded-sm border border-neon-magenta/60 text-[11px] shadow-[0_0_16px_-4px_var(--neon-magenta)]">
+          <span className="flex h-8 items-center whitespace-nowrap rounded-sm border border-neon-magenta/60 px-2 text-[11px] shadow-[0_0_16px_-4px_var(--neon-magenta)]">
             C<span className="text-neon-magenta">s</span>C
           </span>
           <span className="hidden text-[10px] tracking-[0.3em] text-muted-foreground lg:inline">
