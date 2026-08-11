@@ -21,16 +21,11 @@ import cscLogo from "@/assets/cyber-space-club.png.asset.json";
 import iiitLogo from "@/assets/iiit-bhubaneswar.png.asset.json";
 import centerLogo from "@/assets/d3fest-logo.png.asset.json";
 
-const leftNav = [
-  { to: "/", label: "Home", Icon: Home },
-  { to: "/problem-statements", label: "Problems", Icon: FileTerminal },
-  { to: "/about", label: "About Us", Icon: Users },
-  { to: "/sponsors", label: "Sponsors", Icon: Gem },
-] as const;
-
-const rightNav = [
-  { to: "/submit", label: "Submit", Icon: Upload },
-  { to: "/food", label: "Food", Icon: UtensilsCrossed },
+const navItemsList = [
+  { to: "/submit", label: "Submissions", Icon: Upload, ink: "oklch(0.78 0.18 200)" },
+  { to: "/about", hash: "schedule", label: "Schedule", Icon: CalendarClock, ink: "oklch(0.8 0.19 330)" },
+  { to: "/food", label: "Food", Icon: UtensilsCrossed, ink: "oklch(0.82 0.17 60)" },
+  { to: "/about", label: "About Us", Icon: Users, ink: "oklch(0.85 0.18 130)" },
 ] as const;
 
 const LoginOverlayContext = createContext<() => void>(() => {});
@@ -57,11 +52,12 @@ export function SiteFrame({ children }: { children: ReactNode }) {
   }, [open]);
 
   const playerLabel = teamName ?? session?.user.email ?? "";
-  const navItems = [] as const as ReadonlyArray<{
+  const navItems = navItemsList as ReadonlyArray<{
     to: string;
     label: string;
     Icon: typeof FileTerminal;
     hash?: string;
+    ink?: string;
   }>;
 
   async function signOut() {
@@ -175,35 +171,7 @@ export function SiteFrame({ children }: { children: ReactNode }) {
           </span>
         </Link>
 
-        {/* 8-bit top nav */}
-        <nav
-          aria-label="Primary"
-          className="flex min-w-0 flex-1 items-center justify-center gap-1.5 xl:gap-2"
-        >
-          {navItems.map(({ to, label, Icon, hash }) => (
-            <Link
-              key={label}
-              to={to}
-              {...(hash ? { hash } : {})}
-              className="arcade-nav-item"
-              activeProps={{ className: "arcade-nav-item arcade-nav-item-active" }}
-              activeOptions={{ exact: to === "/" }}
-            >
-              <Icon className="h-3.5 w-3.5 shrink-0" strokeWidth={2} />
-              {label}
-            </Link>
-          ))}
-          {isAdmin ? (
-            <Link
-              to="/admin"
-              className="arcade-nav-item"
-              activeProps={{ className: "arcade-nav-item arcade-nav-item-active" }}
-            >
-              <ShieldCheck className="h-3.5 w-3.5 shrink-0" strokeWidth={2} />
-              Admin
-            </Link>
-          ) : null}
-        </nav>
+        <div className="min-w-0 flex-1" />
 
         <div className="ml-auto flex shrink-0 items-center gap-3">
           <div className="flex items-center gap-2 sm:gap-3">
@@ -236,6 +204,38 @@ export function SiteFrame({ children }: { children: ReactNode }) {
       </header>
 
       <main>{children}</main>
+
+      {/* Right-edge 8-bit arcade rail */}
+      <nav
+        aria-label="Primary"
+        className="fixed right-3 top-1/2 z-40 hidden w-[9.5rem] -translate-y-1/2 flex-col gap-2 lg:flex"
+      >
+        {navItems.map(({ to, label, Icon, hash, ink }) => (
+          <Link
+            key={label}
+            to={to}
+            {...(hash ? { hash } : {})}
+            style={{ "--ink": ink } as React.CSSProperties}
+            className="arcade-rail-item"
+            activeProps={{ className: "arcade-rail-item arcade-rail-item-active" }}
+            activeOptions={{ exact: to === "/", includeHash: Boolean(hash) }}
+          >
+            <Icon className="h-3.5 w-3.5 shrink-0" strokeWidth={2} />
+            <span className="relative top-[2px] truncate">{label}</span>
+          </Link>
+        ))}
+        {isAdmin ? (
+          <Link
+            to="/admin"
+            style={{ "--ink": "oklch(0.75 0.2 25)" } as React.CSSProperties}
+            className="arcade-rail-item"
+            activeProps={{ className: "arcade-rail-item arcade-rail-item-active" }}
+          >
+            <ShieldCheck className="h-3.5 w-3.5 shrink-0" strokeWidth={2} />
+            <span className="relative top-[2px] truncate">Admin</span>
+          </Link>
+        ) : null}
+      </nav>
       {session && pathname === "/" ? (
         <div className="fixed bottom-3 left-4 z-40 flex items-center gap-3">
           <span
