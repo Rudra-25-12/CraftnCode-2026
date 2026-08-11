@@ -1,4 +1,5 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import themeAudio from "@/assets/pacman-theme.mp3.asset.json";
 
 const TOP = "craft n";
 const BOTTOM = "ode";
@@ -134,7 +135,23 @@ export function TitleRunner({ onDone }: { onDone?: () => void }) {
     }
     setDots(trail);
 
-    const duration = 5500;
+    const duration = 4000;
+
+    const audio = new Audio(themeAudio.url);
+    audio.volume = 0.6;
+    const playAudio = () => {
+      void audio.play().catch(() => {
+        const unlock = () => {
+          void audio.play().catch(() => {});
+          window.removeEventListener("pointerdown", unlock);
+          window.removeEventListener("keydown", unlock);
+        };
+        window.addEventListener("pointerdown", unlock, { once: true });
+        window.addEventListener("keydown", unlock, { once: true });
+      });
+    };
+    playAudio();
+
     let raf = 0;
     let start = 0;
 
@@ -168,7 +185,10 @@ export function TitleRunner({ onDone }: { onDone?: () => void }) {
       }
     };
     raf = requestAnimationFrame(step);
-    return () => cancelAnimationFrame(raf);
+    return () => {
+      cancelAnimationFrame(raf);
+      audio.pause();
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ready]);
 
