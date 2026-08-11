@@ -1,5 +1,4 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import themeAudio from "@/assets/pacman-theme.mp3.asset.json";
 
 const TOP = "craft n";
 const BOTTOM = "ode";
@@ -60,8 +59,6 @@ export function TitleRunner({ onDone }: { onDone?: () => void }) {
   const [shownBottom, setShownBottom] = useState<boolean[]>(() => BOTTOM.split("").map(() => false));
   const [dots, setDots] = useState<{ x: number; y: number; d: number }[]>([]);
   const [eaten, setEaten] = useState(0);
-  const [, setNeedSound] = useState(false);
-
   const finish = () => {
     setShownTop(TOP.split("").map(() => true));
     setShownBottom(BOTTOM.split("").map(() => true));
@@ -137,31 +134,6 @@ export function TitleRunner({ onDone }: { onDone?: () => void }) {
     setDots(trail);
 
     const duration = 4000;
-
-    const audio = new Audio(themeAudio.url);
-    audio.volume = 0.6;
-    audio.currentTime = 0;
-    const gestureEvents = ["pointerdown", "keydown", "touchstart"] as const;
-    const detach = () => {
-      gestureEvents.forEach((e) => window.removeEventListener(e, onGesture));
-    };
-    // If the browser blocks autoplay, start the sound (only the sound, the
-    // animation keeps running) on the first user interaction.
-    function onGesture() {
-      detach();
-      setNeedSound(false);
-      audio.currentTime = 0;
-      void audio.play().catch(() => {});
-    }
-    audio
-      .play()
-      .then(() => setNeedSound(false))
-      .catch(() => {
-        setNeedSound(true);
-        gestureEvents.forEach((e) =>
-          window.addEventListener(e, onGesture, { once: true, passive: true }),
-        );
-      });
 
     let raf = 0;
     let start = 0;
