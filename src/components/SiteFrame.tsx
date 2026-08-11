@@ -234,7 +234,7 @@ export function SiteFrame({ children }: { children: ReactNode }) {
       </header>
 
       <main>{children}</main>
-      {session ? (
+      {session && pathname === "/" ? (
         <div className="fixed bottom-3 left-4 z-40 flex items-center gap-3">
           <span
             className="relative -top-[3px] text-[26px] tracking-[0.12em] text-foreground/70"
