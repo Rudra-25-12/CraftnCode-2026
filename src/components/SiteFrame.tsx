@@ -156,7 +156,7 @@ export function SiteFrame({ children }: { children: ReactNode }) {
         </nav>
       </div>
 
-      <header className="fixed left-0 right-0 top-0 z-50 flex items-center gap-3 px-4 py-3 sm:px-5">
+      <header className="absolute left-0 right-0 top-0 z-50 flex items-center gap-3 px-4 py-3 sm:px-5">
         <img
           src={techSocietyLogo.url}
           alt="Tech Society IIIT Bhubaneswar logo"
@@ -248,6 +248,13 @@ export function SiteFrame({ children }: { children: ReactNode }) {
       </header>
 
       <main>{children}</main>
+      {playerLabel ? (
+        <div className="pointer-events-none fixed bottom-3 left-4 z-40">
+          <span className="max-w-[14rem] truncate font-display text-[10px] tracking-[0.28em] text-neon-cyan">
+            {playerLabel.toUpperCase()}
+          </span>
+        </div>
+      ) : null}
       {loginOpen ? <ArcadeLoginOverlay onClose={() => setLoginOpen(false)} /> : null}
     </div>
     </LoginOverlayContext.Provider>
