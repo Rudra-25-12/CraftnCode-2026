@@ -240,15 +240,6 @@ export function TitleRunner({ onDone }: { onDone?: () => void }) {
       </h1>
 
       {/* dot trail */}
-      {needSound ? (
-        <button
-          type="button"
-          onClick={replayWithSound}
-          className="absolute -bottom-8 left-1/2 z-20 -translate-x-1/2 rounded-sm border border-neon-cyan/60 px-4 py-2 font-display text-[10px] tracking-[0.28em] text-neon-cyan transition-colors hover:bg-neon-cyan/10"
-        >
-          ► PLAY WITH SOUND
-        </button>
-      ) : null}
       {!done
         ? dots.map((d) =>
             d.d > eaten &&
