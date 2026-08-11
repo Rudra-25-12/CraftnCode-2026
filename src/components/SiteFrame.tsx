@@ -157,12 +157,14 @@ export function SiteFrame({ children }: { children: ReactNode }) {
       </div>
 
       <header className="absolute left-0 right-0 top-0 z-50 flex items-center gap-3 px-4 py-3 sm:px-5">
-        <img
-          src={centerLogo.url}
-          alt="D3 Fest logo"
-          className="pointer-events-none absolute left-1/2 top-[calc(50vh-190px)] h-8 w-auto -translate-x-1/2 object-contain xl:h-9"
-          loading="lazy"
-        />
+        {pathname === "/" ? (
+          <img
+            src={centerLogo.url}
+            alt="D3 Fest logo"
+            className="pointer-events-none absolute left-1/2 top-[calc(50vh-250px)] h-8 w-auto -translate-x-1/2 object-contain xl:h-9"
+            loading="lazy"
+          />
+        ) : null}
         <Link
           to="/"
           aria-label="Craft N Code — home"
