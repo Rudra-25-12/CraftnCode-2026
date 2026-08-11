@@ -259,11 +259,8 @@ export function SiteFrame({ children }: { children: ReactNode }) {
           <button
             type="button"
             onClick={() => void signOut()}
-            className="relative -top-[3px] text-[26px] tracking-[0.12em] transition-colors hover:text-neon-cyan"
-            style={{
-              fontFamily: '"8bit Arcade In", var(--font-display)',
-              color: "oklch(0.68 0.22 25)",
-            }}
+            className="signout-btn relative -top-[3px] text-[26px] tracking-[0.12em] transition-colors"
+            style={{ fontFamily: '"8bit Arcade In", var(--font-display)' }}
           >
             SIGN OUT
           </button>
