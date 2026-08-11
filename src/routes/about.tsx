@@ -83,7 +83,7 @@ function About() {
           cscmuj.com
         </a>
       </p>
-      <div className="glass-panel rounded-sm p-6">
+      <div id="schedule" className="glass-panel scroll-mt-24 rounded-sm p-6">
         <h2 className="font-display text-xs tracking-[0.3em] text-neon-cyan">RUN OF THE NIGHT</h2>
         <ul className="mt-5 space-y-4">
           {timeline.map((i) => (
