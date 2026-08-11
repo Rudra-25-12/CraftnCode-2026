@@ -60,8 +60,7 @@ export function TitleRunner({ onDone }: { onDone?: () => void }) {
   const [shownBottom, setShownBottom] = useState<boolean[]>(() => BOTTOM.split("").map(() => false));
   const [dots, setDots] = useState<{ x: number; y: number; d: number }[]>([]);
   const [eaten, setEaten] = useState(0);
-  const [needSound, setNeedSound] = useState(false);
-  const [runId, setRunId] = useState(0);
+  const [, setNeedSound] = useState(false);
 
   const finish = () => {
     setShownTop(TOP.split("").map(() => true));
@@ -142,15 +141,17 @@ export function TitleRunner({ onDone }: { onDone?: () => void }) {
     const audio = new Audio(themeAudio.url);
     audio.volume = 0.6;
     audio.currentTime = 0;
-    const gestureEvents = ["pointerdown", "pointermove", "keydown", "wheel", "touchstart", "scroll"] as const;
+    const gestureEvents = ["pointerdown", "keydown", "touchstart"] as const;
     const detach = () => {
       gestureEvents.forEach((e) => window.removeEventListener(e, onGesture));
     };
-    // If the browser blocks autoplay, start sound (and replay the run) on the
-    // very first user interaction — no button required.
+    // If the browser blocks autoplay, start the sound (only the sound, the
+    // animation keeps running) on the first user interaction.
     function onGesture() {
       detach();
-      replayWithSound();
+      setNeedSound(false);
+      audio.currentTime = 0;
+      void audio.play().catch(() => {});
     }
     audio
       .play()
@@ -201,21 +202,8 @@ export function TitleRunner({ onDone }: { onDone?: () => void }) {
       detach();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [ready, runId]);
+  }, [ready]);
 
-  const replayWithSound = () => {
-    try {
-      window.sessionStorage.removeItem(PLAYED_KEY);
-    } catch {
-      /* ignore */
-    }
-    setNeedSound(false);
-    setDone(false);
-    setEaten(0);
-    setShownTop(TOP.split("").map(() => false));
-    setShownBottom(BOTTOM.split("").map(() => false));
-    setRunId((n) => n + 1);
-  };
 
   const charClass = (shown: boolean) =>
     `inline-block transition-opacity duration-150 ${shown ? "opacity-100" : "opacity-0"}`;
