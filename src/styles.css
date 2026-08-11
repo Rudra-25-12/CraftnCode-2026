@@ -378,6 +378,98 @@
   background: color-mix(in oklab, oklch(0.89 0.19 110) 14%, var(--background));
 }
 
+/* ---- Arcade cabinet buttons / cards ---- */
+@utility arcade-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.7rem;
+  font-family: var(--font-display);
+  font-size: 0.68rem;
+  line-height: 1;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: oklch(0.93 0.2 108);
+  background: oklch(0.14 0.03 300);
+  border: 3px solid oklch(0.93 0.2 108);
+  box-shadow:
+    5px 5px 0 oklch(0.06 0.01 300),
+    0 0 18px color-mix(in oklab, oklch(0.93 0.2 108) 35%, transparent);
+  image-rendering: pixelated;
+  transition:
+    transform 0.08s steps(2, end),
+    box-shadow 0.08s steps(2, end),
+    background-color 0.15s linear,
+    color 0.15s linear;
+  &:hover {
+    color: oklch(0.12 0.02 300);
+    background: oklch(0.93 0.2 108);
+    transform: translate(-2px, -3px);
+    box-shadow:
+      7px 8px 0 oklch(0.06 0.01 300),
+      0 0 28px color-mix(in oklab, oklch(0.93 0.2 108) 55%, transparent);
+  }
+  &:active {
+    transform: translate(3px, 3px);
+    box-shadow: 2px 2px 0 oklch(0.06 0.01 300);
+  }
+}
+
+@utility arcade-btn-ghost {
+  color: var(--neon-cyan);
+  border-color: color-mix(in oklab, var(--neon-cyan) 75%, transparent);
+  box-shadow:
+    5px 5px 0 oklch(0.06 0.01 300),
+    0 0 16px color-mix(in oklab, var(--neon-cyan) 28%, transparent);
+  &:hover {
+    color: oklch(0.12 0.02 300);
+    background: var(--neon-cyan);
+    box-shadow:
+      7px 8px 0 oklch(0.06 0.01 300),
+      0 0 26px color-mix(in oklab, var(--neon-cyan) 50%, transparent);
+  }
+}
+
+@utility arcade-card {
+  position: relative;
+  background: oklch(0.11 0.03 295 / 92%);
+  border: 3px solid color-mix(in oklab, var(--pill) 70%, transparent);
+  box-shadow:
+    5px 5px 0 oklch(0.05 0.01 300),
+    inset 0 0 0 1px oklch(0 0 0 / 60%);
+  image-rendering: pixelated;
+  transition:
+    transform 0.1s steps(2, end),
+    box-shadow 0.1s steps(2, end);
+  &:hover {
+    transform: translate(-2px, -3px);
+    box-shadow:
+      7px 8px 0 oklch(0.05 0.01 300),
+      0 0 26px color-mix(in oklab, var(--pill) 40%, transparent),
+      inset 0 0 0 1px oklch(0 0 0 / 60%);
+  }
+}
+
+@keyframes pellet-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.25; }
+}
+
+@utility pellet-row {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  & > span {
+    width: 6px;
+    height: 6px;
+    background: oklch(0.93 0.2 108);
+    box-shadow: 0 0 8px color-mix(in oklab, oklch(0.93 0.2 108) 60%, transparent);
+    animation: pellet-blink 1.2s steps(1) infinite;
+  }
+}
+
 @keyframes flicker {
   0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
   20%, 22%, 24%, 55% { opacity: 0.55; }
