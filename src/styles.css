@@ -20,6 +20,14 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "8bit Arcade In";
+  src: url("/__l5e/assets-v1/4043cf9e-a74e-4813-b9eb-9875ec17118b/8bit-arcade-in.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
   --font-display: "Orbitron", ui-sans-serif, system-ui;
   --font-body: "Rajdhani", ui-sans-serif, system-ui;
