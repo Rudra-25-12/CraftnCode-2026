@@ -57,10 +57,12 @@ export function SiteFrame({ children }: { children: ReactNode }) {
   }, [open]);
 
   const playerLabel = teamName ?? session?.user.email ?? "";
-  const navItems = [
-    { to: "/problem-statements", label: "Problems", Icon: FileTerminal, hash: undefined },
-    { to: "/", label: "Event Flow", Icon: CalendarClock, hash: "event-flow" },
-  ] as const;
+  const navItems = [] as const as ReadonlyArray<{
+    to: string;
+    label: string;
+    Icon: typeof FileTerminal;
+    hash?: string;
+  }>;
 
   async function signOut() {
     await supabase.auth.signOut();
