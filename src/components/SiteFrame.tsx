@@ -19,6 +19,7 @@ import { useSession } from "@/hooks/useSession";
 import { supabase } from "@/integrations/supabase/client";
 import cscLogo from "@/assets/cyber-space-club.png.asset.json";
 import iiitLogo from "@/assets/iiit-bhubaneswar.png.asset.json";
+import techSocietyLogo from "@/assets/tech-society.png.asset.json";
 
 const leftNav = [
   { to: "/", label: "Home", Icon: Home },
@@ -171,6 +172,12 @@ export function SiteFrame({ children }: { children: ReactNode }) {
           aria-label="Primary"
           className="hidden min-w-0 flex-1 items-center justify-center gap-1.5 lg:flex xl:gap-2"
         >
+          <img
+            src={techSocietyLogo.url}
+            alt="Tech Society IIIT Bhubaneswar logo"
+            className="h-8 w-auto object-contain xl:h-9"
+            loading="lazy"
+          />
           {navItems.map(({ to, label, Icon, hash }) => (
             <Link
               key={label}
