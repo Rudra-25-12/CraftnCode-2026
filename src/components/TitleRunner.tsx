@@ -205,19 +205,6 @@ export function TitleRunner({ onDone }: { onDone?: () => void }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ready, runId]);
 
-  const replayWithSound = () => {
-    try {
-      window.sessionStorage.removeItem(PLAYED_KEY);
-    } catch {
-      /* ignore */
-    }
-    setNeedSound(false);
-    setDone(false);
-    setEaten(0);
-    setShownTop(TOP.split("").map(() => false));
-    setShownBottom(BOTTOM.split("").map(() => false));
-    setRunId((n) => n + 1);
-  };
 
   const charClass = (shown: boolean) =>
     `inline-block transition-opacity duration-150 ${shown ? "opacity-100" : "opacity-0"}`;
