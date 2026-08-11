@@ -157,6 +157,12 @@ export function SiteFrame({ children }: { children: ReactNode }) {
       </div>
 
       <header className="fixed left-0 right-0 top-0 z-50 flex items-center gap-3 px-4 py-3 sm:px-5">
+        <img
+          src={techSocietyLogo.url}
+          alt="Tech Society IIIT Bhubaneswar logo"
+          className="pointer-events-none absolute left-1/2 top-1/2 h-8 w-auto -translate-x-1/2 -translate-y-1/2 object-contain xl:h-9"
+          loading="lazy"
+        />
         <Link
           to="/"
           aria-label="Craft N Code — home"
@@ -172,12 +178,6 @@ export function SiteFrame({ children }: { children: ReactNode }) {
           aria-label="Primary"
           className="flex min-w-0 flex-1 items-center justify-center gap-1.5 xl:gap-2"
         >
-          <img
-            src={techSocietyLogo.url}
-            alt="Tech Society IIIT Bhubaneswar logo"
-            className="h-8 w-auto object-contain xl:h-9"
-            loading="lazy"
-          />
           {navItems.map(({ to, label, Icon, hash }) => (
             <Link
               key={label}
