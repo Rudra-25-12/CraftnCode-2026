@@ -25,14 +25,6 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const schedule = [
-  { t: "20:00", d: "Check-in, team lock-in, opening brief" },
-  { t: "21:30", d: "Problem statements go live. Clock starts." },
-  { t: "01:00", d: "Midnight fuel run + mentor rounds" },
-  { t: "04:30", d: "Debug hour. The city is asleep, you are not." },
-  { t: "09:00", d: "Freeze, demo, judging" },
-];
-
 function Index() {
   const openLogin = useLoginOverlay();
   const { session } = useSession();
@@ -76,26 +68,6 @@ function Index() {
       </div>
     </section>
 
-    <section id="event-flow" className="relative scroll-mt-24 border-t border-border/60 px-6 py-20 md:px-24">
-      <div className="mx-auto max-w-3xl text-center">
-        <p className="font-display text-[10px] tracking-[0.4em] text-neon-cyan">STAGE SELECT</p>
-        <h2 className="mt-3 text-3xl neon-text md:text-4xl">Run of the Night</h2>
-        <ol className="mt-10 space-y-3">
-          {schedule.map((i, idx) => (
-            <li
-              key={i.t}
-              className="glass-panel flex items-center gap-5 rounded-sm px-5 py-4 text-left transition-colors hover:border-neon-cyan/60"
-            >
-              <span className="font-display text-[10px] text-neon-magenta/70">
-                {String(idx + 1).padStart(2, "0")}
-              </span>
-              <span className="w-16 shrink-0 font-display text-sm text-neon-cyan">{i.t}</span>
-              <span className="text-foreground/85">{i.d}</span>
-            </li>
-          ))}
-        </ol>
-      </div>
-    </section>
     </>
   );
 }
