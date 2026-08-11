@@ -18,8 +18,8 @@ import { SiteFooter } from "./SiteFooter";
 import { ArcadeLoginOverlay } from "./ArcadeLoginOverlay";
 import { useSession } from "@/hooks/useSession";
 import { supabase } from "@/integrations/supabase/client";
-import cscLogo from "@/assets/cyber-space-club.png.asset.json";
-import iiitLogo from "@/assets/iiit-bhubaneswar.png.asset.json";
+import cscLogo from "@/assets/cyber-space-club.png";
+import iiitLogo from "@/assets/iiit-bhubaneswar.png";
 
 const leftNav = [
   { to: "/", label: "Home", Icon: Home },
@@ -198,7 +198,7 @@ export function SiteFrame({ children }: { children: ReactNode }) {
         <div className="ml-auto flex shrink-0 items-center gap-3">
           <div className="flex items-center gap-2 sm:gap-3">
             <img
-              src={iiitLogo.url}
+              src={iiitLogo}
               alt="IIIT Bhubaneswar logo"
               className="h-10 w-auto object-contain sm:h-12"
               loading="lazy"
@@ -207,7 +207,7 @@ export function SiteFrame({ children }: { children: ReactNode }) {
               X
             </span>
             <img
-              src={cscLogo.url}
+              src={cscLogo}
               alt="Cyber Space Club logo"
               className="h-10 w-auto object-contain sm:h-12"
               loading="lazy"
