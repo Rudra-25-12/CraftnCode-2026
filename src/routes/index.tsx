@@ -53,14 +53,14 @@ function Index() {
             <button
               type="button"
               onClick={openLogin}
-              className="rounded-sm bg-[image:var(--gradient-neon)] px-10 py-3 text-center font-display text-[11px] tracking-[0.3em] text-primary-foreground shadow-[var(--shadow-neon)] transition-transform hover:scale-[1.04]"
+              className="arcade-btn"
             >
-              LOGIN
+              ▶ INSERT COIN
             </button>
           ) : null}
           <Link
             to="/problem-statements"
-            className="rounded-sm border border-border px-10 py-3 text-center font-display text-[11px] tracking-[0.3em] text-foreground/85 transition-colors hover:border-neon-cyan hover:text-neon-cyan"
+            className="arcade-btn arcade-btn-ghost"
           >
             PROBLEM STATEMENTS
           </Link>
