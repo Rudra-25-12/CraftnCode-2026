@@ -221,20 +221,6 @@ export function SiteFrame({ children }: { children: ReactNode }) {
               loading="lazy"
             />
           </div>
-          {session ? (
-            <div className="hidden items-center gap-2 lg:flex">
-              <span className="max-w-[12rem] truncate font-display text-[10px] tracking-[0.28em] text-neon-cyan">
-                {playerLabel.toUpperCase()}
-              </span>
-              <button
-                type="button"
-                onClick={() => void signOut()}
-                className="rounded-sm border border-border px-3 py-2 font-display text-[10px] tracking-[0.28em] text-foreground/85 transition-colors hover:border-neon-magenta hover:text-neon-magenta"
-              >
-                SIGN OUT
-              </button>
-            </div>
-          ) : null}
           <button
             type="button"
             aria-label={open ? "Close menu" : "Open menu"}
@@ -248,11 +234,18 @@ export function SiteFrame({ children }: { children: ReactNode }) {
       </header>
 
       <main>{children}</main>
-      {playerLabel ? (
-        <div className="pointer-events-none fixed bottom-3 left-4 z-40">
+      {session ? (
+        <div className="fixed bottom-3 left-4 z-40 flex items-center gap-3">
           <span className="max-w-[14rem] truncate font-display text-[10px] tracking-[0.28em] text-neon-cyan">
             {playerLabel.toUpperCase()}
           </span>
+          <button
+            type="button"
+            onClick={() => void signOut()}
+            className="rounded-sm border border-border px-2.5 py-1.5 font-display text-[10px] tracking-[0.28em] text-foreground/85 transition-colors hover:border-neon-magenta hover:text-neon-magenta"
+          >
+            SIGN OUT
+          </button>
         </div>
       ) : null}
       {loginOpen ? <ArcadeLoginOverlay onClose={() => setLoginOpen(false)} /> : null}
