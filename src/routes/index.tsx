@@ -56,7 +56,7 @@ function Index() {
               className="arcade-btn arcade-btn-coin"
             >
               <span>▶</span>
-              <span>INSERT COIN</span>
+              <span>LOGIN</span>
             </button>
           ) : null}
           <Link
