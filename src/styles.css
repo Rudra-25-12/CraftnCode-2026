@@ -558,3 +558,10 @@
     mix-blend-mode: overlay;
   }
 }
+
+.signout-btn {
+  color: oklch(0.68 0.22 25);
+}
+.signout-btn:hover {
+  color: oklch(0.85 0.16 200);
+}
