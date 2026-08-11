@@ -13,7 +13,14 @@ import {
   LogIn,
   LogOut,
 } from "lucide-react";
-import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+  type CSSProperties,
+  type ReactNode,
+} from "react";
 import { ArcadeLoginOverlay } from "./ArcadeLoginOverlay";
 import { useSession } from "@/hooks/useSession";
 import { supabase } from "@/integrations/supabase/client";
