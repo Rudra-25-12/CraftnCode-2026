@@ -154,7 +154,7 @@ export function SiteFrame({ children }: { children: ReactNode }) {
         </nav>
       </div>
 
-      <header className="fixed left-0 right-0 top-0 z-50 flex items-center gap-3 border-b-2 border-neon-cyan/25 bg-background/55 px-4 py-3 backdrop-blur-md sm:px-5">
+      <header className="fixed left-0 right-0 top-0 z-50 flex items-center gap-3 px-4 py-3 sm:px-5">
         <Link
           to="/"
           aria-label="Craft N Code — home"
