@@ -170,7 +170,7 @@ export function SiteFrame({ children }: { children: ReactNode }) {
         {/* 8-bit top nav */}
         <nav
           aria-label="Primary"
-          className="hidden min-w-0 flex-1 items-center justify-center gap-1.5 lg:flex xl:gap-2"
+          className="flex min-w-0 flex-1 items-center justify-center gap-1.5 xl:gap-2"
         >
           <img
             src={techSocietyLogo.url}
