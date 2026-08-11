@@ -63,7 +63,7 @@ function Problems() {
           <article
             key={t.id}
             className="arcade-card group p-5"
-            style={{ "--pill": t.hue } as React.CSSProperties}
+            style={{ "--pill": t.hue } as CSSProperties}
           >
             <div className="flex items-center justify-between">
               <span
