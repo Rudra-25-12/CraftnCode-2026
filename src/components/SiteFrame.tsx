@@ -235,22 +235,31 @@ export function SiteFrame({ children }: { children: ReactNode }) {
 
       <main>{children}</main>
       {session ? (
-        <div className="fixed bottom-3 left-4 z-40 flex items-end gap-3">
-          <span className="flex min-w-0 flex-col leading-tight">
-            <span className="font-display text-[9px] tracking-[0.4em] text-foreground/55">
-              TEAM NAME
-            </span>
-            <span
-              className="max-w-[16rem] truncate text-[20px] tracking-[0.12em] text-neon-cyan"
-              style={{ fontFamily: '"8bit Arcade In", var(--font-display)' }}
-            >
-              {playerLabel.toUpperCase()}
-            </span>
+        <div className="fixed bottom-3 left-4 z-40 flex items-center gap-3">
+          <span
+            className="text-[20px] tracking-[0.12em] text-primary"
+            style={{ fontFamily: '"8bit Arcade In", var(--font-display)' }}
+          >
+            TEAM NAME
+          </span>
+          <span
+            className="max-w-[16rem] truncate text-[20px] tracking-[0.12em] text-neon-cyan"
+            style={{ fontFamily: '"8bit Arcade In", var(--font-display)' }}
+          >
+            {playerLabel.toUpperCase()}
+          </span>
+          <span
+            className="text-[20px] text-foreground/35"
+            style={{ fontFamily: '"8bit Arcade In", var(--font-display)' }}
+            aria-hidden
+          >
+            |
           </span>
           <button
             type="button"
             onClick={() => void signOut()}
-            className="rounded-sm border border-border px-2.5 py-1.5 font-display text-[10px] tracking-[0.28em] text-foreground/85 transition-colors hover:border-neon-magenta hover:text-neon-magenta"
+            className="text-[20px] tracking-[0.12em] text-neon-magenta transition-colors hover:text-primary"
+            style={{ fontFamily: '"8bit Arcade In", var(--font-display)' }}
           >
             SIGN OUT
           </button>
