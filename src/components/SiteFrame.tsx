@@ -235,9 +235,17 @@ export function SiteFrame({ children }: { children: ReactNode }) {
 
       <main>{children}</main>
       {session ? (
-        <div className="fixed bottom-3 left-4 z-40 flex items-center gap-3">
-          <span className="max-w-[14rem] truncate font-display text-[10px] tracking-[0.28em] text-neon-cyan">
-            {playerLabel.toUpperCase()}
+        <div className="fixed bottom-3 left-4 z-40 flex items-end gap-3">
+          <span className="flex min-w-0 flex-col leading-tight">
+            <span className="font-display text-[9px] tracking-[0.4em] text-foreground/55">
+              TEAM NAME
+            </span>
+            <span
+              className="max-w-[16rem] truncate text-[20px] tracking-[0.12em] text-neon-cyan"
+              style={{ fontFamily: '"8bit Arcade In", var(--font-display)' }}
+            >
+              {playerLabel.toUpperCase()}
+            </span>
           </span>
           <button
             type="button"
