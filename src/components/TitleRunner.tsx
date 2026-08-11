@@ -202,7 +202,7 @@ export function TitleRunner({ onDone }: { onDone?: () => void }) {
       detach();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [ready, runId]);
+  }, [ready]);
 
 
   const charClass = (shown: boolean) =>
