@@ -142,10 +142,25 @@ export function TitleRunner({ onDone }: { onDone?: () => void }) {
     const audio = new Audio(themeAudio.url);
     audio.volume = 0.6;
     audio.currentTime = 0;
+    const gestureEvents = ["pointerdown", "pointermove", "keydown", "wheel", "touchstart", "scroll"] as const;
+    const detach = () => {
+      gestureEvents.forEach((e) => window.removeEventListener(e, onGesture));
+    };
+    // If the browser blocks autoplay, start sound (and replay the run) on the
+    // very first user interaction — no button required.
+    function onGesture() {
+      detach();
+      replayWithSound();
+    }
     audio
       .play()
       .then(() => setNeedSound(false))
-      .catch(() => setNeedSound(true));
+      .catch(() => {
+        setNeedSound(true);
+        gestureEvents.forEach((e) =>
+          window.addEventListener(e, onGesture, { once: true, passive: true }),
+        );
+      });
 
     let raf = 0;
     let start = 0;
@@ -183,6 +198,7 @@ export function TitleRunner({ onDone }: { onDone?: () => void }) {
     return () => {
       cancelAnimationFrame(raf);
       audio.pause();
+      detach();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ready, runId]);
@@ -240,15 +256,6 @@ export function TitleRunner({ onDone }: { onDone?: () => void }) {
       </h1>
 
       {/* dot trail */}
-      {needSound ? (
-        <button
-          type="button"
-          onClick={replayWithSound}
-          className="absolute -bottom-8 left-1/2 z-20 -translate-x-1/2 rounded-sm border border-neon-cyan/60 px-4 py-2 font-display text-[10px] tracking-[0.28em] text-neon-cyan transition-colors hover:bg-neon-cyan/10"
-        >
-          ► PLAY WITH SOUND
-        </button>
-      ) : null}
       {!done
         ? dots.map((d) =>
             d.d > eaten &&
