@@ -168,11 +168,7 @@ export function TitleRunner({ onDone }: { onDone?: () => void }) {
       }
     };
     raf = requestAnimationFrame(step);
-    return () => {
-      cancelAnimationFrame(raf);
-      audio.pause();
-      detach();
-    };
+    return () => cancelAnimationFrame(raf);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ready]);
 
