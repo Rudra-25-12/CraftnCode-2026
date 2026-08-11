@@ -9,13 +9,13 @@ import bgAsset from "@/assets/background.png.asset.json";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Craft N Code - Presented by CSC X IIIT Bhubaneswar" },
+      { title: "Craft N Code — Overnight Hackathon" },
       {
         name: "description",
         content:
           "Craft N Code is a 24-hour overnight club hackathon. Build through the night, ship at dawn.",
       },
-      { property: "og:title", content: "Craft N Code - Presented by CSC X IIIT Bhubaneswar" },
+      { property: "og:title", content: "Craft N Code — Overnight Hackathon" },
       {
         property: "og:description",
         content: "A 24-hour overnight hackathon. Build through the night, ship at dawn.",
