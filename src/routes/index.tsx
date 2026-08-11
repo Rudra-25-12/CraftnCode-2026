@@ -53,16 +53,17 @@ function Index() {
             <button
               type="button"
               onClick={openLogin}
-              className="arcade-btn"
+              className="arcade-btn arcade-btn-coin"
             >
-              ▶ INSERT COIN
+              <span>▶</span>
+              <span>INSERT COIN</span>
             </button>
           ) : null}
           <Link
             to="/problem-statements"
             className="arcade-btn arcade-btn-ghost"
           >
-            PROBLEM STATEMENTS
+            <span>PROBLEM STATEMENTS</span>
           </Link>
         </div>
       </div>
