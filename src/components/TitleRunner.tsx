@@ -60,6 +60,8 @@ export function TitleRunner({ onDone }: { onDone?: () => void }) {
   const [shownBottom, setShownBottom] = useState<boolean[]>(() => BOTTOM.split("").map(() => false));
   const [dots, setDots] = useState<{ x: number; y: number; d: number }[]>([]);
   const [eaten, setEaten] = useState(0);
+  const [needSound, setNeedSound] = useState(false);
+  const [runId, setRunId] = useState(0);
 
   const finish = () => {
     setShownTop(TOP.split("").map(() => true));
@@ -139,18 +141,11 @@ export function TitleRunner({ onDone }: { onDone?: () => void }) {
 
     const audio = new Audio(themeAudio.url);
     audio.volume = 0.6;
-    const playAudio = () => {
-      void audio.play().catch(() => {
-        const unlock = () => {
-          void audio.play().catch(() => {});
-          window.removeEventListener("pointerdown", unlock);
-          window.removeEventListener("keydown", unlock);
-        };
-        window.addEventListener("pointerdown", unlock, { once: true });
-        window.addEventListener("keydown", unlock, { once: true });
-      });
-    };
-    playAudio();
+    audio.currentTime = 0;
+    audio
+      .play()
+      .then(() => setNeedSound(false))
+      .catch(() => setNeedSound(true));
 
     let raf = 0;
     let start = 0;
@@ -190,7 +185,21 @@ export function TitleRunner({ onDone }: { onDone?: () => void }) {
       audio.pause();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [ready]);
+  }, [ready, runId]);
+
+  const replayWithSound = () => {
+    try {
+      window.sessionStorage.removeItem(PLAYED_KEY);
+    } catch {
+      /* ignore */
+    }
+    setNeedSound(false);
+    setDone(false);
+    setEaten(0);
+    setShownTop(TOP.split("").map(() => false));
+    setShownBottom(BOTTOM.split("").map(() => false));
+    setRunId((n) => n + 1);
+  };
 
   const charClass = (shown: boolean) =>
     `inline-block transition-opacity duration-150 ${shown ? "opacity-100" : "opacity-0"}`;
