@@ -60,8 +60,7 @@ export function TitleRunner({ onDone }: { onDone?: () => void }) {
   const [shownBottom, setShownBottom] = useState<boolean[]>(() => BOTTOM.split("").map(() => false));
   const [dots, setDots] = useState<{ x: number; y: number; d: number }[]>([]);
   const [eaten, setEaten] = useState(0);
-  const [needSound, setNeedSound] = useState(false);
-  const [runId, setRunId] = useState(0);
+  const [, setNeedSound] = useState(false);
 
   const finish = () => {
     setShownTop(TOP.split("").map(() => true));
