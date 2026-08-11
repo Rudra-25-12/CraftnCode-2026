@@ -222,7 +222,7 @@ export function SiteFrame({ children }: { children: ReactNode }) {
             key={label}
             to={to}
             {...(hash ? { hash } : {})}
-            style={{ "--ink": ink } as React.CSSProperties}
+            style={{ "--ink": ink } as CSSProperties}
             className="arcade-rail-item"
             activeProps={{ className: "arcade-rail-item arcade-rail-item-active" }}
             activeOptions={{ exact: to === "/", includeHash: Boolean(hash) }}
@@ -234,7 +234,7 @@ export function SiteFrame({ children }: { children: ReactNode }) {
         {isAdmin ? (
           <Link
             to="/admin"
-            style={{ "--ink": "oklch(0.75 0.2 25)" } as React.CSSProperties}
+            style={{ "--ink": "oklch(0.75 0.2 25)" } as CSSProperties}
             className="arcade-rail-item"
             activeProps={{ className: "arcade-rail-item arcade-rail-item-active" }}
           >
