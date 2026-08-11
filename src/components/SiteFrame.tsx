@@ -237,28 +237,27 @@ export function SiteFrame({ children }: { children: ReactNode }) {
       {session ? (
         <div className="fixed bottom-3 left-4 z-40 flex items-center gap-3">
           <span
-            className="text-[20px] tracking-[0.12em] text-primary"
+            className="relative -top-[3px] text-[26px] tracking-[0.12em] text-foreground/70"
             style={{ fontFamily: '"8bit Arcade In", var(--font-display)' }}
           >
             TEAM NAME
           </span>
           <span
-            className="max-w-[16rem] truncate text-[20px] tracking-[0.12em] text-neon-cyan"
-            style={{ fontFamily: '"8bit Arcade In", var(--font-display)' }}
+            className="relative -top-[3px] max-w-[18rem] truncate text-[26px] tracking-[0.12em]"
+            style={{
+              fontFamily: '"8bit Arcade In", var(--font-display)',
+              color: "oklch(0.89 0.19 110)",
+            }}
           >
             {playerLabel.toUpperCase()}
           </span>
-          <span
-            className="text-[20px] text-foreground/35"
-            style={{ fontFamily: '"8bit Arcade In", var(--font-display)' }}
-            aria-hidden
-          >
+          <span className="text-[24px] leading-none text-foreground/35" aria-hidden>
             |
           </span>
           <button
             type="button"
             onClick={() => void signOut()}
-            className="text-[20px] tracking-[0.12em] text-neon-magenta transition-colors hover:text-primary"
+            className="relative -top-[3px] text-[26px] tracking-[0.12em] text-neon-magenta transition-colors hover:text-neon-cyan"
             style={{ fontFamily: '"8bit Arcade In", var(--font-display)' }}
           >
             SIGN OUT
