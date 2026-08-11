@@ -14,7 +14,6 @@ import {
   LogOut,
 } from "lucide-react";
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
-import { SiteFooter } from "./SiteFooter";
 import { ArcadeLoginOverlay } from "./ArcadeLoginOverlay";
 import { useSession } from "@/hooks/useSession";
 import { supabase } from "@/integrations/supabase/client";
@@ -242,7 +241,6 @@ export function SiteFrame({ children }: { children: ReactNode }) {
       </header>
 
       <main>{children}</main>
-      <SiteFooter />
       {loginOpen ? <ArcadeLoginOverlay onClose={() => setLoginOpen(false)} /> : null}
     </div>
     </LoginOverlayContext.Provider>
