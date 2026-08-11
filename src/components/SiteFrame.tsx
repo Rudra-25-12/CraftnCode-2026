@@ -161,7 +161,7 @@ export function SiteFrame({ children }: { children: ReactNode }) {
           <img
             src={centerLogo.url}
             alt="D3 Fest logo"
-            className="pointer-events-none absolute left-1/2 top-[calc(50vh-250px)] h-8 w-auto -translate-x-1/2 object-contain xl:h-9"
+            className="pointer-events-none absolute left-1/2 top-[calc(50vh-250px)] h-8 w-auto -translate-x-[44%] object-contain xl:h-9"
             loading="lazy"
           />
         ) : null}
