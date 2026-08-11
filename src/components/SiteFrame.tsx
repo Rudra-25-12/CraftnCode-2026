@@ -1,10 +1,8 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import {
-  Home,
   Users,
   FileTerminal,
   CalendarClock,
-  Gem,
   Upload,
   UtensilsCrossed,
   Menu,
