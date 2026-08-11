@@ -19,7 +19,7 @@ import { useSession } from "@/hooks/useSession";
 import { supabase } from "@/integrations/supabase/client";
 import cscLogo from "@/assets/cyber-space-club.png.asset.json";
 import iiitLogo from "@/assets/iiit-bhubaneswar.png.asset.json";
-import techSocietyLogo from "@/assets/tech-society.png.asset.json";
+import centerLogo from "@/assets/d3fest-logo.png.asset.json";
 
 const leftNav = [
   { to: "/", label: "Home", Icon: Home },
@@ -158,8 +158,8 @@ export function SiteFrame({ children }: { children: ReactNode }) {
 
       <header className="absolute left-0 right-0 top-0 z-50 flex items-center gap-3 px-4 py-3 sm:px-5">
         <img
-          src={techSocietyLogo.url}
-          alt="Tech Society IIIT Bhubaneswar logo"
+          src={centerLogo.url}
+          alt="D3 Fest logo"
           className="pointer-events-none absolute left-1/2 top-1/2 h-8 w-auto -translate-x-1/2 -translate-y-1/2 object-contain xl:h-9"
           loading="lazy"
         />
