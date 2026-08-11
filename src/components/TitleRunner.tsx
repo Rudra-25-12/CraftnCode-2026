@@ -142,15 +142,17 @@ export function TitleRunner({ onDone }: { onDone?: () => void }) {
     const audio = new Audio(themeAudio.url);
     audio.volume = 0.6;
     audio.currentTime = 0;
-    const gestureEvents = ["pointerdown", "pointermove", "keydown", "wheel", "touchstart", "scroll"] as const;
+    const gestureEvents = ["pointerdown", "keydown", "touchstart"] as const;
     const detach = () => {
       gestureEvents.forEach((e) => window.removeEventListener(e, onGesture));
     };
-    // If the browser blocks autoplay, start sound (and replay the run) on the
-    // very first user interaction — no button required.
+    // If the browser blocks autoplay, start the sound (only the sound, the
+    // animation keeps running) on the first user interaction.
     function onGesture() {
       detach();
-      replayWithSound();
+      setNeedSound(false);
+      audio.currentTime = 0;
+      void audio.play().catch(() => {});
     }
     audio
       .play()
