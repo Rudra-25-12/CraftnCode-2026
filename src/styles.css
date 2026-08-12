@@ -403,7 +403,7 @@
   justify-content: center;
   gap: 0.75rem;
   width: 100%;
-  padding: 1rem 1.1rem;
+  padding: 0.35rem 0.5rem;
   color: color-mix(in oklab, var(--ink) 82%, white);
   background: oklch(0.08 0.02 285 / 0.85);
   border: 2px solid color-mix(in oklab, var(--ink) 55%, transparent);
@@ -412,7 +412,7 @@
     inset 0 0 0 4px color-mix(in oklab, var(--ink) 30%, transparent),
     3px 3px 0 oklch(0.06 0.01 300);
   font-family: "8bit Arcade In", var(--font-display);
-  font-size: 1.05rem;
+  font-size: 1.3rem;
   line-height: 1;
   letter-spacing: 0.14em;
   text-transform: uppercase;
