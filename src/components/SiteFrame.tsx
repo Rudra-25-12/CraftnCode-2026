@@ -213,7 +213,7 @@ export function SiteFrame({ children }: { children: ReactNode }) {
       {/* Right-edge 8-bit arcade rail */}
       <nav
         aria-label="Primary"
-        className="fixed right-3 top-1/2 z-40 hidden w-[13rem] -translate-y-1/2 flex-col gap-2 lg:flex"
+        className="fixed right-3 top-1/2 z-40 hidden w-[15.5rem] -translate-y-1/2 flex-col gap-3 lg:flex"
       >
         {navItems.map(({ to, label, Icon, hash, ink }) => (
           <Link
