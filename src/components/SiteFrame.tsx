@@ -215,7 +215,7 @@ export function SiteFrame({ children }: { children: ReactNode }) {
         aria-label="Primary"
         className="fixed right-3 top-1/2 z-40 hidden w-[15.5rem] -translate-y-1/2 flex-col gap-3 lg:flex"
       >
-        {navItems.map(({ to, label, Icon, hash, ink }) => (
+        {navItems.map(({ to, label, hash, ink }) => (
           <Link
             key={label}
             to={to}
@@ -225,7 +225,6 @@ export function SiteFrame({ children }: { children: ReactNode }) {
             activeProps={{ className: "arcade-rail-item arcade-rail-item-active" }}
             activeOptions={{ exact: to === "/", includeHash: Boolean(hash) }}
           >
-            <Icon className="h-3.5 w-3.5 shrink-0" strokeWidth={2} />
             <span className="relative top-[2px]">{label}</span>
           </Link>
         ))}
@@ -236,7 +235,6 @@ export function SiteFrame({ children }: { children: ReactNode }) {
             className="arcade-rail-item"
             activeProps={{ className: "arcade-rail-item arcade-rail-item-active" }}
           >
-            <ShieldCheck className="h-3.5 w-3.5 shrink-0" strokeWidth={2} />
             <span className="relative top-[2px]">Admin</span>
           </Link>
         ) : null}
