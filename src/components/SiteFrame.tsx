@@ -213,7 +213,7 @@ export function SiteFrame({ children }: { children: ReactNode }) {
       {/* Right-edge 8-bit arcade rail */}
       <nav
         aria-label="Primary"
-        className="fixed right-3 top-1/2 z-40 hidden w-[9.5rem] -translate-y-1/2 flex-col gap-2 lg:flex"
+        className="fixed right-3 top-1/2 z-40 hidden w-[13rem] -translate-y-1/2 flex-col gap-2 lg:flex"
       >
         {navItems.map(({ to, label, Icon, hash, ink }) => (
           <Link
@@ -226,7 +226,7 @@ export function SiteFrame({ children }: { children: ReactNode }) {
             activeOptions={{ exact: to === "/", includeHash: Boolean(hash) }}
           >
             <Icon className="h-3.5 w-3.5 shrink-0" strokeWidth={2} />
-            <span className="relative top-[2px] truncate">{label}</span>
+            <span className="relative top-[2px]">{label}</span>
           </Link>
         ))}
         {isAdmin ? (
@@ -237,7 +237,7 @@ export function SiteFrame({ children }: { children: ReactNode }) {
             activeProps={{ className: "arcade-rail-item arcade-rail-item-active" }}
           >
             <ShieldCheck className="h-3.5 w-3.5 shrink-0" strokeWidth={2} />
-            <span className="relative top-[2px] truncate">Admin</span>
+            <span className="relative top-[2px]">Admin</span>
           </Link>
         ) : null}
       </nav>
