@@ -400,7 +400,7 @@
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 0.75rem;
   width: 100%;
   padding: 1rem 1.1rem;
@@ -423,16 +423,11 @@
     color 0.15s linear,
     border-color 0.15s linear;
 
-  & > svg {
-    flex: 0 0 auto;
-    width: 1.1rem;
-    height: 1.1rem;
-  }
-
   & > span {
     flex: 1 1 auto;
     text-align: center;
     text-align-last: center;
+    width: 100%;
   }
 
   &:hover {
